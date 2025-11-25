@@ -56,6 +56,16 @@
         }
         html { scroll-behavior: smooth; }
         
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
         .project-card img {
             transition: transform 0.3s ease;
         }
@@ -89,7 +99,8 @@
                     <a href="https://www.facebook.com/pavotaplumbing" target="_blank" class="text-blue-600 hover:text-blue-800 text-2xl transition">
                         <i class="fa-brands fa-facebook"></i>
                     </a>
-                    <a href="#contact" class="bg-pavota-navy text-pavota-cyan border-2 border-pavota-navy hover:bg-white hover:text-pavota-navy px-5 py-2 rounded-lg font-bold transition">
+                    <!-- UPDATED LINK: Points to contact.html -->
+                    <a href="contact.html" class="bg-pavota-navy text-pavota-cyan border-2 border-pavota-navy hover:bg-white hover:text-pavota-navy px-5 py-2 rounded-lg font-bold transition">
                         Contact Us
                     </a>
                 </div>
@@ -109,7 +120,7 @@
             <a href="https://www.facebook.com/pavotaplumbing" target="_blank" class="block px-4 py-3 text-blue-600 font-bold hover:bg-pavota-light">
                 <i class="fa-brands fa-facebook mr-2"></i> Visit Facebook Page
             </a>
-            <a href="#contact" class="block px-4 py-3 text-pavota-navy font-bold bg-pavota-light">Contact Now</a>
+            <a href="contact.html" class="block px-4 py-3 text-pavota-navy font-bold bg-pavota-light">Contact Now</a>
         </div>
     </nav>
 

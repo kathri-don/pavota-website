@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | PAVOTA Plumbing Solutions</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pavota: {
+                            navy: '#0d1b3e',
+                            cyan: '#00d4ff',
+                            light: '#e0f7fa'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+
+    <!-- Navigation (Links point back to index.html) -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <!-- Logo links back to Home -->
+                    <a href="index.html" class="flex items-center">
+                        <img src="logo.jpg" alt="PAVOTA Logo" class="h-12 w-auto object-contain mr-3">
+                        <div class="flex flex-col">
+                            <span class="font-black text-xl md:text-2xl tracking-tight text-slate-900 uppercase leading-none">PAVOTA</span>
+                            <span class="text-xs font-bold text-gray-600 tracking-widest uppercase">Plumbing Solutions</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <!-- Note: These links go back to index.html -->
+                    <a href="index.html" class="text-gray-700 hover:text-pavota-cyan font-semibold transition">Home</a>
+                    <a href="index.html#services" class="text-gray-700 hover:text-pavota-cyan font-semibold transition">Services</a>
+                    <a href="index.html#projects" class="text-gray-700 hover:text-pavota-cyan font-semibold transition">Projects</a>
+                    <a href="https://www.facebook.com/pavotaplumbing" target="_blank" class="text-blue-600 hover:text-blue-800 text-2xl transition">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <!-- Active State for Contact Button -->
+                    <a href="contact.html" class="bg-pavota-navy text-pavota-cyan border-2 border-pavota-navy shadow-lg px-5 py-2 rounded-lg font-bold transition">
+                        Contact Us
+                    </a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-pavota-navy hover:text-pavota-cyan focus:outline-none">
+                        <i class="fa-solid fa-bars text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t mt-20 fixed w-full z-40">
+            <a href="index.html" class="block px-4 py-3 text-gray-800 font-medium hover:bg-pavota-light">Home</a>
+            <a href="index.html#services" class="block px-4 py-3 text-gray-800 font-medium hover:bg-pavota-light">Services</a>
+            <a href="index.html#projects" class="block px-4 py-3 text-gray-800 font-medium hover:bg-pavota-light">Projects</a>
+            <a href="contact.html" class="block px-4 py-3 text-pavota-navy font-bold bg-pavota-light">Contact Now</a>
+        </div>
+    </nav>
+
+    <!-- Mini Hero / Page Header -->
+    <div class="bg-pavota-navy pt-32 pb-12 text-center text-white">
+        <h1 class="text-4xl font-black uppercase mb-2">Contact Us</h1>
+        <p class="text-pavota-cyan text-lg">We are ready to help with your plumbing needs</p>
+    </div>
+
+    <!-- Main Contact Content -->
+    <section class="py-16 bg-white flex-grow">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <!-- Contact Info Column -->
+                    <div class="p-10 bg-pavota-navy text-white relative overflow-hidden">
+                        <div class="absolute -top-10 -left-10 w-40 h-40 bg-pavota-cyan/20 rounded-full"></div>
+                        
+                        <h2 class="text-3xl font-black uppercase mb-6 relative z-10">Get in Touch</h2>
+                        <p class="mb-8 text-gray-300 relative z-10">24/7 Emergency Service Available. Call us or send a message for a quick quote.</p>
+                        
+                        <div class="space-y-6 relative z-10">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa-solid fa-phone text-pavota-cyan"></i>
+                                </div>
+                                <span class="text-lg font-bold tracking-wide">+94 70 111 1994</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa-brands fa-whatsapp text-pavota-cyan"></i>
+                                </div>
+                                <span class="text-lg font-bold tracking-wide">+94 70 111 1994</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa-brands fa-facebook-f text-pavota-cyan"></i>
+                                </div>
+                                <a href="https://www.facebook.com/pavotaplumbing" target="_blank" class="text-lg hover:text-pavota-cyan transition">PAVOTA Plumbing Solutions</a>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa-solid fa-envelope text-pavota-cyan"></i>
+                                </div>
+                                <span class="text-lg">pavotaplumbing@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form Column -->
+                    <div class="p-10 bg-white">
+                        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 text-sm font-bold mb-2">Your Name</label>
+                                <input type="text" name="name" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="Enter your name">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 text-sm font-bold mb-2">Phone Number</label>
+                                <input type="tel" name="phone" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="070 111 1994">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 text-sm font-bold mb-2">Issue / Service Needed</label>
+                                <textarea name="message" rows="3" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="Describe the plumbing issue..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-pavota-navy text-pavota-cyan font-black uppercase tracking-widest py-4 rounded-lg hover:bg-gray-800 transition shadow-lg transform hover:-translate-y-1">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-pavota-navy text-white py-10 border-t border-gray-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-400 text-sm">&copy; 2025 PAVOTA Plumbing Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

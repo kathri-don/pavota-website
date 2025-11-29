@@ -16,8 +16,21 @@
     <meta property="og:url" content="https://www.pavotaplumbing.lk">
     <meta property="og:type" content="business.business">
 
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS with Color Config -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'pavota-navy': '#003d82',
+              'pavota-cyan': '#0066cc',
+              'pavota-light': '#e8f1f8'
+            }
+          }
+        }
+      }
+    </script>
     
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -248,7 +261,7 @@
                 "Expert plumbing solutions for installations, repairs, renovations & maintenance in the Colombo Area"
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="tel:+94701111994" class="bg-pavota-cyan text-pavota-navy hover:bg-white hover:text-pavota-navy font-bold py-4 px-10 rounded-full text-lg transition shadow-lg flex items-center justify-center">
+                <a href="tel:+94701111994" class="bg-blue-500 text-white hover:bg-blue-600 hover:text-white font-bold py-4 px-10 rounded-full text-lg transition shadow-lg flex items-center justify-center">
                     <i class="fa-solid fa-phone mr-2"></i> Call Now
                 </a>
                 <a href="https://wa.me/94701111994" class="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-10 rounded-full text-lg transition shadow-lg flex items-center justify-center">
@@ -517,21 +530,21 @@
                         </div>
                     </div>
                     
-                    <div class="p-10 bg-white">
+                    <div class="p-10 bg-pavota-light">
                         <form action="https://formspree.io/f/meoqrrvq" method="POST" class="space-y-4">
                             <div>
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Your Name</label>
-                                <input type="text" name="name" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="Enter your name">
+                                <label class="block text-pavota-navy text-sm font-bold mb-2">Your Name</label>
+                                <input type="text" name="name" required class="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-2 focus:ring-pavota-cyan/30 transition" placeholder="Enter your name">
                             </div>
                             <div>
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Phone Number</label>
-                                <input type="tel" name="phone" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="070 111 1994">
+                                <label class="block text-pavota-navy text-sm font-bold mb-2">Phone Number</label>
+                                <input type="tel" name="phone" required class="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-2 focus:ring-pavota-cyan/30 transition" placeholder="070 111 1994">
                             </div>
                             <div>
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Issue / Service Needed</label>
-                                <textarea name="message" rows="3" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="Describe the plumbing issue..."></textarea>
+                                <label class="block text-pavota-navy text-sm font-bold mb-2">Issue / Service Needed</label>
+                                <textarea name="message" rows="3" required class="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-2 focus:ring-pavota-cyan/30 transition" placeholder="Describe the plumbing issue..."></textarea>
                             </div>
-                            <button type="submit" class="w-full bg-pavota-navy text-pavota-cyan font-black uppercase tracking-widest py-4 rounded-lg hover:bg-gray-800 transition shadow-lg transform hover:-translate-y-1">
+                            <button type="submit" class="w-full bg-pavota-navy text-pavota-cyan font-black uppercase tracking-widest py-4 rounded-lg hover:bg-blue-900 transition shadow-lg transform hover:-translate-y-1">
                                 Send Message
                             </button>
                         </form>

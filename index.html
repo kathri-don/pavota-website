@@ -25,13 +25,6 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
-    <!-- Canonical Tag -->
-    <link rel="canonical" href="https://www.pavotaplumbing.lk">
-
     <!-- LOCAL BUSINESS SCHEMA (Service Area Optimization) -->
     <script type="application/ld+json">
     {
@@ -49,104 +42,52 @@
         "addressCountry": "LK"
       },
       "areaServed": [
-        {
-          "@type": "City",
-          "name": "Colombo"
-        },
-        {
-          "@type": "City",
-          "name": "Dehiwala-Mount Lavinia"
-        },
-        {
-          "@type": "City",
-          "name": "Moratuwa"
-        },
-        {
-          "@type": "City",
-          "name": "Maharagama"
-        },
-        {
-          "@type": "City",
-          "name": "Piliyandala"
-        },
-        {
-          "@type": "City",
-          "name": "Nugegoda"
-        },
-        {
-          "@type": "City",
-          "name": "Battaramulla"
-        },
-        {
-          "@type": "City",
-          "name": "Rajagiriya"
-        },
-        {
-          "@type": "City",
-          "name": "Thalawathugoda"
-        },
-        {
-          "@type": "City",
-          "name": "Nawala"
-        },
-        {
-          "@type": "City",
-          "name": "Kotte"
-        },
-        {
-          "@type": "City",
-          "name": "Malabe"
-        },
-        {
-          "@type": "City",
-          "name": "Boralesgamuwa"
-        },
-        {
-          "@type": "City",
-          "name": "Homagama"
-        }
+        { "@type": "City", "name": "Colombo" },
+        { "@type": "City", "name": "Dehiwala-Mount Lavinia" },
+        { "@type": "City", "name": "Moratuwa" },
+        { "@type": "City", "name": "Maharagama" },
+        { "@type": "City", "name": "Piliyandala" },
+        { "@type": "City", "name": "Nugegoda" },
+        { "@type": "City", "name": "Battaramulla" },
+        { "@type": "City", "name": "Rajagiriya" },
+        { "@type": "City", "name": "Thalawathugoda" },
+        { "@type": "City", "name": "Nawala" },
+        { "@type": "City", "name": "Kotte" },
+        { "@type": "City", "name": "Malabe" },
+        { "@type": "City", "name": "Boralesgamuwa" },
+        { "@type": "City", "name": "Homagama" }
       ],
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ],
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         "opens": "00:00",
         "closes": "23:59"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "reviewRating": {"@type": "Rating", "ratingValue": "5"},
-          "author": {"@type": "Person", "name": "Kasun Perera"},
-          "reviewBody": "Pavota Plumbing saved us during a midnight pipe burst. The team arrived within 30 minutes and fixed it perfectly. Highly recommended!"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {"@type": "Rating", "ratingValue": "5"},
-          "author": {"@type": "Person", "name": "Dilani Manike"},
-          "reviewBody": "Very professional service for our bathroom renovation. They used high-quality parts and finished the job on time. Great value for money."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {"@type": "Rating", "ratingValue": "4.5"},
-          "author": {"@type": "Person", "name": "Roshan Silva"},
-          "reviewBody": "Reliable and friendly team. They installed our water tank system and pump. Everything works smoothly now. Thank you PAVOTA!"
-        }
-      ]
+      }
     }
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pavota: {
+                            navy: '#0d1b3e',
+                            cyan: '#00d4ff',
+                            light: '#e0f7fa'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
     </script>
 
     <style>
         .hero-bg {
-            /* UPDATED: Now looks for your local image named 'hero_bg.jpg' */
-            /* Ensure the image is in the same folder and named exactly 'hero_bg.jpg' */
+            /* Using local image 'hero_bg.jpg' */
             background-image: linear-gradient(rgba(13, 27, 62, 0.6), rgba(13, 27, 62, 0.6)), url('hero_bg.jpg');
             background-size: cover;
             background-position: center;
@@ -165,14 +106,12 @@
         }
         html { scroll-behavior: smooth; }
         
-        /* Hide scrollbar for Chrome, Safari and Opera */
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
         }
-        /* Hide scrollbar for IE, Edge and Firefox */
         .scrollbar-hide {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
         .project-card img {
@@ -190,11 +129,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex-shrink-0 flex items-center">
-                    <!-- ACTUAL LOGO IMAGE -->
-                    <!-- Ensure 'logo.jpg' is in the same folder -->
                     <img src="logo.jpg" alt="PAVOTA Logo" class="h-12 w-auto object-contain mr-3">
-                    
-                    <!-- Text Name Next to Logo -->
                     <div class="flex flex-col">
                         <span class="font-black text-xl md:text-2xl tracking-tight text-slate-900 uppercase leading-none">PAVOTA</span>
                         <span class="text-xs font-bold text-gray-600 tracking-widest uppercase">Plumbing Solutions</span>
@@ -204,11 +139,10 @@
                     <a href="#home" class="text-gray-700 hover:text-pavota-cyan font-semibold transition">Home</a>
                     <a href="#services" class="text-gray-700 hover:text-pavota-cyan font-semibold transition">Services</a>
                     <a href="#projects" class="text-gray-700 hover:text-pavota-cyan font-semibold transition">Projects</a>
-                    <!-- Facebook Icon -->
                     <a href="https://www.facebook.com/pavotaplumbing" target="_blank" class="text-blue-600 hover:text-blue-800 text-2xl transition">
                         <i class="fa-brands fa-facebook"></i>
                     </a>
-                    <!-- UPDATED LINK: Points to contact.html -->
+                    <!-- LINK TO CONTACT PAGE -->
                     <a href="contact.html" class="bg-pavota-navy text-pavota-cyan border-2 border-pavota-navy hover:bg-white hover:text-pavota-navy px-5 py-2 rounded-lg font-bold transition">
                         Contact Us
                     </a>
@@ -236,11 +170,9 @@
     <!-- Hero Section -->
     <section id="home" class="hero-bg h-screen flex items-center justify-center text-center px-4">
         <div class="max-w-4xl">
-            <!-- Decorative "Best Service" Label -->
             <div class="bg-pavota-navy/80 p-4 rounded-lg backdrop-blur-sm inline-block mb-6">
                  <span class="text-pavota-cyan font-bold tracking-wider uppercase text-sm">We Provide The Best</span>
             </div>
-            
             <h1 class="text-4xl md:text-6xl font-black text-white mb-6 uppercase leading-tight drop-shadow-lg">
                 Plumbing & <br/><span class="text-pavota-cyan">Repair Service</span>
             </h1>
@@ -261,16 +193,14 @@
         </div>
     </section>
 
-    <!-- Services Section (Based on Flyer) -->
+    <!-- Services Section -->
     <section id="services" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-black text-pavota-navy uppercase">Our Services</h2>
                 <div class="w-24 h-1 bg-pavota-cyan mx-auto mt-4 rounded-full"></div>
             </div>
-            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
                 <!-- Installation -->
                 <div class="bg-pavota-light rounded-xl p-8 hover:shadow-xl transition border-l-4 border-pavota-navy">
                     <div class="flex items-center mb-6">
@@ -285,7 +215,6 @@
                         <li class="flex items-start"><i class="fa-solid fa-check text-pavota-cyan mt-1 mr-3 bg-pavota-navy rounded-full p-1 text-xs"></i> <span class="text-gray-700 font-medium">Water Tanks & Pumps</span></li>
                     </ul>
                 </div>
-
                 <!-- Renovations -->
                 <div class="bg-pavota-light rounded-xl p-8 hover:shadow-xl transition border-l-4 border-pavota-cyan">
                     <div class="flex items-center mb-6">
@@ -300,7 +229,6 @@
                         <li class="flex items-start"><i class="fa-solid fa-check text-white mt-1 mr-3 bg-pavota-cyan rounded-full p-1 text-xs"></i> <span class="text-gray-700 font-medium">Modern Fixture Updates</span></li>
                     </ul>
                 </div>
-
                 <!-- Repair -->
                 <div class="bg-pavota-light rounded-xl p-8 hover:shadow-xl transition border-l-4 border-pavota-cyan">
                     <div class="flex items-center mb-6">
@@ -315,7 +243,6 @@
                         <li class="flex items-start"><i class="fa-solid fa-check text-white mt-1 mr-3 bg-pavota-cyan rounded-full p-1 text-xs"></i> <span class="text-gray-700 font-medium">Clogged Drains Unblocking</span></li>
                     </ul>
                 </div>
-
                 <!-- Maintenance -->
                 <div class="bg-pavota-light rounded-xl p-8 hover:shadow-xl transition border-l-4 border-pavota-navy">
                     <div class="flex items-center mb-6">
@@ -330,13 +257,11 @@
                         <li class="flex items-start"><i class="fa-solid fa-check text-pavota-cyan mt-1 mr-3 bg-pavota-navy rounded-full p-1 text-xs"></i> <span class="text-gray-700 font-medium">System Flushes</span></li>
                     </ul>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Recent Projects Section -->
-    <!-- NEW: Multi-Gallery Project Section -->
+    <!-- Multi-Gallery Project Section -->
     <section id="projects" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -344,58 +269,42 @@
                 <p class="mt-4 text-gray-600">Browse our gallery of completed work.</p>
             </div>
 
-            <!-- CATEGORY 1: Bathroom Installations -->
+            <!-- CATEGORY 1 -->
             <div class="mb-12">
                 <h3 class="text-2xl font-bold text-pavota-navy mb-4 border-l-4 border-pavota-cyan pl-3">Bathroom Installations</h3>
                 <div class="flex overflow-x-auto space-x-4 pb-4 scrollbar-hide">
-                    
-                    <!-- Bathroom Photo 1 -->
                     <div class="flex-none w-80 h-64 rounded-xl shadow-lg overflow-hidden relative group project-card">
-                        <img src="bath1.jpg" alt="Modern bathroom renovation with new fixtures in Colombo - sink, faucet, tiles" class="w-full h-full object-cover">
+                        <img src="bath1.jpg" alt="Bathroom 1" class="w-full h-full object-cover">
                     </div>
-
-                    <!-- Bathroom Photo 2 -->
                     <div class="flex-none w-80 h-64 rounded-xl shadow-lg overflow-hidden relative group">
-                        <img src="bath2.jpg" alt="Professional bathroom installation with updated plumbing fixtures in Sri Lanka" class="w-full h-full object-cover">
+                        <img src="bath2.jpg" alt="Bathroom 2" class="w-full h-full object-cover">
                     </div>
-                    
-                    <!-- COPY/PASTE THE DIV ABOVE TO ADD MORE PHOTOS -->
                 </div>
             </div>
 
-            <!-- CATEGORY 2: Leak & Pipe Repairs -->
+            <!-- CATEGORY 2 -->
             <div class="mb-12">
                 <h3 class="text-2xl font-bold text-pavota-navy mb-4 border-l-4 border-pavota-cyan pl-3">Leak & Pipe Repairs</h3>
                 <div class="flex overflow-x-auto space-x-4 pb-4 scrollbar-hide">
-                    
-                    <!-- Repair Photo 1 -->
                     <div class="flex-none w-80 h-64 rounded-xl shadow-lg overflow-hidden relative group project-card">
-                        <img src="repair1.jpg" alt="Leak repair and pipe maintenance work completed in Colombo homes" class="w-full h-full object-cover">
+                        <img src="repair1.jpg" alt="Repair 1" class="w-full h-full object-cover">
                     </div>
-
-                    <!-- Repair Photo 2 -->
                     <div class="flex-none w-80 h-64 rounded-xl shadow-lg overflow-hidden relative group project-card">
-                        <img src="repair2.jpg" alt="Professional plumbing repair service - fixing water leaks and drainage issues" class="w-full h-full object-cover">
+                        <img src="repair2.jpg" alt="Repair 2" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
 
-            <!-- CATEGORY 3: Kitchen/Water Systems -->
+            <!-- CATEGORY 3 -->
             <div class="mb-12">
                 <h3 class="text-2xl font-bold text-pavota-navy mb-4 border-l-4 border-pavota-cyan pl-3">Kitchen/Water Systems</h3>
                 <div class="flex overflow-x-auto space-x-4 pb-4 scrollbar-hide">
-                    
-                    <!-- Kitchen Photo 1 -->
                     <div class="flex-none w-80 h-64 rounded-xl shadow-lg overflow-hidden relative group project-card">
-                        <img src="kitchen1.jpg" alt="Kitchen sink and water system installation - modern fixtures and pipes" class="w-full h-full object-cover">
+                        <img src="kitchen1.jpg" alt="Kitchen 1" class="w-full h-full object-cover">
                     </div>
-
-                    <!-- Kitchen Photo 2 -->
                     <div class="flex-none w-80 h-64 rounded-xl shadow-lg overflow-hidden relative group project-card">
-                        <img src="kitchen2.jpg" alt="Complete kitchen plumbing upgrade with new taps and water supply system" class="w-full h-full object-cover">
+                        <img src="kitchen2.jpg" alt="Kitchen 2" class="w-full h-full object-cover">
                     </div>
-
-                    <!-- Video Block -->
                     <div class="flex-none w-80 h-64 rounded-xl shadow-lg overflow-hidden bg-black relative border-2 border-gray-200">
                         <video controls class="w-full h-full object-cover">
                             <source src="project3.mp4" type="video/mp4">
@@ -408,25 +317,19 @@
             </div>
     </section>
 
-    <!-- CUSTOMER FEEDBACK SECTION (NEW) -->
+    <!-- Feedback Section -->
     <section class="py-16 bg-pavota-light">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-black text-pavota-navy uppercase">What Our Customers Say</h2>
                 <div class="w-24 h-1 bg-pavota-navy mx-auto mt-4 rounded-full"></div>
             </div>
-            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Review 1 -->
                 <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-pavota-cyan relative">
                     <div class="text-yellow-400 text-lg mb-4 flex">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
-                    <p class="text-gray-600 mb-6 italic">"Pavota Plumbing saved us during a midnight pipe burst. The team arrived within 30 minutes and fixed it perfectly. Highly recommended!"</p>
+                    <p class="text-gray-600 mb-6 italic">"Pavota Plumbing saved us during a midnight pipe burst. The team arrived within 30 minutes. Highly recommended!"</p>
                     <div class="flex items-center">
                         <div class="w-10 h-10 bg-pavota-navy text-white rounded-full flex items-center justify-center font-bold mr-3">K</div>
                         <div>
@@ -435,17 +338,12 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Review 2 -->
                 <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-pavota-navy relative">
                     <div class="text-yellow-400 text-lg mb-4 flex">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
-                    <p class="text-gray-600 mb-6 italic">"Very professional service for our bathroom renovation. They used high-quality parts and finished the job on time. Great value for money."</p>
+                    <p class="text-gray-600 mb-6 italic">"Very professional service for our bathroom renovation. They used high-quality parts and finished the job on time."</p>
                     <div class="flex items-center">
                         <div class="w-10 h-10 bg-pavota-cyan text-pavota-navy rounded-full flex items-center justify-center font-bold mr-3">D</div>
                         <div>
@@ -454,17 +352,12 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Review 3 -->
                 <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-pavota-cyan relative">
                     <div class="text-yellow-400 text-lg mb-4 flex">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
                     </div>
-                    <p class="text-gray-600 mb-6 italic">"Reliable and friendly team. They installed our water tank system and pump. Everything works smoothly now. Thank you PAVOTA!"</p>
+                    <p class="text-gray-600 mb-6 italic">"Reliable and friendly team. They installed our water tank system and pump. Everything works smoothly now."</p>
                     <div class="flex items-center">
                         <div class="w-10 h-10 bg-pavota-navy text-white rounded-full flex items-center justify-center font-bold mr-3">R</div>
                         <div>
@@ -477,63 +370,27 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Form Section -->
     <section id="contact" class="py-16 bg-white">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-pavota-navy rounded-3xl shadow-2xl overflow-hidden">
                 <div class="grid grid-cols-1 md:grid-cols-2">
                     <div class="p-10 text-white relative overflow-hidden">
-                        <!-- Decorative Circle -->
                         <div class="absolute -top-10 -left-10 w-40 h-40 bg-pavota-cyan/20 rounded-full"></div>
-                        
                         <h2 class="text-3xl font-black uppercase mb-6 relative z-10">Get a Free Quote</h2>
                         <p class="mb-8 text-gray-300 relative z-10">Contact PAVOTA Plumbing Solutions today. Fast response for all inquiries.</p>
-                        
                         <div class="space-y-6 relative z-10">
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fa-solid fa-phone text-pavota-cyan"></i>
-                                </div>
-                                <span class="text-lg font-bold tracking-wide">+94 70 111 1994</span>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fa-brands fa-whatsapp text-pavota-cyan"></i>
-                                </div>
-                                <span class="text-lg font-bold tracking-wide">+94 70 111 1994</span>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fa-brands fa-facebook-f text-pavota-cyan"></i>
-                                </div>
-                                <a href="https://www.facebook.com/pavotaplumbing" target="_blank" class="text-lg hover:text-pavota-cyan transition">PAVOTA Plumbing Solutions</a>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fa-solid fa-envelope text-pavota-cyan"></i>
-                                </div>
-                                <span class="text-lg">pavotaplumbing@gmail.com</span> <!-- Updated Email -->
-                            </div>
+                            <div class="flex items-center"><div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4"><i class="fa-solid fa-phone text-pavota-cyan"></i></div><span class="text-lg font-bold tracking-wide">+94 70 111 1994</span></div>
+                            <div class="flex items-center"><div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4"><i class="fa-brands fa-whatsapp text-pavota-cyan"></i></div><span class="text-lg font-bold tracking-wide">+94 70 111 1994</span></div>
+                            <div class="flex items-center"><div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4"><i class="fa-solid fa-envelope text-pavota-cyan"></i></div><span class="text-lg">pavotaplumbing@gmail.com</span></div>
                         </div>
                     </div>
-                    
                     <div class="p-10 bg-white">
-                        <form action="https://formspree.io/f/meoqrrvq" method="POST" class="space-y-4">
-                            <div>
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Your Name</label>
-                                <input type="text" name="name" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="Enter your name">
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Phone Number</label>
-                                <input type="tel" name="phone" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="070 111 1994">
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Issue / Service Needed</label>
-                                <textarea name="message" rows="3" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="Describe the plumbing issue..."></textarea>
-                            </div>
-                            <button type="submit" class="w-full bg-pavota-navy text-pavota-cyan font-black uppercase tracking-widest py-4 rounded-lg hover:bg-gray-800 transition shadow-lg transform hover:-translate-y-1">
-                                Send Message
-                            </button>
+                        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4">
+                            <div><label class="block text-gray-700 text-sm font-bold mb-2">Your Name</label><input type="text" name="name" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="Enter your name"></div>
+                            <div><label class="block text-gray-700 text-sm font-bold mb-2">Phone Number</label><input type="tel" name="phone" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="070 111 1994"></div>
+                            <div><label class="block text-gray-700 text-sm font-bold mb-2">Issue / Service Needed</label><textarea name="message" rows="3" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="Describe the plumbing issue..."></textarea></div>
+                            <button type="submit" class="w-full bg-pavota-navy text-pavota-cyan font-black uppercase tracking-widest py-4 rounded-lg hover:bg-gray-800 transition shadow-lg transform hover:-translate-y-1">Send Message</button>
                         </form>
                     </div>
                 </div>
@@ -545,7 +402,6 @@
     <footer class="bg-pavota-navy text-white py-10 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <div class="flex justify-center items-center mb-6">
-                <!-- Footer Logo Image -->
                 <img src="logo.jpg" alt="PAVOTA" class="h-12 w-auto object-contain">
             </div>
             <div class="flex justify-center space-x-6 mb-8">
@@ -560,7 +416,7 @@
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Button -->
+    <!-- Floating WhatsApp -->
     <a href="https://wa.me/94701111994" class="whatsapp-float bg-green-500 text-white w-14 h-14 rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center" target="_blank">
         <i class="fa-brands fa-whatsapp text-3xl"></i>
     </a>
@@ -568,7 +424,6 @@
     <script>
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
-
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
         });

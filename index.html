@@ -10,6 +10,7 @@
     <!-- FAVICON -->
     <link rel="icon" href="logo.jpg" type="image/jpeg">
     <link rel="shortcut icon" href="logo.jpg" type="image/jpeg">
+    <link rel="canonical" href="https://www.pavotaplumbing.lk/">
     
     <!-- META DESCRIPTION & KEYWORDS -->
     <meta name="description" content="Top-rated plumber serving Colombo, Mount Lavinia, Dehiwala & Piliyandala. 24/7 emergency repairs, bathroom installations & leak detection. Fast arrival. Call +94 70 111 1994.">
@@ -19,6 +20,8 @@
     <meta property="og:title" content="PAVOTA Plumbing - Best Plumber in Colombo">
     <meta property="og:description" content="Expert plumbing repairs and installations in Colombo & suburbs. 24/7 Service. Call us now!">
     <meta property="og:image" content="https://www.pavotaplumbing.lk/logo.jpg">
+    <meta property="og:image:width" content="2000">
+    <meta property="og:image:height" content="2000">
     <meta property="og:url" content="https://www.pavotaplumbing.lk">
     <meta property="og:type" content="business.business">
 
@@ -41,6 +44,9 @@
       "telephone": "+94701111994",
       "url": "https://www.pavotaplumbing.lk",
       "priceRange": "$$",
+      "sameAs": [
+        "https://www.facebook.com/pavotaplumbing"
+      ],
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Piliyandala",
@@ -135,7 +141,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex-shrink-0 flex items-center">
-                    <img src="logo.jpg" alt="PAVOTA Logo" class="h-12 w-auto object-contain mr-3">
+                    <img src="logo.jpg" alt="PAVOTA Logo" class="h-12 w-auto object-contain mr-3" width="48" height="48">
                     <div class="flex flex-col">
                         <span class="font-black text-xl md:text-2xl tracking-tight text-slate-900 uppercase leading-none">PAVOTA</span>
                         <span class="text-xs font-bold text-gray-600 tracking-widest uppercase">Plumbing Solutions</span>
@@ -145,7 +151,8 @@
                     <a href="#home" class="text-gray-700 hover:text-pavota-cyan font-semibold transition">Home</a>
                     <a href="#services" class="text-gray-700 hover:text-pavota-cyan font-semibold transition">Services</a>
                     <a href="#projects" class="text-gray-700 hover:text-pavota-cyan font-semibold transition">Projects</a>
-                    <a href="https://www.facebook.com/pavotaplumbing" target="_blank" class="text-blue-600 hover:text-blue-800 text-2xl transition">
+                    <a href="#contact" class="text-gray-700 hover:text-pavota-cyan font-semibold transition">Contact</a>
+                    <a href="https://www.facebook.com/pavotaplumbing" target="_blank" rel="noopener noreferrer" aria-label="Visit PAVOTA on Facebook" class="text-blue-600 hover:text-blue-800 text-2xl transition">
                         <i class="fa-brands fa-facebook"></i>
                     </a>
                     <!-- LINK TO CONTACT PAGE -->
@@ -155,7 +162,7 @@
                 </div>
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-pavota-navy hover:text-pavota-cyan focus:outline-none">
+                    <button id="mobile-menu-btn" class="text-pavota-navy hover:text-pavota-cyan focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
                         <i class="fa-solid fa-bars text-3xl"></i>
                     </button>
                 </div>
@@ -166,7 +173,8 @@
             <a href="#home" class="block px-4 py-3 text-gray-800 font-medium hover:bg-pavota-light">Home</a>
             <a href="#services" class="block px-4 py-3 text-gray-800 font-medium hover:bg-pavota-light">Services</a>
             <a href="#projects" class="block px-4 py-3 text-gray-800 font-medium hover:bg-pavota-light">Projects</a>
-            <a href="https://www.facebook.com/pavotaplumbing" target="_blank" class="block px-4 py-3 text-blue-600 font-bold hover:bg-pavota-light">
+            <a href="#contact" class="block px-4 py-3 text-gray-800 font-medium hover:bg-pavota-light">Contact</a>
+            <a href="https://www.facebook.com/pavotaplumbing" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 text-blue-600 font-bold hover:bg-pavota-light">
                 <i class="fa-brands fa-facebook mr-2"></i> Visit Facebook Page
             </a>
             <a href="contact.html" class="block px-4 py-3 text-pavota-navy font-bold bg-pavota-light">Contact Now</a>
@@ -280,44 +288,7 @@
                 <h3 class="text-2xl font-bold text-pavota-navy mb-4 border-l-4 border-pavota-cyan pl-3">Bathroom Installations</h3>
                 <div class="flex overflow-x-auto space-x-4 pb-4 scrollbar-hide">
                     <div class="flex-none w-80 h-64 rounded-xl shadow-lg overflow-hidden relative group project-card">
-                        <img src="bath1.jpg" alt="Bathroom 1" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-none w-80 h-64 rounded-xl shadow-lg overflow-hidden relative group">
-                        <img src="bath2.jpg" alt="Bathroom 2" class="w-full h-full object-cover">
-                    </div>
-                </div>
-            </div>
-
-            <!-- CATEGORY 2 -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold text-pavota-navy mb-4 border-l-4 border-pavota-cyan pl-3">Leak & Pipe Repairs</h3>
-                <div class="flex overflow-x-auto space-x-4 pb-4 scrollbar-hide">
-                    <div class="flex-none w-80 h-64 rounded-xl shadow-lg overflow-hidden relative group project-card">
-                        <img src="repair1.jpg" alt="Repair 1" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-none w-80 h-64 rounded-xl shadow-lg overflow-hidden relative group project-card">
-                        <img src="repair2.jpg" alt="Repair 2" class="w-full h-full object-cover">
-                    </div>
-                </div>
-            </div>
-
-            <!-- CATEGORY 3 -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold text-pavota-navy mb-4 border-l-4 border-pavota-cyan pl-3">Kitchen/Water Systems</h3>
-                <div class="flex overflow-x-auto space-x-4 pb-4 scrollbar-hide">
-                    <div class="flex-none w-80 h-64 rounded-xl shadow-lg overflow-hidden relative group project-card">
-                        <img src="kitchen1.jpg" alt="Kitchen 1" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-none w-80 h-64 rounded-xl shadow-lg overflow-hidden relative group project-card">
-                        <img src="kitchen2.jpg" alt="Kitchen 2" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-none w-80 h-64 rounded-xl shadow-lg overflow-hidden bg-black relative border-2 border-gray-200">
-                        <video controls class="w-full h-full object-cover">
-                            <source src="project3.mp4" type="video/mp4">
-                        </video>
-                        <div class="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">
-                            <i class="fa-solid fa-play mr-1"></i> VIDEO
-                        </div>
+                        <img src="bath1.jpg" alt="Bathroom installation project" class="w-full h-full object-cover" loading="lazy" width="944" height="2048">
                     </div>
                 </div>
             </div>
@@ -386,25 +357,26 @@
                         <h2 class="text-3xl font-black uppercase mb-6 relative z-10">Get a Free Quote</h2>
                         <p class="mb-8 text-gray-300 relative z-10">Contact PAVOTA Plumbing Solutions today. Fast response for all inquiries.</p>
                         <div class="space-y-6 relative z-10">
-                            <div class="flex items-center"><div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4"><i class="fa-solid fa-phone text-pavota-cyan"></i></div><span class="text-lg font-bold tracking-wide">+94 70 111 1994</span></div>
-                            <div class="flex items-center"><div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4"><i class="fa-brands fa-whatsapp text-pavota-cyan"></i></div><span class="text-lg font-bold tracking-wide">+94 70 111 1994</span></div>
-                            <div class="flex items-center"><div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4"><i class="fa-solid fa-envelope text-pavota-cyan"></i></div><span class="text-lg">pavotaplumbing@gmail.com</span></div>
+                            <div class="flex items-center"><div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4"><i class="fa-solid fa-phone text-pavota-cyan"></i></div><a href="tel:+94701111994" class="text-lg font-bold tracking-wide hover:text-pavota-cyan transition">+94 70 111 1994</a></div>
+                            <div class="flex items-center"><div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4"><i class="fa-brands fa-whatsapp text-pavota-cyan"></i></div><a href="https://wa.me/94701111994" class="text-lg font-bold tracking-wide hover:text-pavota-cyan transition">+94 70 111 1994</a></div>
+                            <div class="flex items-center"><div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4"><i class="fa-solid fa-envelope text-pavota-cyan"></i></div><a href="mailto:pavotaplumbing@gmail.com" class="text-lg hover:text-pavota-cyan transition">pavotaplumbing@gmail.com</a></div>
                             <div class="flex items-center">
                                 <div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4">
                                     <i class="fa-brands fa-facebook-f text-pavota-cyan"></i>
                                 </div>
-                                <a href="https://www.facebook.com/pavotaplumbing" target="_blank" class="text-lg hover:text-pavota-cyan transition border-b border-transparent hover:border-pavota-cyan">
+                                <a href="https://www.facebook.com/pavotaplumbing" target="_blank" rel="noopener noreferrer" class="text-lg hover:text-pavota-cyan transition border-b border-transparent hover:border-pavota-cyan">
                                     PAVOTA Plumbing Solutions
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="p-10 bg-white">
-                        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4">
+                        <form action="https://formspree.io/f/mykdyjbw" method="POST" class="space-y-4" data-formspree>
                             <div><label class="block text-gray-700 text-sm font-bold mb-2">Your Name</label><input type="text" name="name" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="Enter your name"></div>
                             <div><label class="block text-gray-700 text-sm font-bold mb-2">Phone Number</label><input type="tel" name="phone" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="070 111 1994"></div>
                             <div><label class="block text-gray-700 text-sm font-bold mb-2">Issue / Service Needed</label><textarea name="message" rows="3" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="Describe the plumbing issue..."></textarea></div>
-                            <button type="submit" class="w-full bg-pavota-navy text-pavota-cyan font-black uppercase tracking-widest py-4 rounded-lg hover:bg-gray-800 transition shadow-lg transform hover:-translate-y-1">Send Message</button>
+                            <button type="submit" class="w-full bg-pavota-navy text-pavota-cyan font-black uppercase tracking-widest py-4 rounded-lg hover:bg-gray-800 transition shadow-lg transform hover:-translate-y-1" data-formspree-submit>Send Message</button>
+                            <p class="text-sm font-medium text-gray-600" data-formspree-status aria-live="polite"></p>
                         </form>
                     </div>
                 </div>
@@ -416,22 +388,22 @@
     <footer class="bg-pavota-navy text-white py-10 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <div class="flex justify-center items-center mb-6">
-                <img src="logo.jpg" alt="PAVOTA" class="h-12 w-auto object-contain">
+                <img src="logo.jpg" alt="PAVOTA" class="h-12 w-auto object-contain" width="48" height="48">
             </div>
             <div class="flex justify-center space-x-6 mb-8">
-                <a href="https://www.facebook.com/pavotaplumbing" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-pavota-cyan hover:text-pavota-navy transition">
+                <a href="https://www.facebook.com/pavotaplumbing" aria-label="Visit PAVOTA on Facebook" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-pavota-cyan hover:text-pavota-navy transition">
                     <i class="fa-brands fa-facebook-f"></i>
                 </a>
-                <a href="https://wa.me/94701111994" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-500 transition">
+                <a href="https://wa.me/94701111994" aria-label="Chat with PAVOTA on WhatsApp" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-500 transition">
                     <i class="fa-brands fa-whatsapp"></i>
                 </a>
             </div>
-            <p class="text-gray-400 text-sm">&copy; 2025 PAVOTA Plumbing Solutions. All rights reserved.</p>
+            <p class="text-gray-400 text-sm">&copy; 2026 PAVOTA Plumbing Solutions. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/94701111994" class="whatsapp-float bg-green-500 text-white w-14 h-14 rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center" target="_blank">
+    <a href="https://wa.me/94701111994" class="whatsapp-float bg-green-500 text-white w-14 h-14 rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center" target="_blank" rel="noopener noreferrer" aria-label="Chat with PAVOTA on WhatsApp">
         <i class="fa-brands fa-whatsapp text-3xl"></i>
     </a>
 
@@ -440,6 +412,78 @@
         const menu = document.getElementById('mobile-menu');
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
+            const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', String(!isExpanded));
+        });
+
+        const forms = document.querySelectorAll('[data-formspree]');
+        const redirectUrl = 'https://www.pavotaplumbing.lk/';
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const status = form.querySelector('[data-formspree-status]');
+            const submitButton = form.querySelector('[data-formspree-submit]');
+            const originalButtonText = submitButton ? submitButton.textContent : '';
+
+            if (status) {
+                status.textContent = '';
+                status.classList.remove('text-red-600', 'text-green-600');
+            }
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+            }
+
+            const data = new FormData(form);
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    if (status) {
+                        status.textContent = 'Thanks! Redirecting you to the home page...';
+                        status.classList.add('text-green-600');
+                    }
+                    form.reset();
+                    setTimeout(() => {
+                        window.location.href = redirectUrl;
+                    }, 1200);
+                } else {
+                    let message = 'Oops! There was a problem submitting your form.';
+                    try {
+                        const errorData = await response.json();
+                        if (errorData && Object.hasOwn(errorData, 'errors')) {
+                            message = errorData.errors.map(error => error.message).join(', ');
+                        }
+                    } catch (error) {
+                        // Ignore JSON parsing errors and use the generic message.
+                    }
+                    if (status) {
+                        status.textContent = message;
+                        status.classList.add('text-red-600');
+                    }
+                }
+            } catch (error) {
+                if (status) {
+                    status.textContent = 'Oops! There was a problem submitting your form.';
+                    status.classList.add('text-red-600');
+                }
+            } finally {
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                }
+            }
+        }
+
+        forms.forEach((form) => {
+            form.addEventListener('submit', handleSubmit);
         });
     </script>
 </body>

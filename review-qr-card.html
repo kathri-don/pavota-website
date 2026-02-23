@@ -148,34 +148,55 @@
         <p class="phone">Hotline: +94 70 111 1994</p>
 
         <p class="note">
-            Setup needed: Replace `REVIEW_URL` in this file with your Google "Ask for reviews" link.
+            Review link is configured. Print this card and use it after each completed job.
         </p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
     <script>
-        // Paste your Google "Ask for reviews" URL here.
         const REVIEW_URL = "https://g.page/r/CW5uG-cOHZZDEAE/review";
 
         const qrContainer = document.getElementById("qr");
         const linkEl = document.getElementById("review-link");
+        const fallbackQrSrc = "https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=" + encodeURIComponent(REVIEW_URL);
 
         linkEl.href = REVIEW_URL;
 
-        QRCode.toCanvas(REVIEW_URL, {
-            width: 260,
-            margin: 1,
-            color: {
-                dark: "#0d1b3e",
-                light: "#ffffff"
-            }
-        }, (err, canvas) => {
-            if (err) {
-                qrContainer.textContent = "QR generation failed";
-                return;
-            }
-            qrContainer.appendChild(canvas);
-        });
+        function renderFallbackQrImage() {
+            const img = document.createElement("img");
+            img.src = fallbackQrSrc;
+            img.width = 260;
+            img.height = 260;
+            img.alt = "Google review QR code";
+            img.loading = "eager";
+            img.decoding = "sync";
+            img.onerror = () => {
+                qrContainer.textContent = "QR load failed. Use the button below.";
+            };
+            qrContainer.innerHTML = "";
+            qrContainer.appendChild(img);
+        }
+
+        if (window.QRCode && typeof window.QRCode.toCanvas === "function") {
+            window.QRCode.toCanvas(REVIEW_URL, {
+                width: 260,
+                margin: 1,
+                color: {
+                    dark: "#0d1b3e",
+                    light: "#ffffff"
+                }
+            }, (err, canvas) => {
+                if (err) {
+                    renderFallbackQrImage();
+                    return;
+                }
+                qrContainer.innerHTML = "";
+                qrContainer.appendChild(canvas);
+            });
+        } else {
+            // Fallback when jsDelivr is blocked or unavailable.
+            renderFallbackQrImage();
+        }
     </script>
 </body>
 </html>

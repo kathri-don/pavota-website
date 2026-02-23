@@ -3,6 +3,7 @@
 ## Google Review QR Kit
 
 Use the local file `review-qr-card.html` to print a QR card for customers after each job.
+Public short URL: `https://www.pavotaplumbing.lk/reviews`
 
 ### One-time setup
 

@@ -2,7 +2,7 @@
 
 ## Google Review QR Kit
 
-Use the local file `review-qr-card.html` to print a QR card for customers after each job.
+Use the page at `/reviews/` to print the customer QR card.
 Public short URL: `https://www.pavotaplumbing.lk/reviews`
 
 ### One-time setup
@@ -11,8 +11,8 @@ Public short URL: `https://www.pavotaplumbing.lk/reviews`
    - Open your Google Business Profile dashboard.
    - Click `Ask for reviews`.
    - Copy the generated review link.
-2. Open `review-qr-card.html` and replace the value of `REVIEW_URL`.
-3. Open `review-qr-card.html` in a browser and print it.
+2. If needed, update `REVIEW_URL` in `reviews/index.html`.
+3. Open `https://www.pavotaplumbing.lk/reviews` in a browser and print it.
 
 ### Notes
 

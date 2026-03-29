@@ -69,20 +69,45 @@
                 </div>
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-pavota-navy hover:text-pavota-cyan focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
-                        <i class="fa-solid fa-bars text-3xl"></i>
+                    <button id="mobile-menu-btn" class="text-pavota-navy hover:text-pavota-cyan focus:outline-none relative z-[60] w-10 h-10 flex items-center justify-center" aria-controls="mobile-menu" aria-expanded="false">
+                        <i id="menu-icon-open" class="fa-solid fa-bars text-3xl transition-all duration-300"></i>
+                        <i id="menu-icon-close" class="fa-solid fa-xmark text-3xl absolute transition-all duration-300 opacity-0 scale-75"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t mt-20 fixed w-full z-40">
-            <a href="index.html" class="block px-4 py-3 text-gray-800 font-medium hover:bg-pavota-light">Home</a>
-            <a href="index.html#services" class="block px-4 py-3 text-gray-800 font-medium hover:bg-pavota-light">Services</a>
-            <a href="index.html#projects" class="block px-4 py-3 text-gray-800 font-medium hover:bg-pavota-light">Projects</a>
-            <a href="contact.html" class="block px-4 py-3 text-pavota-navy font-bold bg-pavota-light">Contact Now</a>
-        </div>
     </nav>
+
+    <!-- Mobile Full-Screen Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[55] pointer-events-none md:hidden">
+        <!-- Dark backdrop -->
+        <div id="mobile-menu-backdrop" class="absolute inset-0 bg-pavota-navy/95 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+        <!-- Menu content -->
+        <div id="mobile-menu-content" class="absolute inset-0 flex flex-col items-center justify-center translate-x-full transition-transform duration-400 ease-out">
+            <nav class="flex flex-col items-center gap-6 w-full px-8">
+                <a href="index.html" class="mobile-nav-link text-white text-2xl font-bold uppercase tracking-wider hover:text-pavota-cyan transition-colors py-2 border-b border-white/10 w-full text-center">
+                    <i class="fa-solid fa-house mr-3 text-pavota-cyan text-lg"></i>Home
+                </a>
+                <a href="index.html#services" class="mobile-nav-link text-white text-2xl font-bold uppercase tracking-wider hover:text-pavota-cyan transition-colors py-2 border-b border-white/10 w-full text-center">
+                    <i class="fa-solid fa-wrench mr-3 text-pavota-cyan text-lg"></i>Services
+                </a>
+                <a href="index.html#projects" class="mobile-nav-link text-white text-2xl font-bold uppercase tracking-wider hover:text-pavota-cyan transition-colors py-2 border-b border-white/10 w-full text-center">
+                    <i class="fa-solid fa-images mr-3 text-pavota-cyan text-lg"></i>Projects
+                </a>
+                <a href="contact.html" class="mobile-nav-link text-pavota-cyan text-2xl font-bold uppercase tracking-wider py-2 border-b border-white/10 w-full text-center">
+                    <i class="fa-solid fa-envelope mr-3 text-lg"></i>Contact
+                </a>
+            </nav>
+            <div class="mt-10 flex flex-col items-center gap-4 w-full px-8">
+                <a href="https://wa.me/94701111994" class="bg-green-500 text-white font-bold py-3 px-8 rounded-full text-base hover:bg-green-600 transition w-full text-center shadow-lg flex items-center justify-center">
+                    <i class="fa-brands fa-whatsapp mr-2 text-xl"></i> WhatsApp Us
+                </a>
+                <a href="https://www.facebook.com/pavotaplumbing" target="_blank" rel="noopener noreferrer" class="text-white/70 hover:text-pavota-cyan transition text-base mt-2">
+                    <i class="fa-brands fa-facebook mr-2"></i> Visit Facebook Page
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Mini Hero / Page Header -->
     <div class="bg-pavota-navy pt-32 pb-12 text-center text-white">
@@ -175,14 +200,60 @@
     </footer>
 
     <script>
+        // Mobile menu logic
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
+        const backdrop = document.getElementById('mobile-menu-backdrop');
+        const menuContent = document.getElementById('mobile-menu-content');
+        const iconOpen = document.getElementById('menu-icon-open');
+        const iconClose = document.getElementById('menu-icon-close');
+        let menuIsOpen = false;
+
+        function openMenu() {
+            menuIsOpen = true;
+            menu.classList.remove('pointer-events-none');
+            menu.classList.add('pointer-events-auto');
+            backdrop.classList.remove('opacity-0');
+            backdrop.classList.add('opacity-100');
+            menuContent.classList.remove('translate-x-full');
+            menuContent.classList.add('translate-x-0');
+            iconOpen.classList.add('opacity-0', 'scale-75');
+            iconOpen.classList.remove('opacity-100', 'scale-100');
+            iconClose.classList.remove('opacity-0', 'scale-75');
+            iconClose.classList.add('opacity-100', 'scale-100');
+            document.body.style.overflow = 'hidden';
+            btn.setAttribute('aria-expanded', 'true');
+        }
+
+        function closeMenu() {
+            menuIsOpen = false;
+            backdrop.classList.remove('opacity-100');
+            backdrop.classList.add('opacity-0');
+            menuContent.classList.remove('translate-x-0');
+            menuContent.classList.add('translate-x-full');
+            iconOpen.classList.remove('opacity-0', 'scale-75');
+            iconOpen.classList.add('opacity-100', 'scale-100');
+            iconClose.classList.add('opacity-0', 'scale-75');
+            iconClose.classList.remove('opacity-100', 'scale-100');
+            document.body.style.overflow = '';
+            btn.setAttribute('aria-expanded', 'false');
+            setTimeout(() => {
+                menu.classList.remove('pointer-events-auto');
+                menu.classList.add('pointer-events-none');
+            }, 350);
+        }
 
         btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-            const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-            btn.setAttribute('aria-expanded', String(!isExpanded));
+            menuIsOpen ? closeMenu() : openMenu();
         });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                closeMenu();
+            });
+        });
+
+        backdrop.addEventListener('click', closeMenu);
 
         const forms = document.querySelectorAll('[data-formspree]');
 

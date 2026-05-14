@@ -12,9 +12,12 @@
     <link rel="shortcut icon" href="logo.jpg" type="image/jpeg">
     <link rel="canonical" href="https://www.pavotaplumbing.lk/">
     
+    <!-- PRELOAD: Hero image for faster LCP -->
+    <link rel="preload" as="image" href="hero_bg.jpg">
+
     <!-- META DESCRIPTION & KEYWORDS -->
-    <meta name="description" content="Top-rated plumber serving Colombo, Mount Lavinia, Dehiwala & Piliyandala. 24/7 emergency repairs, bathroom installations & leak detection. Fast arrival. Call +94 70 111 1994.">
-    <meta name="keywords" content="plumber colombo, plumbing services colombo, emergency plumber colombo, plumber mount lavinia, plumber dehiwala, plumber piliyandala, bathroom repair sri lanka">
+    <meta name="description" content="Top-rated plumber near you in Colombo, Piliyandala, Mount Lavinia & Dehiwala. 24/7 emergency plumbing services, water tank repair, pressure pump installation & bathroom fittings. Fast arrival. Call +94 70 111 1994.">
+    <meta name="keywords" content="plumber near me, plumbers near me, plumbing services near me, plumber colombo, water tank repair near me, urgent plumber near me, plumbing work, plumber piliyandala, plumbing services colombo, emergency plumber colombo, plumber mount lavinia, plumber dehiwala, bathroom repair sri lanka, plumbing installation">
 
     <!-- OPEN GRAPH (For Facebook/WhatsApp Sharing) -->
     <meta property="og:title" content="PAVOTA Plumbing - Best Plumber in Colombo">
@@ -42,14 +45,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
-    <!-- LOCAL BUSINESS SCHEMA (Service Area Optimization) -->
+    <!-- LOCAL BUSINESS SCHEMA (Service Area + Reviews + Services for AI/GPT) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Plumber",
       "name": "PAVOTA Plumbing Solutions",
+      "description": "Top-rated professional plumber near you in Colombo and Piliyandala. We provide 24/7 emergency plumbing services, water tank repair, pressure pump installation, bathroom fittings, leak detection, and complete plumbing work across the greater Colombo area. Fast arrival, clean finishing, and transparent pricing.",
       "image": "https://www.pavotaplumbing.lk/logo.jpg",
       "telephone": "+94701111994",
+      "email": "pavotaplumbing@gmail.com",
       "url": "https://www.pavotaplumbing.lk",
       "priceRange": "$$",
       "sameAs": [
@@ -60,6 +65,87 @@
         "addressLocality": "Piliyandala",
         "addressRegion": "Colombo",
         "addressCountry": "LK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "6.8018",
+        "longitude": "79.9227"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.6",
+        "bestRating": "5",
+        "ratingCount": "17"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Plumbing Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Emergency Plumbing Repair",
+              "description": "24/7 urgent plumber near you for burst pipes, severe leaks, and plumbing emergencies in Colombo"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Water Tank Repair & Installation",
+              "description": "Water tank repair near Colombo and Piliyandala — installation, cleaning, and leak fixes"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Pressure Pump Installation",
+              "description": "Water pressure pump setup and repair for homes and buildings in the Colombo area"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bathroom Installation & Fittings",
+              "description": "Complete bathroom plumbing installation, renovation, and fitting services"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Leak Detection & Repair",
+              "description": "Fast leak diagnostics and pipe repair services near you in Colombo"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Hot Water System Installation",
+              "description": "Geyser and solar hot water system plumbing installation and repair"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Drain & Blockage Clearing",
+              "description": "Stubborn drain blockage clearing and sewer line maintenance"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Washing Machine Plumbing",
+              "description": "Washing machine water connection and drainage plumbing setup"
+            }
+          }
+        ]
       },
       "areaServed": [
         { "@type": "City", "name": "Colombo" },
@@ -83,6 +169,64 @@
         "opens": "00:00",
         "closes": "23:59"
       }
+    }
+    </script>
+
+    <!-- FAQ SCHEMA (Targeting top "near me" search queries) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Where can I find a reliable plumber near me in Colombo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PAVOTA Plumbing Solutions is a top-rated plumber serving Colombo, Piliyandala, Dehiwala, Mount Lavinia, Moratuwa, Nugegoda, Battaramulla, and surrounding areas. We offer 24/7 emergency plumbing services with fast arrival times. Call +94 70 111 1994 or send a WhatsApp video of your issue for a quick quote."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer water tank repair near me?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we provide water tank repair, installation, and cleaning services across the Colombo district. Our services include tank leak repairs, pressure pump installation, pipeline connections, and full water system upgrades. We serve Piliyandala, Maharagama, Boralesgamuwa, Kotte, and all nearby areas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there an urgent plumber near me available 24 hours?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, PAVOTA Plumbing provides 24/7 emergency plumbing services in Colombo and surrounding areas. For burst pipes, severe leaks, or pump failures, call us immediately at +94 70 111 1994. We aim for the fastest arrival times for emergency plumbing work."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What plumbing services do you offer in Piliyandala?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In Piliyandala and the greater Colombo area, we offer a full range of plumbing services including: pressure pump installation, water tank repair, bathroom installations and fittings, hot water system setup (geyser/solar), leak detection and repair, drain clearing, washing machine plumbing, kitchen sink and tap upgrades, and routine plumbing maintenance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does plumbing work cost in Colombo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Plumbing costs in Colombo vary depending on the job. For an accurate quote, send us a 10-second WhatsApp video of your plumbing issue — we provide free video-based estimates with no callout fee just to look. This saves you time and ensures transparent pricing before we dispatch our expert."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you do plumbing installation services?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we handle all types of plumbing installations including complete bathroom plumbing, pressure pump and water tank setup, hot water systems (geyser and solar), washing machine connections, kitchen sinks and taps, and full pipeline installation for new builds and renovations in the Colombo area."
+          }
+        }
+      ]
     }
     </script>
 
@@ -299,7 +443,7 @@
                 <span class="text-pavota-cyan">Fast Solutions</span>
             </h1>
             <p class="text-base md:text-xl text-white mb-4 md:mb-6 font-medium max-w-4xl mx-auto drop-shadow-md italic px-2">
-                "Expert, reliable solutions for pressure pumps, complete bathroom installations & fittings, and precise leak repairs in the Colombo Area"
+                "Your trusted plumber near you in Colombo — expert water tank repair, pressure pump installation, bathroom fittings, and precise leak repairs"
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-3 md:gap-4 px-4 sm:px-0">
                 <a href="tel:+94701111994" class="bg-pavota-cyan text-pavota-navy hover:bg-white hover:text-pavota-navy font-bold py-3 px-6 md:py-4 md:px-10 rounded-full text-base md:text-lg transition shadow-lg flex items-center justify-center">
@@ -391,7 +535,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8 md:mb-12">
                 <h2 class="text-2xl md:text-3xl font-black text-pavota-navy uppercase">Recent Client Works</h2>
-                <p class="mt-3 md:mt-4 text-gray-600 text-sm md:text-base">Verified jobs completed by our team for clients in the Colombo area.</p>
+                <p class="mt-3 md:mt-4 text-gray-600 text-sm md:text-base">Verified plumbing work completed for clients near Colombo, Piliyandala & surrounding areas.</p>
             </div>
 
             <div class="flex justify-end gap-2 mb-4">
@@ -447,53 +591,143 @@
             <div class="text-center mb-8 md:mb-12">
                 <h2 class="text-2xl md:text-3xl font-black text-pavota-navy uppercase">What Our Customers Say</h2>
                 <div class="w-24 h-1 bg-pavota-navy mx-auto mt-4 rounded-full"></div>
-                <p class="mt-4 text-gray-700 text-sm md:text-base">Had a good experience with PAVOTA?</p>
+                <p class="mt-4 text-gray-700 text-sm md:text-base">Real reviews from verified customers on Google</p>
+                <div class="mt-3 flex items-center justify-center gap-2">
+                    <div class="flex text-yellow-400 text-lg">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <span class="font-bold text-pavota-navy text-lg">4.6</span>
+                    <span class="text-gray-500 text-sm">(17 reviews on Google)</span>
+                </div>
                 <a href="https://g.page/r/CW5uG-cOHZZDEAE/review" target="_blank" rel="noopener noreferrer" class="inline-flex mt-4 items-center bg-pavota-navy text-pavota-cyan hover:bg-white hover:text-pavota-navy border-2 border-pavota-navy font-bold py-2.5 px-5 md:py-3 md:px-6 rounded-full transition text-sm md:text-base">
                     <i class="fa-brands fa-google mr-2"></i> Leave a Google Review
                 </a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1: Pubudu Dahanayake — Real Google Review -->
                 <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-pavota-cyan relative">
-                    <div class="text-yellow-400 text-lg mb-4 flex">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-yellow-400 text-lg flex">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 flex items-center"><i class="fa-brands fa-google mr-1 text-blue-500"></i>Verified</span>
                     </div>
-                    <p class="text-gray-600 mb-6 italic">"Pavota Plumbing saved us during a midnight pipe burst. The team arrived within 30 minutes. Highly recommended!"</p>
+                    <p class="text-gray-600 mb-6 italic text-sm">"Excellent Plumbing Service. I'm very satisfied with the work done on my hot water system and pressure pump installation. He did a very clean and professional job. The piping was neatly arranged, all connections were properly sealed, and everything works perfectly without any leaks."</p>
                     <div class="flex items-center">
-                        <div class="w-10 h-10 bg-pavota-navy text-white rounded-full flex items-center justify-center font-bold mr-3">K</div>
+                        <div class="w-10 h-10 bg-pavota-navy text-white rounded-full flex items-center justify-center font-bold mr-3">P</div>
                         <div>
-                            <p class="font-bold text-pavota-navy">Kasun Perera</p>
-                            <p class="text-xs text-gray-500">Colombo</p>
+                            <p class="font-bold text-pavota-navy">Pubudu Dahanayake</p>
+                            <p class="text-xs text-gray-500">2 months ago</p>
                         </div>
                     </div>
                 </div>
-                <!-- Review 2 -->
+                <!-- Review 2: Kimuthu Kiringoda — Real Google Review -->
                 <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-pavota-navy relative">
-                    <div class="text-yellow-400 text-lg mb-4 flex">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-yellow-400 text-lg flex">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 flex items-center"><i class="fa-brands fa-google mr-1 text-blue-500"></i>Verified</span>
                     </div>
-                    <p class="text-gray-600 mb-6 italic">"Very professional service for our bathroom renovation. They used high-quality parts and finished the job on time."</p>
+                    <p class="text-gray-600 mb-6 italic text-sm">"I called Pavota Plumbing to get assistance on a leaking pipe. Many declined to come, as it is mere days after Sinhala New Year. But Pavota Plumbing quickly answered and a technician came within the next 2 hours. Pasindu did a perfect job. 10/10. Highly recommended."</p>
                     <div class="flex items-center">
-                        <div class="w-10 h-10 bg-pavota-cyan text-pavota-navy rounded-full flex items-center justify-center font-bold mr-3">D</div>
+                        <div class="w-10 h-10 bg-pavota-cyan text-pavota-navy rounded-full flex items-center justify-center font-bold mr-3">K</div>
                         <div>
-                            <p class="font-bold text-pavota-navy">Dilani Manike</p>
-                            <p class="text-xs text-gray-500">Battaramulla</p>
+                            <p class="font-bold text-pavota-navy">Kimuthu Kiringoda</p>
+                            <p class="text-xs text-gray-500">3 weeks ago</p>
                         </div>
                     </div>
                 </div>
-                <!-- Review 3 -->
+                <!-- Review 3: Praveen Deeranga — Real Google Review -->
                 <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-pavota-cyan relative">
-                    <div class="text-yellow-400 text-lg mb-4 flex">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-yellow-400 text-lg flex">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 flex items-center"><i class="fa-brands fa-google mr-1 text-blue-500"></i>Verified</span>
                     </div>
-                    <p class="text-gray-600 mb-6 italic">"Reliable and friendly team. They installed our water tank system and pump. Everything works smoothly now."</p>
+                    <p class="text-gray-600 mb-6 italic text-sm">"I had a very satisfying experience with Pavota Plumbing. He arrived exactly as scheduled. He removed my old commode set and installed the new one efficiently. The pricing was very reasonable for the quality of work. He even cleaned up the work area before leaving."</p>
                     <div class="flex items-center">
-                        <div class="w-10 h-10 bg-pavota-navy text-white rounded-full flex items-center justify-center font-bold mr-3">R</div>
+                        <div class="w-10 h-10 bg-pavota-navy text-white rounded-full flex items-center justify-center font-bold mr-3">P</div>
                         <div>
-                            <p class="font-bold text-pavota-navy">Roshan Silva</p>
-                            <p class="text-xs text-gray-500">Kottawa</p>
+                            <p class="font-bold text-pavota-navy">Praveen Deeranga</p>
+                            <p class="text-xs text-gray-500">1 month ago</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section (matches FAQ schema — required for rich results) -->
+    <section id="faq" class="py-10 md:py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-2xl md:text-3xl font-black text-pavota-navy uppercase">Frequently Asked Questions</h2>
+                <div class="w-24 h-1 bg-pavota-cyan mx-auto mt-4 rounded-full"></div>
+                <p class="mt-4 text-gray-600 text-sm md:text-base">Common questions about our plumbing services near you in Colombo</p>
+            </div>
+            <div class="space-y-4">
+                <!-- FAQ 1: plumbers near me (91 impressions) -->
+                <details class="group bg-pavota-light rounded-xl border border-cyan-100 overflow-hidden">
+                    <summary class="flex items-center justify-between cursor-pointer p-5 md:p-6 font-bold text-pavota-navy text-base md:text-lg hover:bg-white transition">
+                        <span><i class="fa-solid fa-location-dot text-pavota-cyan mr-3"></i>Where can I find a reliable plumber near me in Colombo?</span>
+                        <i class="fa-solid fa-chevron-down text-pavota-cyan text-sm transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <div class="px-5 md:px-6 pb-5 md:pb-6 text-gray-700 leading-relaxed">
+                        <p>PAVOTA Plumbing Solutions is a top-rated plumber serving <strong>Colombo, Piliyandala, Dehiwala, Mount Lavinia, Moratuwa, Nugegoda, Battaramulla</strong>, and surrounding areas. We offer 24/7 emergency plumbing services with fast arrival times. Call <a href="tel:+94701111994" class="text-pavota-cyan font-bold hover:underline">+94 70 111 1994</a> or send a WhatsApp video of your issue for a quick quote.</p>
+                    </div>
+                </details>
+                <!-- FAQ 2: water tank repair near me (19 impressions) -->
+                <details class="group bg-pavota-light rounded-xl border border-cyan-100 overflow-hidden">
+                    <summary class="flex items-center justify-between cursor-pointer p-5 md:p-6 font-bold text-pavota-navy text-base md:text-lg hover:bg-white transition">
+                        <span><i class="fa-solid fa-water text-pavota-cyan mr-3"></i>Do you offer water tank repair near me?</span>
+                        <i class="fa-solid fa-chevron-down text-pavota-cyan text-sm transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <div class="px-5 md:px-6 pb-5 md:pb-6 text-gray-700 leading-relaxed">
+                        <p>Yes, we provide <strong>water tank repair, installation, and cleaning</strong> services across the Colombo district. Our services include tank leak repairs, pressure pump installation, pipeline connections, and full water system upgrades. We serve Piliyandala, Maharagama, Boralesgamuwa, Kotte, and all nearby areas.</p>
+                    </div>
+                </details>
+                <!-- FAQ 3: urgent plumber near me -->
+                <details class="group bg-pavota-light rounded-xl border border-cyan-100 overflow-hidden">
+                    <summary class="flex items-center justify-between cursor-pointer p-5 md:p-6 font-bold text-pavota-navy text-base md:text-lg hover:bg-white transition">
+                        <span><i class="fa-solid fa-bolt text-pavota-cyan mr-3"></i>Is there an urgent plumber near me available 24 hours?</span>
+                        <i class="fa-solid fa-chevron-down text-pavota-cyan text-sm transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <div class="px-5 md:px-6 pb-5 md:pb-6 text-gray-700 leading-relaxed">
+                        <p>Yes, PAVOTA Plumbing provides <strong>24/7 emergency plumbing services</strong> in Colombo and surrounding areas. For burst pipes, severe leaks, or pump failures, call us immediately at <a href="tel:+94701111994" class="text-pavota-cyan font-bold hover:underline">+94 70 111 1994</a>. We aim for the fastest arrival times for emergency plumbing work.</p>
+                    </div>
+                </details>
+                <!-- FAQ 4: plumbing works in piliyandala -->
+                <details class="group bg-pavota-light rounded-xl border border-cyan-100 overflow-hidden">
+                    <summary class="flex items-center justify-between cursor-pointer p-5 md:p-6 font-bold text-pavota-navy text-base md:text-lg hover:bg-white transition">
+                        <span><i class="fa-solid fa-wrench text-pavota-cyan mr-3"></i>What plumbing services do you offer in Piliyandala?</span>
+                        <i class="fa-solid fa-chevron-down text-pavota-cyan text-sm transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <div class="px-5 md:px-6 pb-5 md:pb-6 text-gray-700 leading-relaxed">
+                        <p>In Piliyandala and the greater Colombo area, we offer a full range of plumbing services including: <strong>pressure pump installation, water tank repair, bathroom installations and fittings, hot water system setup</strong> (geyser/solar), leak detection and repair, drain clearing, washing machine plumbing, kitchen sink and tap upgrades, and routine plumbing maintenance.</p>
+                    </div>
+                </details>
+                <!-- FAQ 5: plumbing work cost -->
+                <details class="group bg-pavota-light rounded-xl border border-cyan-100 overflow-hidden">
+                    <summary class="flex items-center justify-between cursor-pointer p-5 md:p-6 font-bold text-pavota-navy text-base md:text-lg hover:bg-white transition">
+                        <span><i class="fa-solid fa-calculator text-pavota-cyan mr-3"></i>How much does plumbing work cost in Colombo?</span>
+                        <i class="fa-solid fa-chevron-down text-pavota-cyan text-sm transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <div class="px-5 md:px-6 pb-5 md:pb-6 text-gray-700 leading-relaxed">
+                        <p>Plumbing costs in Colombo vary depending on the job. For an accurate quote, <strong>send us a 10-second WhatsApp video</strong> of your plumbing issue — we provide free video-based estimates with no callout fee just to look. This saves you time and ensures transparent pricing before we dispatch our expert.</p>
+                    </div>
+                </details>
+                <!-- FAQ 6: plumbing installation -->
+                <details class="group bg-pavota-light rounded-xl border border-cyan-100 overflow-hidden">
+                    <summary class="flex items-center justify-between cursor-pointer p-5 md:p-6 font-bold text-pavota-navy text-base md:text-lg hover:bg-white transition">
+                        <span><i class="fa-solid fa-screwdriver-wrench text-pavota-cyan mr-3"></i>Do you do plumbing installation services?</span>
+                        <i class="fa-solid fa-chevron-down text-pavota-cyan text-sm transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <div class="px-5 md:px-6 pb-5 md:pb-6 text-gray-700 leading-relaxed">
+                        <p>Yes, we handle all types of <strong>plumbing installations</strong> including complete bathroom plumbing, pressure pump and water tank setup, hot water systems (geyser and solar), washing machine connections, kitchen sinks and taps, and full pipeline installation for new builds and renovations in the Colombo area.</p>
+                    </div>
+                </details>
             </div>
         </div>
     </section>

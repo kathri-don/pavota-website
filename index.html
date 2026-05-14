@@ -524,10 +524,10 @@
                     </div>
                     <div class="p-6 md:p-10 bg-white">
                         <form action="https://formspree.io/f/mykdyjbw" method="POST" class="space-y-4" data-formspree>
-                            <div><label class="block text-gray-700 text-sm font-bold mb-2">Your Name <span class="text-red-500">*</span></label><input type="text" name="name" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="Enter your name"></div>
-                            <div><label class="block text-gray-700 text-sm font-bold mb-2">Phone Number <span class="text-red-500">*</span></label><input type="tel" name="phone" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="070 111 1994"></div>
-                            <div><label class="block text-gray-700 text-sm font-bold mb-2">Email Address <span class="text-red-500">*</span></label><input type="email" name="email" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="your@email.com"></div>
-                            <div><label class="block text-gray-700 text-sm font-bold mb-2">Issue / Service Needed <span class="text-red-500">*</span></label><textarea name="message" rows="3" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="Describe the plumbing issue..."></textarea></div>
+                            <div><label class="block text-gray-700 text-sm font-bold mb-2">Your Name <span class="text-red-500">*</span></label><input type="text" name="name" required minlength="2" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="Enter your name"></div>
+                            <div><label class="block text-gray-700 text-sm font-bold mb-2">Phone Number <span class="text-red-500">*</span></label><input type="tel" name="phone" required inputmode="numeric" pattern="[0-9]{10}" maxlength="10" title="Please enter a valid 10-digit phone number" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="0701111994"><p class="text-xs text-gray-400 mt-1">10-digit number only, e.g. 0701111994</p></div>
+                            <div><label class="block text-gray-700 text-sm font-bold mb-2">Email Address <span class="text-red-500">*</span></label><input type="email" name="email" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="your@email.com"><p class="text-xs text-gray-400 mt-1">Must be a valid email address</p></div>
+                            <div><label class="block text-gray-700 text-sm font-bold mb-2">Issue / Service Needed <span class="text-red-500">*</span></label><textarea name="message" rows="3" required minlength="10" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-pavota-navy focus:ring-1 focus:ring-pavota-navy transition" placeholder="Describe the plumbing issue..."></textarea><p class="text-xs text-gray-400 mt-1">Please describe in at least 10 characters</p></div>
                             <button type="submit" class="w-full bg-pavota-navy text-pavota-cyan font-black uppercase tracking-widest py-4 rounded-lg hover:bg-gray-800 transition shadow-lg transform hover:-translate-y-1" data-formspree-submit>Send Message</button>
                             <div data-formspree-status aria-live="polite"></div>
                         </form>
@@ -691,11 +691,11 @@
 
                     // Build WhatsApp URL and show confirmation modal
                     const waText = encodeURIComponent(
-                        `📋 *New Case from Website*\n\n` +
-                        `👤 *Name:* ${customerName}\n` +
-                        `📞 *Phone:* ${customerPhone}\n` +
-                        `📧 *Email:* ${customerEmail}\n` +
-                        `🔧 *Issue:* ${customerMessage}`
+                        '\u{1F4CB} *New Case from Website*\n\n' +
+                        '\u{1F464} *Name:* ' + customerName + '\n' +
+                        '\u{1F4DE} *Phone:* ' + customerPhone + '\n' +
+                        '\u{1F4E7} *Email:* ' + customerEmail + '\n' +
+                        '\u{1F527} *Issue:* ' + customerMessage
                     );
                     const waUrl = `https://wa.me/94701111994?text=${waText}`;
                     showWhatsAppModal(waUrl);

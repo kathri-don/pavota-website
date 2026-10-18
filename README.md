@@ -20,6 +20,7 @@ Private tool at `/office/` (files: `office/index.html`, `sw.js`, `manifest.webma
 - Advance amount and travel cost are optional per job; left empty, they are not shown on documents.
 - Titles and headings are bilingual (English / Sinhala); edit the wording in the `SI` list in `office/index.html`.
 - Bank details are never printed; they are sent on WhatsApp after the customer accepts.
-- All records live in the phone's browser storage. Export a backup weekly from Settings.
+- Cloud sync: sign in with Google (Settings -> Cloud sync, or the cloud button) to share jobs, settings and document numbers across phone and PC through Firebase project `pavota-plumbing` (Firestore). Access is limited to the allowed Google accounts by the Firestore security rules set in the Firebase console. Each device keeps its own copy, so the app still works offline; issuing a new PQ / INV / RCPT number needs internet while signed in.
+- Without signing in, records stay only in that device's browser storage. Export a backup from Settings now and then either way.
 - After testing, use Settings -> "Erase all jobs & reset numbers" so real documents start at 001.
 - After editing `office/index.html`, bump `VERSION` in `office/sw.js` so phones load the new version.

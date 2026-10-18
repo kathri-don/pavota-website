@@ -456,7 +456,7 @@ function renderDocs(j) {
 
     <div class="card doc">
       <div class="row"><div class="grow"><h3>${bi('Invoice')} ${j.invoice ? esc(j.invoice.no) : ''}</h3>
-        <div class="meta">${j.invoice ? `${lkr(j.invoice.total)} · completed ${nice(j.invoice.completed)} · warranty until ${nice(j.invoice.warrantyUntil)}` : 'Create after the work is finished. Uses the items above.'}</div></div></div>
+        <div class="meta">${j.invoice ? `${lkr(j.invoice.total)} · completed ${nice(j.invoice.completed)}` : 'Create after the work is finished. Uses the items above.'}</div></div></div>
       ${dirtyInv ? `<div class="hint">The job changed after this invoice was made. Tap <b>Update invoice</b> to apply the changes (same number).</div>` : ''}
       ${!j.invoice ? `<label for="compDate">${bi('Completion date')}</label><input id="compDate" type="date" value="${today()}">` : ''}
       <div class="btns">
@@ -778,10 +778,7 @@ async function buildPdf(type, j, pay) {
       `Completed work carries a ${T.warrantyMonths}-month workmanship warranty.`
     ]);
   } else {
-    para('Warranty & terms', [
-      `Workmanship warranty: ${T.warrantyMonths} months from completion, valid until ${nice(src.warrantyUntil)}. Covers our installation workmanship.`,
-      'Supplied products (pumps, heaters, fittings) carry their own manufacturer warranties.',
-      'The warranty does not cover misuse, accidental damage, or later alterations by others.',
+    para('Terms', [
       src.total - paidNow > 0.004 ? 'Please settle the balance due on completion. Bank details are available on request.' : 'This invoice is fully paid. Thank you for choosing PAVOTA.'
     ]);
   }
@@ -863,7 +860,7 @@ function message(type, j, pay) {
   }
   if (type === 'invoice') {
     const i = j.invoice, bal = Math.max(0, i.total - paid(j));
-    return `Hello ${first}, thank you for choosing PAVOTA Plumbing Solutions.\n\nPlease find attached invoice ${i.no}.\nTotal: LKR ${money(i.total)}\nBalance due: LKR ${money(bal)}\n\nYour work is covered by a ${T.warrantyMonths}-month workmanship warranty (until ${nice(i.warrantyUntil)}).`;
+    return `Hello ${first}, thank you for choosing PAVOTA Plumbing Solutions.\n\nPlease find attached invoice ${i.no}.\nTotal: LKR ${money(i.total)}\nBalance due: LKR ${money(bal)}`;
   }
   const bal = r2(jobTotal(j) - paid(j, pay.id));
   return `Hello ${first}, we have received your payment of LKR ${money(pay.amount)}. Thank you!\nReceipt ${pay.no} is attached.` +

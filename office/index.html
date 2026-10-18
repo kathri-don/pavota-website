@@ -23,6 +23,8 @@ button,input,select,textarea{font:inherit;color:inherit}
 .top .brand{font-weight:900;letter-spacing:.5px;line-height:1}
 .top .brand small{display:block;font-weight:600;font-size:10px;color:var(--cyan);letter-spacing:2px;margin-top:3px}
 .top .sp{flex:1}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-left:5px;background:#9aa5b4;vertical-align:middle}
+.dot.synced{background:#22c55e}.dot.pending,.dot.syncing{background:#facc15}.dot.offline{background:#fb923c}.dot.denied,.dot.error,.dot.signedout{background:#ef4444}
 .iconbtn{background:rgba(255,255,255,.1);border:0;color:#fff;border-radius:10px;padding:8px 11px;cursor:pointer;font-size:14px}
 main{max-width:760px;margin:0 auto;padding:16px 16px 120px}
 h2{font-size:17px;margin:22px 0 10px;color:var(--navy)}
@@ -110,6 +112,7 @@ textarea{min-height:70px;resize:vertical}
   <img src="icon-192.png" alt="">
   <div class="brand">PAVOTA<small>OFFICE</small></div>
   <div class="sp"></div>
+  <button class="iconbtn" id="navSync" title="Cloud sync">☁<span class="dot" id="syncDot"></span></button>
   <button class="iconbtn" id="navHome" title="Home">Jobs</button>
   <button class="iconbtn" id="navSettings" title="Settings">Settings</button>
   <button class="iconbtn" id="navLock" title="Lock">Lock</button>
@@ -124,7 +127,8 @@ textarea{min-height:70px;resize:vertical}
 'use strict';
 /* =========================================================
    PAVOTA Office — quotations, invoices & receipts
-   All data stays on this device (localStorage). Back it up from Settings.
+   Works from this device's copy (localStorage) and, once signed in with Google,
+   syncs jobs, settings and document numbers through Firebase (see "Cloud sync").
    ========================================================= */
 
 const KEY = 'pavota_office_v1';
@@ -160,10 +164,11 @@ function normalise(d) {
   d.jobs.forEach(j => { j.items = j.items || []; j.payments = j.payments || []; });
   return d;
 }
-function save() {
+function saveLocal() {
   try { localStorage.setItem(KEY, JSON.stringify(db)); }
   catch (e) { toast('Could not save on this device — export a backup now'); }
 }
+function save() { saveLocal(); pushSoon(); }
 try { navigator.storage && navigator.storage.persist && navigator.storage.persist(); } catch (e) {}
 
 /* ---------- helpers ---------- */
@@ -213,12 +218,14 @@ function waNumber(p) {
   else if (d.length === 9 && d.startsWith('7')) d = '94' + d;
   return d;
 }
-function nextNo(prefix, dateStr) {
+// signed in: numbers come from one shared counter in the cloud, so two devices never issue the same number (needs internet)
+async function nextNo(prefix, dateStr) {
   const y = (dateStr || today()).slice(0, 4);
   const k = prefix + '-' + y;
-  db.counters[k] = (db.counters[k] || 0) + 1;
+  db.counters[k] = cloud.user ? await cloudNextNo(k) : (db.counters[k] || 0) + 1;
   return prefix + '-' + y + '-' + String(db.counters[k]).padStart(3, '0');
 }
+const noNumber = e => toast(e && e.offline ? 'No internet — connect to issue a document number' : 'Could not get a document number — try again');
 
 /* ---------- money logic ---------- */
 function calc(items, discount, travel) {
@@ -300,6 +307,7 @@ function resetIdle() { clearTimeout(idleTimer); idleTimer = setTimeout(lockNow, 
 
 /* ---------- routing ---------- */
 $('#navHome').onclick = () => go('');
+$('#navSync').onclick = () => go('#settings');
 $('#navSettings').onclick = () => go('#settings');
 $('#navLock').onclick = lockNow;
 function go(h) { if (location.hash === h || (!h && !location.hash)) route(); else location.hash = h; }
@@ -321,10 +329,11 @@ function renderHome() {
   const outstanding = r2(db.jobs.filter(j => (j.invoice || (j.quote && j.quote.accepted))).reduce((s, j) => s + Math.max(0, balance(j)), 0));
   const month = r2(db.jobs.reduce((s, j) => s + j.payments.filter(p => !p.void && p.date.slice(0, 7) === now).reduce((a, p) => a + Number(p.amount), 0), 0));
   const days = db.lastBackup ? Math.floor((Date.now() - db.lastBackup) / 864e5) : null;
-  const needBackup = db.jobs.length && (days === null || days >= 7);
+  const needBackup = !cloud.user && db.jobs.length && (days === null || days >= 7);
   const q = search.toLowerCase();
   const list = db.jobs.slice().sort((a, b) => b.updated - a.updated).filter(j => !q || [j.customer.name, j.customer.phone, j.title, j.quote?.no, j.invoice?.no].join(' ').toLowerCase().includes(q));
   app.innerHTML = `
+    ${!cloud.user && cloud.state !== 'loading' ? `<div class="banner"><div class="grow">Not syncing. Sign in with Google to keep jobs on your phone and PC.</div><button class="btn sm" id="quickSignIn">Sign in</button></div>` : ''}
     ${needBackup ? `<div class="banner"><div class="grow">${days === null ? 'No backup yet.' : 'Last backup ' + days + ' days ago.'} Your records live only on this phone.</div><button class="btn sm" id="quickBackup">Back up</button></div>` : ''}
     <div class="stats">
       <div class="stat"><b>${openQuotes}</b><span>Open quotes</span></div>
@@ -350,6 +359,7 @@ function renderHome() {
     db.jobs.push(j); save(); go('#job/' + j.id);
   };
   const qb = $('#quickBackup'); if (qb) qb.onclick = exportBackup;
+  const qs = $('#quickSignIn'); if (qs) qs.onclick = () => cloud.m ? cloudSignIn() : toast('Cloud sync is still loading — try again in a moment');
 }
 
 /* ---------- JOB ---------- */
@@ -488,12 +498,14 @@ function renderDocs(j) {
     return true;
   };
   const mk = $('#mkQuote');
-  if (mk) mk.onclick = () => {
+  if (mk) mk.onclick = async () => {
     if (!need()) return;
     const isNew = !j.quote, changed = j.quote && j.quote.snap !== snapKey(j), redate = isNew || changed || quoteExpired(j);
     const d = redate ? today() : j.quote.date;
+    let no = j.quote && j.quote.no;
+    if (isNew) { mk.disabled = true; try { no = await nextNo('PQ', d); } catch (e) { mk.disabled = false; return noNumber(e); } }
     j.quote = Object.assign(j.quote || {}, {
-      no: isNew ? nextNo('PQ', d) : j.quote.no,
+      no,
       rev: isNew ? 1 : (changed ? (j.quote.rev || 1) + 1 : (j.quote.rev || 1)),
       date: d, validUntil: redate ? addDays(d, Number(T.validityDays) || 7) : j.quote.validUntil,
       accepted: redate ? null : j.quote.accepted,
@@ -504,10 +516,12 @@ function renderDocs(j) {
   };
   const ac = $('#accept'); if (ac) ac.onclick = () => { j.quote.accepted = today(); touch(); rerender(); toast('Marked accepted — send bank details on WhatsApp'); };
   const mi = $('#mkInv');
-  if (mi) mi.onclick = () => {
+  if (mi) mi.onclick = async () => {
     if (!need()) return;
     const comp = (cd && cd.value) || today();
-    j.invoice = { no: nextNo('INV', today()), date: today(), completed: comp, warrantyUntil: addMonths(comp, Number(T.warrantyMonths) || 3), ...snapshot(j) };
+    let no; mi.disabled = true;
+    try { no = await nextNo('INV', today()); } catch (e) { mi.disabled = false; return noNumber(e); }
+    j.invoice = { no, date: today(), completed: comp, warrantyUntil: addMonths(comp, Number(T.warrantyMonths) || 3), ...snapshot(j) };
     touch(); rerender(); toast('Invoice ' + j.invoice.no + ' created');
     shareDoc('invoice', j);
   };
@@ -588,13 +602,15 @@ function payDialog(j) {
   const close = () => m.remove();
   m.querySelector('[data-close]').onclick = close;
   m.onclick = e => { if (e.target === m) close(); };
-  m.querySelector('form').onsubmit = e => {
+  m.querySelector('form').onsubmit = async e => {
     e.preventDefault();
     const f = new FormData(e.target);
     const amt = r2(f.get('amount'));
     if (amt <= 0) return toast('Enter an amount');
     if (amt > bal + 0.004 && !confirm('This is more than the balance (' + lkr(bal) + '). Save anyway?')) return;
-    const p = { id: uid(), no: nextNo('RCPT', f.get('date')), date: f.get('date'), amount: amt, method: f.get('method'), ref: String(f.get('ref') || '').trim(), against: j.invoice ? j.invoice.no : j.quote.no };
+    const sb = e.target.querySelector('[type=submit]'); sb.disabled = true;
+    let no; try { no = await nextNo('RCPT', f.get('date')); } catch (err) { sb.disabled = false; return noNumber(err); }
+    const p = { id: uid(), no, date: f.get('date'), amount: amt, method: f.get('method'), ref: String(f.get('ref') || '').trim(), against: j.invoice ? j.invoice.no : j.quote.no };
     j.payments.push(p); j.updated = Date.now(); save(); close(); renderJobKeepScroll(j);
     toast('Receipt ' + p.no + ' created');
     shareDoc('receipt', j, p);
@@ -906,9 +922,11 @@ function renderSettings() {
   const f = (k, l, v, type) => `<label for="${k}">${l}</label><input id="${k}" data-s="${k}" type="${type || 'text'}" value="${esc(v)}">`;
   app.innerHTML = `
     <div class="row"><button class="btn ghost sm" id="back">← Jobs</button></div>
+    <h2>Cloud sync</h2>
+    <div class="card" id="cloudCard">${cloudCardHtml()}</div>
     <h2>${bi('Backup')}</h2>
     <div class="card">
-      <p class="note" style="margin-top:0">Your quotes, invoices and receipts are stored only on this phone. Export a backup every week and keep it in Google Drive or email it to yourself.
+      <p class="note" style="margin-top:0">${cloud.user ? 'Your records sync to the cloud. A backup file is still a good extra copy now and then.' : 'Your quotes, invoices and receipts are stored only on this phone. Export a backup every week and keep it in Google Drive or email it to yourself.'}
       ${db.lastBackup ? '<br>Last backup: ' + nice(iso(new Date(db.lastBackup))) : '<br><b>No backup yet.</b>'}</p>
       <div class="btns"><button class="btn" id="exp">Export backup</button><button class="btn alt" id="imp">Restore from backup</button></div>
       <input type="file" id="impFile" accept="application/json,.json" hidden>
@@ -933,14 +951,15 @@ function renderSettings() {
       <p class="note" style="margin-top:0">Deletes every job and resets numbering to 001 (for example after testing). Your PIN and settings stay. Export a backup first if you might need the records.</p>
       <div class="btns"><button class="btn danger" id="wipe">Erase all jobs & reset numbers</button></div>
     </div>
-    <p class="note" style="text-align:center">PAVOTA Office · ${db.jobs.length} job(s) on this device</p>`;
+    <p class="note" style="text-align:center">PAVOTA Office · ${db.jobs.length} job(s)${cloud.user ? '' : ' on this device'}</p>`;
   $('#back').onclick = () => go('');
+  bindCloudCard();
   app.querySelectorAll('[data-s]').forEach(el => el.addEventListener('change', () => {
     const [g, k] = el.dataset.s.split('.');
     const target = g === 't' ? db.settings.terms : db.settings.business;
     if (g === 't') { const v = Number(el.value); if (!(v > 0)) { toast('Enter a number above 0'); el.value = target[k]; return; } target[k] = v; }
     else target[k] = el.value.trim();
-    save(); toast('Saved');
+    db.settingsUpdated = Date.now(); save(); toast('Saved');
   }));
   $('#exp').onclick = exportBackup;
   $('#imp').onclick = () => $('#impFile').click();
@@ -951,14 +970,18 @@ function renderSettings() {
       if (!d || !Array.isArray(d.jobs)) throw new Error('bad');
       if (!confirm(`Replace everything on this phone with the backup (${d.jobs.length} jobs)?`)) return;
       const sec = db.security;
-      db = normalise(d); if (!db.security) db.security = sec; save(); toast('Backup restored'); renderSettings();
+      const epoch = db.counterEpoch;
+      db = normalise(d); db.security = sec || db.security; db.counterEpoch = epoch; db.settingsUpdated = Date.now();
+      save(); liftCounters(); toast('Backup restored'); renderSettings();
     } catch (err) { toast('That file is not a PAVOTA Office backup'); }
     e.target.value = '';
   };
   $('#wipe').onclick = () => {
-    if (!confirm('Erase ALL ' + db.jobs.length + ' job(s) and reset document numbers to 001?')) return;
+    if (!confirm('Erase ALL ' + db.jobs.length + ' job(s)' + (cloud.user ? ' on every device' : '') + ' and reset document numbers to 001?')) return;
     if (prompt('Type ERASE to confirm') !== 'ERASE') return toast('Nothing was erased');
-    db.jobs = []; db.counters = {}; db.lastBackup = null; save(); toast('All jobs erased'); renderSettings();
+    db.jobs = []; db.counters = {}; db.lastBackup = null;
+    if (cloud.user) resetCloudCounters();
+    save(); toast('All jobs erased'); renderSettings();
   };
   $('#chPin').onclick = () => { if (confirm('Set a new PIN now?')) { db.security = null; save(); lockNow(); } };
 }
@@ -972,10 +995,191 @@ function exportBackup() {
   if (!location.hash) renderHome();
 }
 
+/* =========================================================
+   Cloud sync (Firebase Auth + Firestore)
+   - jobs/{id}: { json, updated } one doc per job; the newer 'updated' wins
+   - meta/settings: { json, updated }
+   - meta/counters: { epoch, 'PQ-2026': n, ... } shared document numbers
+   localStorage stays the working copy; Firestore's own offline cache queues writes made without signal.
+   Who may read/write is enforced by Firestore security rules (allowed Google accounts only).
+   ========================================================= */
+const FB_CONFIG = {
+  apiKey: 'AIzaSyDErd-YNMYeqkaq87obOJym3iMMZyrx5Qs',
+  authDomain: 'pavota-plumbing.firebaseapp.com',
+  projectId: 'pavota-plumbing',
+  storageBucket: 'pavota-plumbing.firebasestorage.app',
+  messagingSenderId: '759575724430',
+  appId: '1:759575724430:web:cb462e9baef395a47264df'
+};
+const FB_SDK = 'https://www.gstatic.com/firebasejs/10.12.2/';
+const SYNC_KEY = KEY + '_sync';
+const cloud = { state: 'loading', user: null, m: null, auth: null, fs: null, unsub: [], lastJson: {}, known: new Set(), jobsReady: false, settingsReady: false, settingsJson: null };
+// ids this device has seen in the cloud: one that later disappears was deleted on another device
+try { cloud.known = new Set((JSON.parse(localStorage.getItem(SYNC_KEY)) || {}).known || []); } catch (e) {}
+const saveSyncState = () => { try { localStorage.setItem(SYNC_KEY, JSON.stringify({ known: [...cloud.known] })); } catch (e) {} };
+const SYNC_TEXT = { loading: 'Starting…', signedout: 'Not signed in. Records are only on this device.', syncing: 'Syncing…', pending: 'Saving changes to the cloud…', synced: 'All changes synced', offline: 'Offline. Changes will sync when you are back online.', denied: 'This Google account is not allowed to use PAVOTA Office.', error: 'Cloud sync is not available right now.' };
+function setSync(state) {
+  cloud.state = state;
+  const d = $('#syncDot'); if (d) { d.className = 'dot ' + state; $('#navSync').title = SYNC_TEXT[state]; }
+  const c = $('#cloudCard'); if (c) { c.innerHTML = cloudCardHtml(); bindCloudCard(); }
+}
+function cloudCardHtml() {
+  return `<p class="note" style="margin-top:0"><span class="dot ${cloud.state}" style="margin:0 6px 0 0"></span>${SYNC_TEXT[cloud.state]}${cloud.user ? '<br>Signed in as <b>' + esc(cloud.user.email) + '</b>' : ''}</p>
+    <div class="btns">${cloud.user ? '<button class="btn alt" id="signOut">Sign out</button>' : cloud.m ? '<button class="btn" id="signIn">Sign in with Google</button>' : ''}</div>`;
+}
+function bindCloudCard() {
+  const i = $('#signIn'); if (i) i.onclick = cloudSignIn;
+  const o = $('#signOut'); if (o) o.onclick = () => { if (confirm('Sign out? Records stay on this device but stop syncing.')) cloud.m.signOut(cloud.auth); };
+}
+async function cloudInit() {
+  try {
+    const [a, au, f] = await Promise.all(['firebase-app.js', 'firebase-auth.js', 'firebase-firestore.js'].map(x => import(FB_SDK + x)));
+    cloud.m = { ...au, ...f };
+    const fapp = a.initializeApp(FB_CONFIG);
+    cloud.auth = au.getAuth(fapp);
+    try { cloud.fs = f.initializeFirestore(fapp, { localCache: f.persistentLocalCache({ tabManager: f.persistentMultipleTabManager() }) }); }
+    catch (e) { cloud.fs = f.getFirestore(fapp); }
+    au.onAuthStateChanged(cloud.auth, u => { cloudStop(); cloud.user = u; if (u) cloudStart(); else { setSync('signedout'); refreshView(); } });
+  } catch (e) { setSync('error'); refreshView(); }
+}
+async function cloudSignIn() {
+  const { GoogleAuthProvider, signInWithPopup, signInWithRedirect } = cloud.m;
+  const p = new GoogleAuthProvider(); p.setCustomParameters({ prompt: 'select_account' });
+  try { await signInWithPopup(cloud.auth, p); }
+  catch (e) {
+    if (e.code === 'auth/popup-blocked' || e.code === 'auth/operation-not-supported-in-this-environment') return signInWithRedirect(cloud.auth, p);
+    if (e.code !== 'auth/popup-closed-by-user' && e.code !== 'auth/cancelled-popup-request') toast('Sign-in failed (' + (e.code || 'error') + ')');
+  }
+}
+function cloudStart() {
+  const { collection, doc, onSnapshot } = cloud.m;
+  setSync('syncing');
+  cloud.unsub = [
+    onSnapshot(collection(cloud.fs, 'jobs'), { includeMetadataChanges: true }, pullJobs, cloudErr),
+    onSnapshot(doc(cloud.fs, 'meta', 'settings'), pullSettings, cloudErr),
+    onSnapshot(doc(cloud.fs, 'meta', 'counters'), pullCounters, cloudErr)
+  ];
+  refreshView();
+}
+function cloudStop() {
+  cloud.unsub.forEach(u => u()); cloud.unsub = [];
+  cloud.jobsReady = cloud.settingsReady = false; cloud.lastJson = {}; cloud.settingsJson = null;
+}
+function cloudErr(e) {
+  if (e && e.code === 'permission-denied') { setSync('denied'); toast('This Google account is not allowed'); cloud.m.signOut(cloud.auth); return; }
+  setSync(navigator.onLine ? 'error' : 'offline');
+}
+const editing = () => { const a = document.activeElement; return a && app.contains(a) && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName); };
+// re-draw after changes arrive from another device, without yanking the screen away mid-typing
+function refreshView(changedIds) {
+  if (!$('#lock').hidden) return;
+  const h = location.hash;
+  if (h.startsWith('#job/')) {
+    const id = h.slice(5);
+    if (changedIds && !changedIds.has(id)) return;
+    if (!db.jobs.some(x => x.id === id)) { toast('This job was deleted on another device'); return go(''); }
+    if (!changedIds) return;
+    if (editing()) return toast('Job updated on another device');
+    return renderJobKeepScroll(db.jobs.find(x => x.id === id));
+  }
+  if (h === '#settings') return editing() ? null : renderSettings();
+  if (!editing()) renderHome();
+}
+function pullJobs(snap) {
+  const remote = new Map(), changed = new Set();
+  snap.docs.forEach(d => { try { remote.set(d.id, JSON.parse(d.data().json)); } catch (e) {} });
+  remote.forEach((rj, id) => {
+    cloud.lastJson[id] = JSON.stringify(rj);
+    cloud.known.add(id);
+    rj.items = rj.items || []; rj.payments = rj.payments || [];
+    const lj = db.jobs.find(x => x.id === id);
+    if (!lj) { db.jobs.push(rj); changed.add(id); }
+    // update in place so a job screen that is open keeps editing the same object
+    else if ((rj.updated || 0) > (lj.updated || 0)) { Object.keys(lj).forEach(k => delete lj[k]); Object.assign(lj, rj); changed.add(id); }
+  });
+  // only trust absences in a fresh server answer, never in a (possibly empty) offline cache
+  if (!snap.metadata.fromCache) {
+    db.jobs = db.jobs.filter(j => { const gone = !remote.has(j.id) && cloud.known.has(j.id); if (gone) changed.add(j.id); return !gone; });
+    cloud.known = new Set([...cloud.known].filter(id => remote.has(id)));
+  }
+  cloud.jobsReady = true;
+  saveLocal(); saveSyncState(); pushNow();
+  setSync(snap.metadata.hasPendingWrites ? 'pending' : snap.metadata.fromCache ? 'offline' : 'synced');
+  if (changed.size) refreshView(changed);
+}
+function pullSettings(s) {
+  const d = s.exists() ? s.data() : null;
+  if (d && (d.updated || 0) > (db.settingsUpdated || 0)) {
+    try { db.settings = normalise({ jobs: [], settings: JSON.parse(d.json) }).settings; db.settingsUpdated = d.updated; saveLocal(); if (location.hash === '#settings' && !editing()) renderSettings(); } catch (e) {}
+  }
+  cloud.settingsJson = d ? d.json : '';
+  cloud.settingsReady = true; pushNow();
+}
+function pullCounters(s) {
+  const d = s.exists() ? s.data() : {};
+  // "Erase all jobs" on another device starts a new epoch: drop the old local numbers
+  if ((d.epoch || 0) > (db.counterEpoch || 0)) { db.counters = {}; db.counterEpoch = d.epoch; }
+  let up = false, higher = false;
+  Object.keys(d).forEach(k => { if (k !== 'epoch' && (d[k] || 0) > (db.counters[k] || 0)) { db.counters[k] = d[k]; up = true; } });
+  Object.keys(db.counters).forEach(k => { if ((db.counters[k] || 0) > (d[k] || 0)) higher = true; });
+  if (up) saveLocal();
+  if (higher) liftCounters(); // first sync from a device with older local numbers: never reuse them
+}
+let pushTimer;
+function pushSoon() { clearTimeout(pushTimer); pushTimer = setTimeout(pushNow, 600); }
+function pushNow() {
+  if (!cloud.user || !cloud.jobsReady) return;
+  const { doc, setDoc, deleteDoc } = cloud.m, ids = new Set();
+  db.jobs.forEach(j => {
+    ids.add(j.id);
+    const json = JSON.stringify(j);
+    if (cloud.lastJson[j.id] === json) return;
+    cloud.lastJson[j.id] = json; cloud.known.add(j.id);
+    setDoc(doc(cloud.fs, 'jobs', j.id), { json, updated: j.updated || Date.now() }).catch(cloudErr);
+  });
+  Object.keys(cloud.lastJson).forEach(id => {
+    if (ids.has(id)) return;
+    delete cloud.lastJson[id]; cloud.known.delete(id);
+    deleteDoc(doc(cloud.fs, 'jobs', id)).catch(cloudErr);
+  });
+  if (cloud.settingsReady) {
+    const json = JSON.stringify(db.settings);
+    if (json !== cloud.settingsJson) { cloud.settingsJson = json; setDoc(doc(cloud.fs, 'meta', 'settings'), { json, updated: db.settingsUpdated || Date.now() }).catch(cloudErr); }
+  }
+  saveSyncState();
+}
+const counterRef = () => cloud.m.doc(cloud.fs, 'meta', 'counters');
+const withTimeout = (pr, ms) => Promise.race([pr, new Promise((_, rej) => setTimeout(() => rej(Object.assign(new Error('timeout'), { offline: true })), ms))]);
+async function cloudNextNo(k) {
+  if (!navigator.onLine) throw Object.assign(new Error('offline'), { offline: true });
+  return withTimeout(cloud.m.runTransaction(cloud.fs, async t => {
+    const s = await t.get(counterRef()), d = s.exists() ? s.data() : {};
+    const local = (d.epoch || 0) === (db.counterEpoch || 0) ? (db.counters[k] || 0) : 0;
+    const n = Math.max(d[k] || 0, local) + 1;
+    t.set(counterRef(), { [k]: n }, { merge: true });
+    return n;
+  }), 12000).catch(e => { throw e.offline || e.code === 'unavailable' ? Object.assign(e, { offline: true }) : e; });
+}
+function liftCounters() {
+  if (!cloud.user || !navigator.onLine) return;
+  cloud.m.runTransaction(cloud.fs, async t => {
+    const s = await t.get(counterRef()), d = s.exists() ? s.data() : {};
+    if ((d.epoch || 0) !== (db.counterEpoch || 0)) return;
+    const up = {};
+    Object.keys(db.counters).forEach(k => { if ((db.counters[k] || 0) > (d[k] || 0)) up[k] = db.counters[k]; });
+    if (Object.keys(up).length) t.set(counterRef(), up, { merge: true });
+  }).catch(() => {});
+}
+function resetCloudCounters() {
+  db.counterEpoch = Date.now();
+  cloud.m.setDoc(counterRef(), { epoch: db.counterEpoch }).catch(cloudErr);
+}
+
 /* ---------- start ---------- */
 if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
 let unlocked = false; try { unlocked = sessionStorage.getItem('po_unlocked') === '1'; } catch (e) {}
 if (unlocked && db.security) { route(); resetIdle(); } else showLock();
+cloudInit();
 </script>
 </body>
 </html>

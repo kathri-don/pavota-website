@@ -16,6 +16,8 @@
       clientToken: 'pubf7531521e0b136735b264dea53c3d830',
       remoteConfiguration: { id: '972872c8-8337-4baf-95a3-8a54e61e221c' },
       site: 'us5.datadoghq.com',
+      // Refuse to start if this script is copied onto another site.
+      allowedTrackingOrigins: ['https://www.pavotaplumbing.lk', 'https://pavotaplumbing.lk'],
       service: 'pavota-website',
       env: 'prod',
       sessionSampleRate: 100,

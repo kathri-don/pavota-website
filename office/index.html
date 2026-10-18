@@ -96,6 +96,15 @@ textarea{min-height:70px;resize:vertical}
 </head>
 <body>
 
+<div id="gate" class="lock" style="z-index:110">
+  <div class="box">
+    <img src="icon-192.png" alt="">
+    <h1>PAVOTA Office</h1>
+    <p class="note" id="gateMsg">Starting…</p>
+    <button class="btn full" id="gateBtn" hidden>Sign in with Google</button>
+  </div>
+</div>
+
 <div id="lock" class="lock" hidden>
   <form class="box" id="lockForm" autocomplete="off">
     <img src="icon-192.png" alt="">
@@ -127,8 +136,9 @@ textarea{min-height:70px;resize:vertical}
 'use strict';
 /* =========================================================
    PAVOTA Office — quotations, invoices & receipts
-   Works from this device's copy (localStorage) and, once signed in with Google,
-   syncs jobs, settings and document numbers through Firebase (see "Cloud sync").
+   Opens only after Google sign-in with the allowed account, then the device PIN.
+   Works from this device's copy (localStorage) and syncs jobs, settings and
+   document numbers through Firebase (see "Cloud sync").
    ========================================================= */
 
 const KEY = 'pavota_office_v1';
@@ -218,11 +228,11 @@ function waNumber(p) {
   else if (d.length === 9 && d.startsWith('7')) d = '94' + d;
   return d;
 }
-// signed in: numbers come from one shared counter in the cloud, so two devices never issue the same number (needs internet)
+// numbers come from one shared counter in the cloud, so two devices never issue the same number (needs internet)
 async function nextNo(prefix, dateStr) {
   const y = (dateStr || today()).slice(0, 4);
   const k = prefix + '-' + y;
-  db.counters[k] = cloud.user ? await cloudNextNo(k) : (db.counters[k] || 0) + 1;
+  db.counters[k] = await cloudNextNo(k);
   return prefix + '-' + y + '-' + String(db.counters[k]).padStart(3, '0');
 }
 const noNumber = e => toast(e && e.offline ? 'No internet — connect to issue a document number' : 'Could not get a document number — try again');
@@ -313,7 +323,7 @@ $('#navLock').onclick = lockNow;
 function go(h) { if (location.hash === h || (!h && !location.hash)) route(); else location.hash = h; }
 window.addEventListener('hashchange', route);
 function route() {
-  if (!$('#lock').hidden) return;
+  if (!$('#lock').hidden || !$('#gate').hidden) return;
   const h = location.hash;
   window.scrollTo(0, 0);
   if (h.startsWith('#job/')) { const j = db.jobs.find(x => x.id === h.slice(5)); return j ? renderJob(j) : go(''); }
@@ -333,7 +343,6 @@ function renderHome() {
   const q = search.toLowerCase();
   const list = db.jobs.slice().sort((a, b) => b.updated - a.updated).filter(j => !q || [j.customer.name, j.customer.phone, j.title, j.quote?.no, j.invoice?.no].join(' ').toLowerCase().includes(q));
   app.innerHTML = `
-    ${!cloud.user && cloud.state !== 'loading' ? `<div class="banner"><div class="grow">Not syncing. Sign in with Google to keep jobs on your phone and PC.</div><button class="btn sm" id="quickSignIn">Sign in</button></div>` : ''}
     ${needBackup ? `<div class="banner"><div class="grow">${days === null ? 'No backup yet.' : 'Last backup ' + days + ' days ago.'} Your records live only on this phone.</div><button class="btn sm" id="quickBackup">Back up</button></div>` : ''}
     <div class="stats">
       <div class="stat"><b>${openQuotes}</b><span>Open quotes</span></div>
@@ -359,7 +368,6 @@ function renderHome() {
     db.jobs.push(j); save(); go('#job/' + j.id);
   };
   const qb = $('#quickBackup'); if (qb) qb.onclick = exportBackup;
-  const qs = $('#quickSignIn'); if (qs) qs.onclick = () => cloud.m ? cloudSignIn() : toast('Cloud sync is still loading — try again in a moment');
 }
 
 /* ---------- JOB ---------- */
@@ -1025,11 +1033,11 @@ function setSync(state) {
 }
 function cloudCardHtml() {
   return `<p class="note" style="margin-top:0"><span class="dot ${cloud.state}" style="margin:0 6px 0 0"></span>${SYNC_TEXT[cloud.state]}${cloud.user ? '<br>Signed in as <b>' + esc(cloud.user.email) + '</b>' : ''}</p>
-    <div class="btns">${cloud.user ? '<button class="btn alt" id="signOut">Sign out</button>' : cloud.m ? '<button class="btn" id="signIn">Sign in with Google</button>' : ''}</div>`;
+    <div class="btns">${cloud.user ? '<button class="btn alt" id="signOut">Sign out of this device</button>' : ''}</div>
+    ${cloud.user ? '<p class="note">Signing out removes the jobs from this device. They stay safe in the cloud and come back when you sign in again.</p>' : ''}`;
 }
 function bindCloudCard() {
-  const i = $('#signIn'); if (i) i.onclick = cloudSignIn;
-  const o = $('#signOut'); if (o) o.onclick = () => { if (confirm('Sign out? Records stay on this device but stop syncing.')) cloud.m.signOut(cloud.auth); };
+  const o = $('#signOut'); if (o) o.onclick = () => { if (confirm('Sign out and remove the jobs from this device?')) signOutAndWipe(); };
 }
 async function cloudInit() {
   try {
@@ -1039,8 +1047,39 @@ async function cloudInit() {
     cloud.auth = au.getAuth(fapp);
     try { cloud.fs = f.initializeFirestore(fapp, { localCache: f.persistentLocalCache({ tabManager: f.persistentMultipleTabManager() }) }); }
     catch (e) { cloud.fs = f.getFirestore(fapp); }
-    au.onAuthStateChanged(cloud.auth, u => { cloudStop(); cloud.user = u; if (u) cloudStart(); else { setSync('signedout'); refreshView(); } });
-  } catch (e) { setSync('error'); refreshView(); }
+    au.onAuthStateChanged(cloud.auth, u => {
+      cloudStop(); cloud.user = u;
+      if (u) { try { localStorage.setItem(SIGNED_KEY, '1'); } catch (e) {} cloudStart(); passGate(); }
+      else { setSync('signedout'); showGate(cloud.denied ? 'That Google account is not allowed. Sign in with the PAVOTA account.' : 'Sign in with the PAVOTA Google account to open the office.', true); }
+    });
+  } catch (e) {
+    setSync('error');
+    // no signal and the SDK isn't cached: a device that has signed in before may open its own copy (PIN still required)
+    if (wasSignedIn()) passGate(); else showGate('Cannot reach Google sign-in. Connect to the internet and reload.', false);
+  }
+}
+/* ---------- sign-in gate: Google account first, then the device PIN ---------- */
+const SIGNED_KEY = KEY + '_signed';
+const wasSignedIn = () => { try { return localStorage.getItem(SIGNED_KEY) === '1'; } catch (e) { return false; } };
+function showGate(msg, withBtn) {
+  $('#gate').hidden = false; $('#lock').hidden = true;
+  $('#gateMsg').textContent = msg; $('#gateBtn').hidden = !withBtn;
+}
+function passGate() {
+  $('#gate').hidden = true;
+  let unlocked = false; try { unlocked = sessionStorage.getItem('po_unlocked') === '1'; } catch (e) {}
+  if (unlocked && db.security) { route(); resetIdle(); } else showLock();
+}
+$('#gateBtn').onclick = () => { cloud.denied = false; cloudSignIn(); };
+async function signOutAndWipe() {
+  const { waitForPendingWrites, terminate, clearIndexedDbPersistence, signOut } = cloud.m;
+  try { await withTimeout(waitForPendingWrites(cloud.fs), 8000); }
+  catch (e) { if (!confirm('Some changes have not reached the cloud yet (no internet?). Sign out anyway and lose them?')) return; }
+  await signOut(cloud.auth);
+  db.jobs = []; db.counters = {}; delete db.counterEpoch; db.lastBackup = null; saveLocal();
+  try { localStorage.removeItem(SYNC_KEY); localStorage.removeItem(SIGNED_KEY); sessionStorage.removeItem('po_unlocked'); } catch (e) {}
+  try { await terminate(cloud.fs); await clearIndexedDbPersistence(cloud.fs); } catch (e) {}
+  location.reload();
 }
 async function cloudSignIn() {
   const { GoogleAuthProvider, signInWithPopup, signInWithRedirect } = cloud.m;
@@ -1066,13 +1105,13 @@ function cloudStop() {
   cloud.jobsReady = cloud.settingsReady = false; cloud.lastJson = {}; cloud.settingsJson = null;
 }
 function cloudErr(e) {
-  if (e && e.code === 'permission-denied') { setSync('denied'); toast('This Google account is not allowed'); cloud.m.signOut(cloud.auth); return; }
+  if (e && e.code === 'permission-denied') { cloud.denied = true; setSync('denied'); cloud.m.signOut(cloud.auth); return; }
   setSync(navigator.onLine ? 'error' : 'offline');
 }
 const editing = () => { const a = document.activeElement; return a && app.contains(a) && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName); };
 // re-draw after changes arrive from another device, without yanking the screen away mid-typing
 function refreshView(changedIds) {
-  if (!$('#lock').hidden) return;
+  if (!$('#lock').hidden || !$('#gate').hidden) return;
   const h = location.hash;
   if (h.startsWith('#job/')) {
     const id = h.slice(5);
@@ -1151,7 +1190,7 @@ function pushNow() {
 const counterRef = () => cloud.m.doc(cloud.fs, 'meta', 'counters');
 const withTimeout = (pr, ms) => Promise.race([pr, new Promise((_, rej) => setTimeout(() => rej(Object.assign(new Error('timeout'), { offline: true })), ms))]);
 async function cloudNextNo(k) {
-  if (!navigator.onLine) throw Object.assign(new Error('offline'), { offline: true });
+  if (!cloud.user || !navigator.onLine) throw Object.assign(new Error('offline'), { offline: true });
   return withTimeout(cloud.m.runTransaction(cloud.fs, async t => {
     const s = await t.get(counterRef()), d = s.exists() ? s.data() : {};
     const local = (d.epoch || 0) === (db.counterEpoch || 0) ? (db.counters[k] || 0) : 0;
@@ -1177,8 +1216,6 @@ function resetCloudCounters() {
 
 /* ---------- start ---------- */
 if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
-let unlocked = false; try { unlocked = sessionStorage.getItem('po_unlocked') === '1'; } catch (e) {}
-if (unlocked && db.security) { route(); resetIdle(); } else showLock();
 cloudInit();
 </script>
 </body>

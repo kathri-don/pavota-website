@@ -1,6 +1,6 @@
 // PAVOTA Office service worker: lets the tool open and make PDFs without signal.
 // Bump VERSION whenever index.html changes so phones pick up the new version.
-const VERSION = 'pavota-office-v5';
+const VERSION = 'pavota-office-v6';
 const SHELL = [
   './', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png',
   'https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js',

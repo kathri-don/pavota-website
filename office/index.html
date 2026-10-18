@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- Private tool: keep out of search engines. Do NOT add this folder to sitemap.xml or robots.txt. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#0d1b3e">
+<title>PAVOTA Office</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{--navy:#0d1b3e;--cyan:#00d4ff;--cyan-d:#0094b8;--bg:#f2f6fb;--card:#fff;--ink:#1f2937;--muted:#6b7280;--line:#e3e8ef;--ok:#15803d;--warn:#b45309;--bad:#b91c1c}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.45 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
+button,input,select,textarea{font:inherit;color:inherit}
+.top{position:sticky;top:0;z-index:20;background:var(--navy);color:#fff;padding:10px 16px;padding-top:max(10px,env(safe-area-inset-top));display:flex;align-items:center;gap:10px}
+.top img{width:34px;height:34px;border-radius:8px}
+.top .brand{font-weight:900;letter-spacing:.5px;line-height:1}
+.top .brand small{display:block;font-weight:600;font-size:10px;color:var(--cyan);letter-spacing:2px;margin-top:3px}
+.top .sp{flex:1}
+.iconbtn{background:rgba(255,255,255,.1);border:0;color:#fff;border-radius:10px;padding:8px 11px;cursor:pointer;font-size:14px}
+main{max-width:760px;margin:0 auto;padding:16px 16px 120px}
+h2{font-size:17px;margin:22px 0 10px;color:var(--navy)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+.stat b{display:block;font-size:18px;color:var(--navy);word-break:break-word}
+.stat span{font-size:12px;color:var(--muted)}
+.row{display:flex;gap:10px;align-items:center}
+.grow{flex:1;min-width:0}
+label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin:10px 0 4px;text-transform:uppercase;letter-spacing:.4px}
+input,select,textarea{width:100%;border:1px solid #cfd8e3;border-radius:10px;padding:10px 11px;background:#fff;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--navy);box-shadow:0 0 0 2px rgba(0,212,255,.35)}
+textarea{min-height:70px;resize:vertical}
+.btn{text-decoration:none;border:0;border-radius:11px;padding:11px 14px;font-weight:700;cursor:pointer;background:var(--navy);color:var(--cyan);display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn.alt{background:#fff;color:var(--navy);border:1.5px solid var(--navy)}
+.btn.wa{background:#22a95b;color:#fff}
+.btn.ghost{background:transparent;color:var(--navy);border:1px dashed #9fb0c5}
+.btn.danger{background:#fff;color:var(--bad);border:1.5px solid #f1b5b5}
+.btn.sm{padding:7px 10px;font-size:13px;border-radius:9px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.full{width:100%}
+.fab{position:fixed;right:16px;bottom:max(18px,env(safe-area-inset-bottom));z-index:30;box-shadow:0 8px 24px rgba(13,27,62,.35);padding:14px 20px;border-radius:999px}
+.job{display:flex;gap:12px;align-items:center;cursor:pointer}
+.job .t{font-weight:700;color:var(--navy)}
+.job .s{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.job .amt{text-align:right;font-weight:700;white-space:nowrap}
+.chip{display:inline-block;font-size:11px;font-weight:800;padding:3px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:.4px;margin-top:4px}
+.chip.muted{background:#eef1f5;color:#6b7280}.chip.neutral{background:#e0f7fd;color:#03688a}.chip.info{background:#e6ecff;color:#2741a8}.chip.ok{background:#dcfce7;color:var(--ok)}.chip.warn{background:#fef3c7;color:var(--warn)}.chip.bad{background:#fee2e2;color:var(--bad)}
+.seg{display:flex;background:#e8eef6;border-radius:11px;padding:3px;gap:3px}
+.seg button{flex:1;border:0;background:transparent;border-radius:9px;padding:8px;font-weight:700;color:var(--muted);cursor:pointer}
+.seg button.on{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.item{border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:8px;background:#fbfcfe}
+.item .grid{display:grid;grid-template-columns:1fr 1.3fr 1.3fr;gap:8px;margin-top:2px}
+.item .grid{align-items:end}.item .grid>div{min-width:0}
+.item .grid label{margin:6px 0 3px;font-size:11px;overflow-wrap:anywhere}
+.item .kind{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+.kind.material{color:var(--cyan-d)}.kind.labour{color:#7c3aed}
+.si{letter-spacing:0;text-transform:none;font-weight:600;opacity:.8}
+.grp{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin:16px 0 8px}
+.item .line{font-size:13px;color:var(--muted);text-align:right;margin-top:6px}
+.x{border:0;background:transparent;color:#9aa5b4;font-size:20px;cursor:pointer;padding:0 4px;line-height:1}
+.totals div{display:flex;justify-content:space-between;padding:4px 0}
+.totals .grand{border-top:2px solid var(--navy);margin-top:6px;padding-top:8px;font-weight:900;font-size:18px;color:var(--navy)}
+.doc{border-left:4px solid var(--cyan)}
+.doc h3{margin:0;font-size:15px;color:var(--navy)}
+.doc .meta{font-size:13px;color:var(--muted);margin-top:2px}
+.pay{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
+.pay.void{opacity:.5;text-decoration:line-through}
+.hint{font-size:13px;color:var(--warn);background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:8px 10px;margin-top:10px}
+.note{font-size:13px;color:var(--muted)}
+.lock{position:fixed;inset:0;z-index:100;background:var(--navy);display:flex;align-items:center;justify-content:center;padding:24px}
+.lock .box{background:#fff;border-radius:18px;padding:26px 22px;width:100%;max-width:340px;text-align:center}
+.lock img{width:72px;height:72px;border-radius:16px}
+.lock h1{font-size:20px;margin:10px 0 2px;color:var(--navy)}
+.lock input{text-align:center;font-size:24px;letter-spacing:10px;margin-top:10px}
+.lock input::placeholder{font-size:15px;letter-spacing:1px}
+.lock .err{color:var(--bad);font-size:13px;min-height:18px;margin-top:8px}
+.toast{position:fixed;left:50%;top:calc(70px + env(safe-area-inset-top));transform:translateX(-50%);background:#111827;color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;z-index:200;opacity:0;transition:opacity .2s;pointer-events:none;max-width:90vw;text-align:center}
+.toast.show{opacity:1}
+.modal{position:fixed;inset:0;z-index:150;background:rgba(13,27,62,.55);display:flex;align-items:flex-end;justify-content:center}
+.modal .sheet{background:#fff;width:100%;max-width:520px;border-radius:18px 18px 0 0;padding:20px 18px max(20px,env(safe-area-inset-bottom))}
+@media(min-width:600px){.modal{align-items:center}.modal .sheet{border-radius:18px}}
+.empty{text-align:center;color:var(--muted);padding:30px 10px}
+.banner{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:12px;padding:10px 12px;font-size:13px;margin-bottom:12px;display:flex;gap:10px;align-items:center}
+@media(max-width:420px){.stats{grid-template-columns:1fr 1fr}.stats .stat:last-child{grid-column:span 2}}
+</style>
+</head>
+<body>
+
+<div id="lock" class="lock" hidden>
+  <form class="box" id="lockForm" autocomplete="off">
+    <img src="icon-192.png" alt="">
+    <h1>PAVOTA Office</h1>
+    <p class="note" id="lockMsg">Enter your PIN</p>
+    <input id="pin1" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="8" aria-label="PIN" required>
+    <input id="pin2" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="8" aria-label="Confirm PIN" placeholder="repeat PIN" hidden>
+    <div class="err" id="lockErr"></div>
+    <button class="btn full" type="submit" id="lockBtn">Unlock</button>
+  </form>
+</div>
+
+<header class="top">
+  <img src="icon-192.png" alt="">
+  <div class="brand">PAVOTA<small>OFFICE</small></div>
+  <div class="sp"></div>
+  <button class="iconbtn" id="navHome" title="Home">Jobs</button>
+  <button class="iconbtn" id="navSettings" title="Settings">Settings</button>
+  <button class="iconbtn" id="navLock" title="Lock">Lock</button>
+</header>
+
+<main id="app"></main>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script>
+'use strict';
+/* =========================================================
+   PAVOTA Office — quotations, invoices & receipts
+   All data stays on this device (localStorage). Back it up from Settings.
+   ========================================================= */
+
+const KEY = 'pavota_office_v1';
+const DEFAULTS = {
+  business: {
+    name: 'PAVOTA Plumbing Solutions',
+    tagline: 'PLUMBING SOLUTIONS',
+    phone: '+94 70 111 1994',
+    email: 'pavotaplumbing@gmail.com',
+    web: 'www.pavotaplumbing.lk',
+    address: 'Piliyandala, Colombo, Sri Lanka',
+    signatory: 'PAVOTA Plumbing Solutions',
+    reviewUrl: 'https://g.page/r/CW5uG-cOHZZDEAE/review'
+  },
+  terms: { validityDays: 7, advancePct: 50, warrantyMonths: 3 }
+};
+
+/* ---------- storage ---------- */
+let db = load();
+function blank() { return { v: 1, settings: JSON.parse(JSON.stringify(DEFAULTS)), security: null, counters: {}, jobs: [], lastBackup: null }; }
+function load() {
+  try {
+    const d = JSON.parse(localStorage.getItem(KEY));
+    if (d && Array.isArray(d.jobs)) return normalise(d);
+  } catch (e) {}
+  return blank();
+}
+function normalise(d) {
+  d.settings = d.settings || {};
+  d.settings.business = Object.assign({}, DEFAULTS.business, d.settings.business || {});
+  d.settings.terms = Object.assign({}, DEFAULTS.terms, d.settings.terms || {});
+  d.counters = d.counters || {};
+  d.jobs.forEach(j => { j.items = j.items || []; j.payments = j.payments || []; });
+  return d;
+}
+function save() {
+  try { localStorage.setItem(KEY, JSON.stringify(db)); }
+  catch (e) { toast('Could not save on this device — export a backup now'); }
+}
+try { navigator.storage && navigator.storage.persist && navigator.storage.persist(); } catch (e) {}
+
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const app = $('#app');
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const r2 = n => Math.round((Number(n) || 0) * 100) / 100;
+const money = n => r2(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const lkr = n => 'LKR ' + money(n);
+// Sinhala for titles and headings, shown as "English / සිංහල" in the app and on PDFs. Edit wording here.
+const SI = {
+  'Jobs': 'වැඩ', 'Customer': 'පාරිභෝගිකයා', 'Name': 'නම', 'Phone (WhatsApp)': 'දුරකථනය', 'Site address': 'ලිපිනය', 'Job title': 'කාර්යය',
+  'Work & materials': 'වැඩ සහ ද්‍රව්‍ය', 'Show materials on documents as': 'ද්‍රව්‍ය පෙන්වන ආකාරය',
+  'Materials': 'ද්‍රව්‍ය', 'Material': 'ද්‍රව්‍ය', 'Labour': 'ශ්‍රමය', 'Qty': 'ප්‍රමාණය', 'Unit': 'ඒකකය', 'Rate': 'ඒකක මිල',
+  'Discount (LKR)': 'වට්ටම', 'Advance amount (LKR)': 'අත්තිකාරම් මුදල', 'Travel cost (LKR)': 'ප්‍රවාහන ගාස්තු', 'Travel cost': 'ප්‍රවාහන ගාස්තු', 'Notes on documents (scope, exclusions)': 'සටහන්', 'Documents': 'ලේඛන',
+  'Quotation': 'මිල ගණන්', 'Invoice': 'ඉන්වොයිසිය', 'Payments & receipts': 'ගෙවීම් සහ රිසිට්පත්', 'Completion date': 'නිම කළ දිනය',
+  'Record payment': 'ගෙවීම සටහන් කිරීම', 'Amount (LKR)': 'මුදල', 'Method': 'ක්‍රමය', 'Date': 'දිනය', 'Reference (optional)': 'යොමු අංකය',
+  'Backup': 'උපස්ථ', 'Document terms': 'ලේඛන කොන්දේසි', 'Business details on documents': 'ව්‍යාපාර විස්තර', 'Security': 'ආරක්ෂාව', 'Start fresh': 'අලුතින් අරඹන්න',
+  // PDF
+  'QUOTATION': 'මිල ගණන් පත්‍රය', 'INVOICE': 'ඉන්වොයිසිය', 'PAYMENT RECEIPT': 'ගෙවීම් රිසිට්පත',
+  'Prepared for': 'පාරිභෝගිකයා', 'Bill to': 'පාරිභෝගිකයා', 'Received from': 'ගෙවූ තැනැත්තා', 'Job': 'කාර්යය',
+  'Description': 'විස්තරය', 'Rate (LKR)': 'ඒකක මිල',
+  'Materials & fittings': 'ද්‍රව්‍ය සහ උපාංග', 'Labour & workmanship': 'ශ්‍රම ගාස්තු',
+  'Subtotal': 'උප එකතුව', 'Discount': 'වට්ටම', 'TOTAL': 'මුළු එකතුව', 'Advance to confirm': 'අත්තිකාරම', 'Balance on completion': 'ඉතිරි මුදල',
+  'Paid to date': 'ගෙවූ මුදල', 'BALANCE DUE': 'ගෙවිය යුතු මුදල', 'Notes': 'සටහන්', 'Terms': 'කොන්දේසි', 'Warranty & terms': 'වගකීම සහ කොන්දේසි',
+  'Amount received': 'ලැබුණු මුදල'
+};
+// key picks the Sinhala; txt is the English shown (defaults to the key)
+const bi = (key, txt = key) => SI[key] ? `${esc(txt)} <span class="si">/ ${SI[key]}</span>` : esc(txt);
+// a blank (or 0) qty counts as 1, so an item can be priced as a lump, e.g. "PVC 1cm - 20m" at LKR 10,000
+const hasQty = i => Number(i.qty) > 0;
+const lineAmt = i => r2((hasQty(i) ? Number(i.qty) : 1) * (Number(i.rate) || 0));
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+function today() { const d = new Date(); return iso(d); }
+function iso(d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+function parseIso(s) { const [y, m, d] = String(s).split('-').map(Number); return new Date(y, (m || 1) - 1, d || 1); }
+function addDays(s, n) { const d = parseIso(s); d.setDate(d.getDate() + n); return iso(d); }
+function addMonths(s, n) { const d = parseIso(s); const day = d.getDate(); d.setMonth(d.getMonth() + n); if (d.getDate() < day) d.setDate(0); return iso(d); }
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function nice(s) { if (!s) return ''; const d = parseIso(s); return d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear(); }
+function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2600); }
+// customer phone: 10 digits (e.g. 0771234567); empty is allowed while the job is a draft
+const phoneOk = p => !p || /^\d{10}$/.test(p);
+function waNumber(p) {
+  let d = String(p || '').replace(/\D/g, '');
+  if (d.startsWith('0') && d.length === 10) d = '94' + d.slice(1);
+  else if (d.length === 9 && d.startsWith('7')) d = '94' + d;
+  return d;
+}
+function nextNo(prefix, dateStr) {
+  const y = (dateStr || today()).slice(0, 4);
+  const k = prefix + '-' + y;
+  db.counters[k] = (db.counters[k] || 0) + 1;
+  return prefix + '-' + y + '-' + String(db.counters[k]).padStart(3, '0');
+}
+
+/* ---------- money logic ---------- */
+function calc(items, discount, travel) {
+  let mat = 0, lab = 0;
+  (items || []).forEach(i => { const a = lineAmt(i); if (i.kind === 'labour') lab += a; else mat += a; });
+  mat = r2(mat); lab = r2(lab);
+  const sub = r2(mat + lab), trav = r2(Number(travel) || 0);
+  const disc = Math.min(r2(discount), r2(sub + trav));
+  return { mat, lab, sub, travel: trav, disc, total: r2(sub + trav - disc) };
+}
+const jc = j => calc(j.items, j.discount, j.travel);
+const liveTotal = j => jc(j).total;
+function jobTotal(j) { return j.invoice ? j.invoice.total : j.quote ? j.quote.total : liveTotal(j); }
+function paid(j, upToId) {
+  let s = 0;
+  for (const p of j.payments) { if (!p.void) s += Number(p.amount) || 0; if (upToId && p.id === upToId) break; }
+  return r2(s);
+}
+const balance = j => r2(jobTotal(j) - paid(j));
+const quoteExpired = j => j.quote && !j.quote.accepted && !j.invoice && j.quote.validUntil < today();
+function status(j) {
+  const tot = jobTotal(j);
+  if (j.invoice && tot > 0 && balance(j) <= 0.004) return ['Paid', 'ok'];
+  if (j.invoice) return ['Invoiced', 'info'];
+  if (j.quote && j.quote.accepted) return [paid(j) > 0 ? 'Advance paid' : 'Accepted', 'info'];
+  if (j.quote) return quoteExpired(j) ? ['Quote expired', 'warn'] : ['Quoted', 'neutral'];
+  return ['Draft', 'muted'];
+}
+// advance/travel only join the key once set, so quotes issued before they existed don't all show as changed
+const snapKey = j => JSON.stringify([j.title, j.items, r2(j.discount), j.materialsMode, j.notes, j.customer]
+  .concat(j.advance != null || j.travel ? [{ a: j.advance ?? null, t: r2(j.travel || 0) }] : []));
+// advance is optional: only an LKR amount entered on the job counts (0 = no advance, nothing shown on documents).
+// Docs issued before advances were per job have no 'advance' field and keep the % they were issued with.
+const advOf = (total, x) => 'advance' in x ? Math.min(r2(Number(x.advance) || 0), total) : r2(total * (x.advancePct ?? db.settings.terms.advancePct) / 100);
+const jobAdv = j => Math.min(r2(Number(j.advance) || 0), liveTotal(j));
+
+/* ---------- PIN lock ---------- */
+async function hashPin(pin, salt) {
+  const data = new TextEncoder().encode(salt + ':' + pin);
+  if (window.crypto && crypto.subtle) {
+    const buf = await crypto.subtle.digest('SHA-256', data);
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+  let h = 2166136261; for (const b of data) { h ^= b; h = Math.imul(h, 16777619); } return 'f' + (h >>> 0).toString(16);
+}
+let failCount = 0, lockUntil = 0, idleTimer;
+function showLock() {
+  const setup = !db.security;
+  $('#lock').hidden = false;
+  $('#pin2').hidden = !setup;
+  $('#pin2').required = setup;
+  $('#lockMsg').textContent = setup ? 'Create a 4–8 digit PIN for this device' : 'Enter your PIN';
+  $('#lockBtn').textContent = setup ? 'Set PIN' : 'Unlock';
+  $('#pin1').value = ''; $('#pin2').value = ''; $('#lockErr').textContent = '';
+  setTimeout(() => $('#pin1').focus(), 50);
+}
+function lockNow() { try { sessionStorage.removeItem('po_unlocked'); } catch (e) {} showLock(); }
+$('#lockForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const p1 = $('#pin1').value.trim(), err = $('#lockErr');
+  if (!/^\d{4,8}$/.test(p1)) { err.textContent = 'PIN must be 4–8 digits'; return; }
+  if (!db.security) {
+    if (p1 !== $('#pin2').value.trim()) { err.textContent = 'PINs do not match'; return; }
+    const salt = uid() + uid();
+    db.security = { salt, hash: await hashPin(p1, salt) }; save();
+  } else {
+    if (Date.now() < lockUntil) { err.textContent = 'Too many tries. Wait ' + Math.ceil((lockUntil - Date.now()) / 1000) + 's'; return; }
+    if (await hashPin(p1, db.security.salt) !== db.security.hash) {
+      failCount++; if (failCount >= 5) { lockUntil = Date.now() + 30000; failCount = 0; }
+      err.textContent = 'Wrong PIN'; $('#pin1').value = ''; return;
+    }
+    failCount = 0;
+  }
+  try { sessionStorage.setItem('po_unlocked', '1'); } catch (e) {}
+  $('#lock').hidden = true; route();
+});
+function resetIdle() { clearTimeout(idleTimer); idleTimer = setTimeout(lockNow, 15 * 60 * 1000); }
+['pointerdown', 'keydown'].forEach(ev => document.addEventListener(ev, resetIdle, { passive: true }));
+
+/* ---------- routing ---------- */
+$('#navHome').onclick = () => go('');
+$('#navSettings').onclick = () => go('#settings');
+$('#navLock').onclick = lockNow;
+function go(h) { if (location.hash === h || (!h && !location.hash)) route(); else location.hash = h; }
+window.addEventListener('hashchange', route);
+function route() {
+  if (!$('#lock').hidden) return;
+  const h = location.hash;
+  window.scrollTo(0, 0);
+  if (h.startsWith('#job/')) { const j = db.jobs.find(x => x.id === h.slice(5)); return j ? renderJob(j) : go(''); }
+  if (h === '#settings') return renderSettings();
+  renderHome();
+}
+
+/* ---------- HOME ---------- */
+let search = '';
+function renderHome() {
+  const now = today().slice(0, 7);
+  const openQuotes = db.jobs.filter(j => j.quote && !j.invoice && !quoteExpired(j)).length;
+  const outstanding = r2(db.jobs.filter(j => (j.invoice || (j.quote && j.quote.accepted))).reduce((s, j) => s + Math.max(0, balance(j)), 0));
+  const month = r2(db.jobs.reduce((s, j) => s + j.payments.filter(p => !p.void && p.date.slice(0, 7) === now).reduce((a, p) => a + Number(p.amount), 0), 0));
+  const days = db.lastBackup ? Math.floor((Date.now() - db.lastBackup) / 864e5) : null;
+  const needBackup = db.jobs.length && (days === null || days >= 7);
+  const q = search.toLowerCase();
+  const list = db.jobs.slice().sort((a, b) => b.updated - a.updated).filter(j => !q || [j.customer.name, j.customer.phone, j.title, j.quote?.no, j.invoice?.no].join(' ').toLowerCase().includes(q));
+  app.innerHTML = `
+    ${needBackup ? `<div class="banner"><div class="grow">${days === null ? 'No backup yet.' : 'Last backup ' + days + ' days ago.'} Your records live only on this phone.</div><button class="btn sm" id="quickBackup">Back up</button></div>` : ''}
+    <div class="stats">
+      <div class="stat"><b>${openQuotes}</b><span>Open quotes</span></div>
+      <div class="stat"><b>${money(outstanding)}</b><span>To collect (LKR)</span></div>
+      <div class="stat"><b>${money(month)}</b><span>Received this month</span></div>
+    </div>
+    <h2>${bi('Jobs')}</h2>
+    <input id="search" placeholder="Search name, phone, PQ / INV number…" value="${esc(search)}">
+    <div style="margin-top:12px">
+    ${list.length ? list.map(j => { const [s, c] = status(j); return `
+      <div class="card job" data-id="${j.id}">
+        <div class="grow"><div class="t">${esc(j.customer.name || 'Unnamed customer')}</div>
+          <div class="s">${esc(j.title || 'No job title')}${j.quote ? ' · ' + esc(j.quote.no) : ''}</div>
+          <span class="chip ${c}">${s}</span></div>
+        <div class="amt">${money(jobTotal(j))}${(j.invoice || j.quote?.accepted) && balance(j) > 0 ? `<div class="note">due ${money(balance(j))}</div>` : ''}</div>
+      </div>`; }).join('') : `<div class="empty">${db.jobs.length ? 'No matches.' : 'No jobs yet.<br>Tap <b>New job</b> when a customer asks for a quotation.'}</div>`}
+    </div>
+    <button class="btn fab" id="newJob">+ New job</button>`;
+  $('#search').oninput = e => { search = e.target.value; const pos = e.target.selectionStart; renderHome(); const s = $('#search'); s.focus(); s.setSelectionRange(pos, pos); };
+  app.querySelectorAll('.job').forEach(el => el.onclick = () => go('#job/' + el.dataset.id));
+  $('#newJob').onclick = () => {
+    const j = { id: uid(), created: Date.now(), updated: Date.now(), customer: { name: '', phone: '', address: '' }, title: '', materialsMode: 'itemised', items: [], discount: 0, travel: 0, advance: 0, notes: '', quote: null, invoice: null, payments: [] };
+    db.jobs.push(j); save(); go('#job/' + j.id);
+  };
+  const qb = $('#quickBackup'); if (qb) qb.onclick = exportBackup;
+}
+
+/* ---------- JOB ---------- */
+let compDateDraft = null;
+function renderJob(j) {
+  const t = jc(j);
+  compDateDraft = null;
+  app.innerHTML = `
+    <div class="row"><button class="btn ghost sm" id="back">← Jobs</button><div class="grow"></div><span id="stChip"></span></div>
+
+    <h2>${bi('Customer')}</h2>
+    <div class="card">
+      <label for="cName">${bi('Name')} *</label><input id="cName" data-f="customer.name" value="${esc(j.customer.name)}" placeholder="Customer name">
+      <label for="cPhone">${bi('Phone (WhatsApp)')} *</label><input id="cPhone" data-f="customer.phone" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" value="${esc(j.customer.phone)}" placeholder="07XXXXXXXX">
+      <p class="note" id="phoneHint" style="color:var(--bad)" ${phoneOk(j.customer.phone) ? 'hidden' : ''}>Enter a 10-digit number, e.g. 0771234567</p>
+      <label for="cAddr">${bi('Site address')}</label><textarea id="cAddr" data-f="customer.address" rows="2" placeholder="House no, road, area">${esc(j.customer.address)}</textarea>
+      <label for="jTitle">${bi('Job title')}</label><input id="jTitle" data-f="title" value="${esc(j.title)}" placeholder="e.g. Pressure pump & tank installation">
+    </div>
+
+    <h2>${bi('Work & materials')}</h2>
+    <div class="card">
+      <label style="margin-top:0">${bi('Show materials on documents as')}</label>
+      <div class="seg" id="mode">
+        <button data-m="itemised" class="${j.materialsMode !== 'lump' ? 'on' : ''}">Itemised list</button>
+        <button data-m="lump" class="${j.materialsMode === 'lump' ? 'on' : ''}">Lump sum</button>
+      </div>
+      <p class="note">${j.materialsMode === 'lump' ? 'Customer sees one “Materials” line and one “Labour” line. Your item list stays here for your records.' : 'Customer sees every item with quantity and rate.'}</p>
+      ${itemGroup(j.items, 'material', 'Materials', 'addMat', '+ Material')}
+      ${itemGroup(j.items, 'labour', 'Labour', 'addLab', '+ Labour')}
+      <label for="disc">${bi('Discount (LKR)')}</label><input id="disc" type="number" inputmode="decimal" min="0" step="0.01" value="${j.discount || ''}" placeholder="0">
+      <label for="trav">${bi('Travel cost (LKR)')} <span style="text-transform:none;font-weight:400">(optional)</span></label><input id="trav" type="number" inputmode="decimal" min="0" step="0.01" value="${j.travel || ''}" placeholder="0">
+      <label for="adv">${bi('Advance amount (LKR)')} <span style="text-transform:none;font-weight:400">(optional)</span></label><input id="adv" type="number" inputmode="decimal" min="0" step="0.01" value="${j.advance || ''}" placeholder="0">
+      <label for="notes">${bi('Notes on documents (scope, exclusions)')}</label><textarea id="notes" data-f="notes" placeholder="e.g. Customer to provide electrical point near pump.">${esc(j.notes)}</textarea>
+      <div class="totals" id="totals" style="margin-top:12px">${totalsHtml(t, jobAdv(j))}</div>
+    </div>
+
+    <h2>${bi('Documents')}</h2>
+    <div id="docs"></div>
+
+    <div class="btns" style="margin-top:24px"><button class="btn danger sm" id="delJob">Delete job</button></div>`;
+
+  const touch = () => { j.updated = Date.now(); save(); };
+  let docsTimer;
+  const refreshDocs = () => { clearTimeout(docsTimer); docsTimer = setTimeout(() => renderDocs(j), 250); };
+  $('#back').onclick = () => go('');
+  // text fields: update data only; just the documents panel refreshes, so typing focus is never lost
+  app.querySelectorAll('[data-f]').forEach(el => el.addEventListener('input', () => {
+    if (el.id === 'cPhone') { el.value = el.value.replace(/\D/g, '').slice(0, 10); $('#phoneHint').hidden = phoneOk(el.value); }
+    const [a, b] = el.dataset.f.split('.');
+    if (b) j[a][b] = el.value; else j[a] = el.value;
+    touch(); refreshDocs();
+  }));
+  const retotal = () => { $('#totals').innerHTML = totalsHtml(jc(j), jobAdv(j)); };
+  $('#disc').oninput = e => { j.discount = Math.max(0, Number(e.target.value) || 0); touch(); retotal(); refreshDocs(); };
+  $('#trav').oninput = e => { j.travel = Math.max(0, Number(e.target.value) || 0); touch(); retotal(); refreshDocs(); };
+  $('#adv').oninput = e => { j.advance = Math.max(0, Number(e.target.value) || 0); touch(); retotal(); refreshDocs(); };
+  $('#mode').onclick = e => { const m = e.target.dataset.m; if (m && m !== j.materialsMode) { j.materialsMode = m; touch(); renderJobKeepScroll(j); } };
+  const addItem = kind => { j.items.push({ kind, desc: '', qty: 1, unit: kind === 'labour' ? 'job' : 'nos', rate: 0 }); touch(); renderJobKeepScroll(j); app.querySelector(`.item[data-idx="${j.items.length - 1}"] [data-i="desc"]`)?.focus({ preventScroll: false }); };
+  $('#addMat').onclick = () => addItem('material');
+  $('#addLab').onclick = () => addItem('labour');
+  // item rows
+  app.querySelectorAll('.item').forEach(row => {
+    const it = j.items[+row.dataset.idx];
+    row.querySelectorAll('[data-i]').forEach(el => {
+      el.addEventListener('input', () => {
+        const k = el.dataset.i;
+        it[k] = (k === 'qty' || k === 'rate') ? (Number(el.value) || 0) : el.value;
+        row.querySelector('.line').innerHTML = lineText(it);
+        retotal(); touch(); refreshDocs();
+      });
+      if (el.tagName === 'SELECT') el.addEventListener('change', () => renderJobKeepScroll(j));
+    });
+    row.querySelector('.x').onclick = () => { if (it.desc && !confirm('Remove “' + it.desc + '”?')) return; j.items.splice(+row.dataset.idx, 1); touch(); renderJobKeepScroll(j); };
+  });
+  $('#delJob').onclick = () => {
+    const issued = j.quote || j.invoice || j.payments.length;
+    if (!confirm(issued ? 'Delete this job and its documents from this phone? Document numbers will not be reused. Make sure you have a backup.' : 'Delete this draft job?')) return;
+    db.jobs = db.jobs.filter(x => x !== j); save(); go('');
+  };
+  renderDocs(j);
+}
+
+function renderDocs(j) {
+  const box = $('#docs'); if (!box) return;
+  const T = db.settings.terms;
+  const dirtyQuote = j.quote && !j.invoice && j.quote.snap !== snapKey(j);
+  const dirtyInv = j.invoice && j.invoice.snap !== snapKey(j);
+  const bal = balance(j);
+  const [st, sc] = status(j);
+  $('#stChip').className = 'chip ' + sc; $('#stChip').textContent = st;
+  box.innerHTML = `
+    <div class="card doc">
+      <div class="row"><div class="grow"><h3>${bi('Quotation')} ${j.quote ? esc(j.quote.no) + (j.quote.rev > 1 ? ' (Rev ' + j.quote.rev + ')' : '') : ''}</h3>
+        <div class="meta">${j.quote ? `${lkr(j.quote.total)} · issued ${nice(j.quote.date)} · valid until ${nice(j.quote.validUntil)}${j.quote.accepted ? ' · <b style="color:var(--ok)">accepted ' + nice(j.quote.accepted) + '</b>' : quoteExpired(j) ? ' · <b style="color:var(--warn)">expired</b>' : ''}` : `Valid ${T.validityDays} days${jobAdv(j) ? ' · ' + lkr(jobAdv(j)) + ' advance to confirm' : ''}`}</div></div></div>
+      ${dirtyQuote ? `<div class="hint">You changed the job after sending this quote. Tap <b>Update quotation</b> to issue a revised version.</div>` : ''}
+      <div class="btns">
+        ${!j.quote ? `<button class="btn" id="mkQuote">Create quotation</button>` : `
+          ${!j.invoice ? `<button class="btn ${dirtyQuote || quoteExpired(j) ? '' : 'alt'}" id="mkQuote">${dirtyQuote ? 'Update quotation' : quoteExpired(j) ? 'Re-issue (new dates)' : 'Regenerate'}</button>` : ''}
+          <button class="btn wa" data-share="quote">Share PDF</button>
+          <button class="btn alt" data-view="quote">View</button>
+          ${!j.quote.accepted && !j.invoice ? `<button class="btn alt" id="accept">Mark accepted</button>` : ''}`}
+      </div>
+    </div>
+
+    <div class="card doc">
+      <div class="row"><div class="grow"><h3>${bi('Invoice')} ${j.invoice ? esc(j.invoice.no) : ''}</h3>
+        <div class="meta">${j.invoice ? `${lkr(j.invoice.total)} · completed ${nice(j.invoice.completed)} · warranty until ${nice(j.invoice.warrantyUntil)}` : 'Create after the work is finished. Uses the items above.'}</div></div></div>
+      ${dirtyInv ? `<div class="hint">The job changed after this invoice was made. Tap <b>Update invoice</b> to apply the changes (same number).</div>` : ''}
+      ${!j.invoice ? `<label for="compDate">${bi('Completion date')}</label><input id="compDate" type="date" value="${today()}">` : ''}
+      <div class="btns">
+        ${!j.invoice ? `<button class="btn" id="mkInv" ${j.items.length ? '' : 'disabled'}>Create invoice</button>` : `
+          ${dirtyInv ? `<button class="btn" id="updInv">Update invoice</button>` : ''}
+          <button class="btn wa" data-share="invoice">Share PDF</button>
+          <button class="btn alt" data-view="invoice">View</button>`}
+      </div>
+    </div>
+
+    <div class="card doc">
+      <h3>${bi('Payments & receipts')}</h3>
+      <div class="meta">Total ${lkr(jobTotal(j))} · paid ${lkr(paid(j))} · <b style="color:${bal > 0 ? 'var(--bad)' : 'var(--ok)'}">balance ${lkr(bal)}</b></div>
+      <div style="margin-top:8px">${j.payments.map(p => `
+        <div class="pay ${p.void ? 'void' : ''}"><div class="grow"><b>${esc(p.no)}</b> · ${lkr(p.amount)}<div class="note">${nice(p.date)} · ${esc(p.method)}${p.ref ? ' · ' + esc(p.ref) : ''}${p.void ? ' · VOID' : ''}</div></div>
+          ${p.void ? '' : `<button class="btn wa sm" data-rshare="${p.id}">Share</button><button class="btn alt sm" data-rview="${p.id}">View</button><button class="x" title="Void receipt" data-rvoid="${p.id}">×</button>`}
+        </div>`).join('')}</div>
+      ${(j.quote || j.invoice) && bal > 0.004 ? `<div class="btns"><button class="btn full" id="addPay">Record payment</button></div>` : !j.quote && !j.invoice ? '<p class="note">Create a quotation or invoice first.</p>' : '<p class="note" style="color:var(--ok);font-weight:700">Paid in full ✓</p>'}
+    </div>
+
+`;
+  const touch = () => { j.updated = Date.now(); save(); };
+  const rerender = () => renderJobKeepScroll(j);
+  const cd = $('#compDate');
+  if (cd) { if (compDateDraft) cd.value = compDateDraft; cd.onchange = () => { compDateDraft = cd.value; }; }
+  const need = () => {
+    if (!j.customer.name.trim()) { toast('Add the customer name first'); $('#cName').focus(); return false; }
+    if (!j.items.length || liveTotal(j) <= 0) { toast('Add at least one item with a price'); return false; }
+    return true;
+  };
+  const mk = $('#mkQuote');
+  if (mk) mk.onclick = () => {
+    if (!need()) return;
+    const isNew = !j.quote, changed = j.quote && j.quote.snap !== snapKey(j), redate = isNew || changed || quoteExpired(j);
+    const d = redate ? today() : j.quote.date;
+    j.quote = Object.assign(j.quote || {}, {
+      no: isNew ? nextNo('PQ', d) : j.quote.no,
+      rev: isNew ? 1 : (changed ? (j.quote.rev || 1) + 1 : (j.quote.rev || 1)),
+      date: d, validUntil: redate ? addDays(d, Number(T.validityDays) || 7) : j.quote.validUntil,
+      accepted: redate ? null : j.quote.accepted,
+      ...snapshot(j)
+    });
+    touch(); rerender(); toast(isNew ? 'Quotation ' + j.quote.no + ' created' : 'Quotation updated');
+    shareDoc('quote', j);
+  };
+  const ac = $('#accept'); if (ac) ac.onclick = () => { j.quote.accepted = today(); touch(); rerender(); toast('Marked accepted — send bank details on WhatsApp'); };
+  const mi = $('#mkInv');
+  if (mi) mi.onclick = () => {
+    if (!need()) return;
+    const comp = (cd && cd.value) || today();
+    j.invoice = { no: nextNo('INV', today()), date: today(), completed: comp, warrantyUntil: addMonths(comp, Number(T.warrantyMonths) || 3), ...snapshot(j) };
+    touch(); rerender(); toast('Invoice ' + j.invoice.no + ' created');
+    shareDoc('invoice', j);
+  };
+  const ui = $('#updInv'); if (ui) ui.onclick = () => { if (!need()) return; Object.assign(j.invoice, snapshot(j)); touch(); rerender(); toast('Invoice updated'); };
+  box.querySelectorAll('[data-share]').forEach(b => b.onclick = () => shareDoc(b.dataset.share, j));
+  box.querySelectorAll('[data-view]').forEach(b => b.onclick = () => viewDoc(b.dataset.view, j));
+  box.querySelectorAll('[data-rshare]').forEach(b => b.onclick = () => shareDoc('receipt', j, j.payments.find(p => p.id === b.dataset.rshare)));
+  box.querySelectorAll('[data-rview]').forEach(b => b.onclick = () => viewDoc('receipt', j, j.payments.find(p => p.id === b.dataset.rview)));
+  box.querySelectorAll('[data-rvoid]').forEach(b => b.onclick = () => {
+    const p = j.payments.find(x => x.id === b.dataset.rvoid);
+    if (!confirm('Void receipt ' + p.no + ' (' + lkr(p.amount) + ')? It stays in your records marked VOID and its number is not reused.')) return;
+    p.void = true; touch(); rerender();
+  });
+  const ap = $('#addPay'); if (ap) ap.onclick = () => payDialog(j);
+}
+function snapshot(j) {
+  const c = jc(j);
+  return { snap: snapKey(j), title: j.title, customer: { ...j.customer }, items: JSON.parse(JSON.stringify(j.items)), discount: c.disc, travel: c.travel, advance: jobAdv(j), materialsMode: j.materialsMode, notes: j.notes, mat: c.mat, lab: c.lab, sub: c.sub, total: c.total };
+}
+function renderJobKeepScroll(j) { const y = window.scrollY; renderJob(j); window.scrollTo(0, y); }
+// rows keep their index in j.items (data-idx) but are shown grouped by kind, each group with its own add button
+function itemGroup(items, kind, label, btnId, btnLabel) {
+  const rows = items.map((it, i) => ((it.kind === 'labour') === (kind === 'labour') ? itemRow(it, i) : '')).join('');
+  return `<h3 class="grp kind ${kind}">${bi(label)}</h3>
+    ${rows || `<p class="note">No ${label.toLowerCase()} yet.</p>`}
+    <div class="btns" style="margin-top:0"><button class="btn alt sm" id="${btnId}">${btnLabel}</button></div>`;
+}
+function itemRow(it, i) {
+  return `<div class="item" data-idx="${i}">
+    <div class="row"><span class="kind ${it.kind}">${bi(it.kind === 'labour' ? 'Labour' : 'Material')}</span><div class="grow"></div>
+      <select data-i="kind" style="width:auto;padding:4px 8px;font-size:12px"><option value="material" ${it.kind !== 'labour' ? 'selected' : ''}>Material</option><option value="labour" ${it.kind === 'labour' ? 'selected' : ''}>Labour</option></select>
+      <button class="x" title="Remove">×</button></div>
+    <input data-i="desc" value="${esc(it.desc)}" placeholder="${it.kind === 'labour' ? 'e.g. Pump installation & testing' : 'e.g. 1&quot; PVC pipe (Type 1000)'}" style="margin-top:6px">
+    <div class="grid">
+      <div><label>${bi('Qty')}</label><input data-i="qty" type="number" inputmode="decimal" min="0" step="any" value="${hasQty(it) ? it.qty : ''}" aria-label="Quantity" placeholder="1"></div>
+      <div><label>${bi('Unit')}</label><select data-i="unit" aria-label="Unit">${unitOptions(it.unit)}</select></div>
+      <div><label>${bi('Rate', 'Rate per ' + (it.unit || 'unit'))}</label><input data-i="rate" type="number" inputmode="decimal" min="0" step="0.01" value="${it.rate || ''}" aria-label="Rate (LKR)" placeholder="LKR"></div>
+    </div>
+    <div class="line">${lineText(it)}</div>
+  </div>`;
+}
+// common units; an older free-typed unit stays selectable so saved jobs keep it
+const UNITS = [['nos', 'nos (pieces)'], ['m', 'm (metres)'], ['ft', 'ft (feet)'], ['length', 'length (full pipe)'], ['set', 'set'], ['roll', 'roll'], ['kg', 'kg'], ['l', 'l (litres)'], ['job', 'job'], ['day', 'day'], ['hour', 'hour'], ['visit', 'visit']];
+function unitOptions(u) {
+  const list = UNITS.some(([v]) => v === u) || !u ? UNITS : UNITS.concat([[u, u]]);
+  return list.map(([v, t]) => `<option value="${esc(v)}" ${v === u ? 'selected' : ''}>${esc(t)}</option>`).join('');
+}
+function lineText(it) {
+  const amt = lkr(lineAmt(it));
+  return Number(it.rate) && hasQty(it) ? `${fmtQty(it.qty)} ${esc(it.unit || '')} × ${money(it.rate)} = <b>${amt}</b>` : amt;
+}
+function totalsHtml(t, adv) {
+  return `<div><span>Materials</span><span>${money(t.mat)}</span></div><div><span>Labour</span><span>${money(t.lab)}</span></div>
+    ${t.travel ? `<div><span>Travel cost</span><span>${money(t.travel)}</span></div>` : ''}
+    ${t.disc ? `<div><span>Discount</span><span>− ${money(t.disc)}</span></div>` : ''}
+    <div class="grand"><span>Total</span><span>${lkr(t.total)}</span></div>
+    ${adv ? `<div class="note" style="justify-content:flex-end">Advance: ${lkr(adv)}</div>` : ''}`;
+}
+
+/* ---------- payment dialog ---------- */
+function payDialog(j) {
+  const T = db.settings.terms;
+  const bal = balance(j);
+  const advance = j.quote ? advOf(j.quote.total, j.quote) : jobAdv(j);
+  const suggest = paid(j) === 0 && !j.invoice && advance ? Math.min(advance, bal) : bal;
+  const m = document.createElement('div');
+  m.className = 'modal';
+  m.innerHTML = `<form class="sheet">
+    <h2 style="margin-top:0">${bi('Record payment')}</h2>
+    <p class="note">Balance ${lkr(bal)}${paid(j) === 0 && !j.invoice && advance ? ` · advance ${lkr(advance)}` : ''}</p>
+    <label>${bi('Amount (LKR)')}</label><input name="amount" type="number" inputmode="decimal" min="0.01" step="0.01" required value="${suggest.toFixed(2)}">
+    <div class="row"><div class="grow"><label>${bi('Method')}</label><select name="method"><option>Bank transfer</option><option>Cash</option><option>Online / card</option><option>Cheque</option></select></div>
+      <div class="grow"><label>${bi('Date')}</label><input name="date" type="date" value="${today()}" required></div></div>
+    <label>${bi('Reference (optional)')}</label><input name="ref" placeholder="Bank ref / slip no.">
+    <div class="btns"><button class="btn grow" type="submit">Save & create receipt</button><button class="btn alt" type="button" data-close>Cancel</button></div>
+  </form>`;
+  document.body.appendChild(m);
+  const close = () => m.remove();
+  m.querySelector('[data-close]').onclick = close;
+  m.onclick = e => { if (e.target === m) close(); };
+  m.querySelector('form').onsubmit = e => {
+    e.preventDefault();
+    const f = new FormData(e.target);
+    const amt = r2(f.get('amount'));
+    if (amt <= 0) return toast('Enter an amount');
+    if (amt > bal + 0.004 && !confirm('This is more than the balance (' + lkr(bal) + '). Save anyway?')) return;
+    const p = { id: uid(), no: nextNo('RCPT', f.get('date')), date: f.get('date'), amount: amt, method: f.get('method'), ref: String(f.get('ref') || '').trim(), against: j.invoice ? j.invoice.no : j.quote.no };
+    j.payments.push(p); j.updated = Date.now(); save(); close(); renderJobKeepScroll(j);
+    toast('Receipt ' + p.no + ' created');
+    shareDoc('receipt', j, p);
+  };
+  setTimeout(() => m.querySelector('[name=amount]').select(), 50);
+}
+
+/* =========================================================
+   PDF generation (jsPDF, A4)
+   ========================================================= */
+let logoData;
+async function getLogo() {
+  if (logoData !== undefined) return logoData;
+  try {
+    const b = await (await fetch('icon-512.png')).blob();
+    logoData = await new Promise((res, rej) => { const fr = new FileReader(); fr.onload = () => res(fr.result); fr.onerror = rej; fr.readAsDataURL(b); });
+  } catch (e) { logoData = null; }
+  return logoData;
+}
+// jsPDF can't shape Sinhala script, so the browser draws it on a canvas (phone's own Sinhala font) and it goes in as an image
+const siCache = {};
+function siPng(text, sizePt, color, bold) {
+  const key = 'si' + [text, sizePt, color, bold].join('|');
+  if (siCache[key]) return siCache[key];
+  const S = 12, fpx = sizePt * 0.3528 * S; // 12 px per mm ≈ 300 dpi
+  const c = document.createElement('canvas'), ctx = c.getContext('2d');
+  const f = `${bold ? 700 : 400} ${fpx}px "Noto Sans Sinhala","Sinhala Sangam MN","Iskoola Pota","Nirmala UI",sans-serif`;
+  ctx.font = f;
+  c.width = Math.ceil(ctx.measureText(text).width) + 4; c.height = Math.ceil(fpx * 1.8);
+  ctx.font = f; ctx.fillStyle = `rgb(${color.join(',')})`; ctx.fillText(text, 1, fpx * 1.2);
+  return (siCache[key] = { url: c.toDataURL('image/png'), w: c.width / S, h: c.height / S, base: fpx * 1.2 / S, key });
+}
+const NAVY = [13, 27, 62], CYAN = [0, 212, 255], CYAND = [0, 130, 165], GRAY = [100, 110, 125], INK = [31, 41, 55], ZEBRA = [243, 247, 252], LINE = [220, 226, 234];
+
+async function buildPdf(type, j, pay) {
+  if (!window.jspdf) throw new Error('PDF library not loaded — connect to the internet once and reload.');
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+  const B = db.settings.business, T = db.settings.terms;
+  const W = 210, H = 297, M = 16, R = W - M, BOTTOM = H - 26;
+  const logo = await getLogo();
+  const src = type === 'quote' ? j.quote : type === 'invoice' ? j.invoice : (j.invoice || j.quote);
+  const cust = (src && src.customer) || j.customer;
+  let y = 0;
+  let cur = {}, cs = 0;
+  const font = (style, size, color) => { cur = { style, size, color: color || INK }; doc.setFont('helvetica', style); doc.setFontSize(size); doc.setTextColor(...cur.color); };
+  // "English / සිංහල" in the current font; key picks the Sinhala, txt is the English shown
+  const bi = (key, x, yy, align, txt = key) => {
+    const si = SI[key], head = si ? txt + ' / ' : txt;
+    const tw = doc.getTextWidth(head) + cs * head.length;
+    const img = si && siPng(si, cur.size * 1.05, cur.color, cur.style === 'bold');
+    const x0 = align === 'right' ? x - tw - (img ? img.w : 0) : x;
+    doc.text(head, x0, yy);
+    if (img) doc.addImage(img.url, 'PNG', x0 + tw, yy - img.base, img.w, img.h, img.key);
+  };
+  // Sinhala only, e.g. on its own line under an English heading
+  const siAt = (key, x, yy, align) => {
+    if (!SI[key]) return;
+    const img = siPng(SI[key], cur.size, cur.color, cur.style === 'bold');
+    doc.addImage(img.url, 'PNG', align === 'right' ? x - img.w : x, yy - img.base, img.w, img.h, img.key);
+  };
+  const label = (txt, x, yy) => { font('bold', 7.5, GRAY); cs = 0.4; doc.setCharSpace(cs); bi(txt, x, yy, undefined, txt.toUpperCase()); cs = 0; doc.setCharSpace(0); };
+
+  // header
+  if (logo) doc.addImage(logo, 'PNG', M, 11, 24, 24);
+  const tx = logo ? M + 29 : M;
+  font('bold', 21, NAVY); doc.text('PAVOTA', tx, 22);
+  font('bold', 8.5, CYAND); doc.setCharSpace(1.2); doc.text(B.tagline || 'PLUMBING SOLUTIONS', tx, 28.5); doc.setCharSpace(0);
+  font('normal', 8.5, GRAY);
+  [B.phone, B.email, B.web, B.address].filter(Boolean).forEach((l, i) => doc.text(l, R, 15 + i * 5, { align: 'right' }));
+  doc.setFillColor(...CYAN); doc.rect(M, 39, W - 2 * M, 1.2, 'F');
+  doc.setFillColor(...NAVY); doc.rect(M, 39, 30, 1.2, 'F');
+  y = 54;
+
+  // title + meta
+  const title = type === 'quote' ? 'QUOTATION' : type === 'invoice' ? 'INVOICE' : 'PAYMENT RECEIPT';
+  font('bold', 22, NAVY); doc.text(title, M, y);
+  font('bold', 12, CYAND); siAt(title, M, y + 7.5);
+  let meta;
+  if (type === 'quote') meta = [['Quotation no.', src.no + (src.rev > 1 ? ' (Rev ' + src.rev + ')' : '')], ['Date', nice(src.date)], ['Valid until', nice(src.validUntil)]];
+  else if (type === 'invoice') meta = [['Invoice no.', src.no], ['Invoice date', nice(src.date)], ['Work completed', nice(src.completed)]];
+  else meta = [['Receipt no.', pay.no], ['Date', nice(pay.date)], ['Payment method', pay.method]].concat(pay.ref ? [['Reference', pay.ref]] : []);
+  const mx = R - 72;
+  meta.forEach((m, i) => { const yy = y - 6 + i * 5.5; font('normal', 8.5, GRAY); doc.text(m[0], mx, yy); font('bold', 9, NAVY); doc.text(String(m[1]), R, yy, { align: 'right' }); });
+  y = Math.max(y + 16, y - 6 + meta.length * 5.5 + 6);
+
+  // party block
+  const pLabel = type === 'quote' ? 'Prepared for' : type === 'invoice' ? 'Bill to' : 'Received from';
+  label(pLabel, M, y);
+  if (src && src.title && type !== 'receipt') label('Job', mx, y);
+  y += 5.5;
+  font('bold', 11.5, NAVY); doc.text(cust.name || '', M, y);
+  let ly = y + 5;
+  font('normal', 9, INK);
+  if (cust.phone) { doc.text(cust.phone, M, ly); ly += 4.6; }
+  if (cust.address) { const a = doc.splitTextToSize(cust.address, 95); doc.text(a, M, ly); ly += a.length * 4.4; }
+  let ry = y;
+  if (src && src.title && type !== 'receipt') { font('bold', 10, INK); const tl = doc.splitTextToSize(src.title, 72); doc.text(tl, mx, ry); ry += tl.length * 4.8; }
+  y = Math.max(ly, ry) + 6;
+
+  if (type === 'receipt') return finishReceipt();
+
+  // ---------- table ----------
+  const C = { no: M + 3, desc: M + 11, qty: M + 124, rate: M + 152, amt: R - 3 };
+  const DW = 88;
+  const head = () => {
+    doc.setFillColor(...NAVY); doc.rect(M, y, W - 2 * M, 12.5, 'F');
+    font('bold', 8.5, [255, 255, 255]);
+    doc.text('#', C.no, y + 5.4); doc.text('Description', C.desc, y + 5.4);
+    doc.text('Qty', C.qty, y + 5.4, { align: 'right' }); doc.text('Rate (LKR)', C.rate, y + 5.4, { align: 'right' }); doc.text('Amount (LKR)', C.amt, y + 5.4, { align: 'right' });
+    font('normal', 7.5, [200, 235, 250]);
+    siAt('Description', C.desc, y + 10); siAt('Qty', C.qty, y + 10, 'right'); siAt('Rate (LKR)', C.rate, y + 10, 'right'); siAt('Amount (LKR)', C.amt, y + 10, 'right');
+    y += 12.5;
+  };
+  const room = h => { if (y + h > BOTTOM) { doc.addPage(); y = 20; head(); } };
+  let rows = [];
+  if (src.materialsMode === 'lump') {
+    if (src.mat) rows.push({ desc: 'Materials & fittings (supply)', qty: '1', rate: src.mat, amt: src.mat });
+    if (src.lab) rows.push({ desc: 'Labour & workmanship (installation, testing)', qty: '1', rate: src.lab, amt: src.lab });
+  } else {
+    const mats = src.items.filter(i => i.kind !== 'labour'), labs = src.items.filter(i => i.kind === 'labour');
+    const conv = i => ({ desc: i.desc || '-', qty: hasQty(i) ? fmtQty(i.qty) + (i.unit ? ' ' + i.unit : '') : '1', rate: Number(i.rate) || 0, amt: lineAmt(i) });
+    if (mats.length && labs.length) { rows.push({ section: 'Materials & fittings' }); rows = rows.concat(mats.map(conv)); rows.push({ section: 'Labour & workmanship' }); rows = rows.concat(labs.map(conv)); }
+    else rows = src.items.map(conv);
+  }
+  head();
+  let n = 0;
+  rows.forEach(r => {
+    if (r.section) { room(8); font('bold', 7.5, CYAND); cs = 0.5; doc.setCharSpace(cs); bi(r.section, C.desc, y + 5.2, undefined, r.section.toUpperCase()); cs = 0; doc.setCharSpace(0); y += 7; return; }
+    n++;
+    font('normal', 9, INK);
+    const lines = doc.splitTextToSize(String(r.desc), DW);
+    const h = Math.max(7.5, lines.length * 4.2 + 3.4);
+    room(h);
+    if (n % 2 === 0) { doc.setFillColor(...ZEBRA); doc.rect(M, y, W - 2 * M, h, 'F'); }
+    font('normal', 9, GRAY); doc.text(String(n), C.no, y + 5);
+    font('normal', 9, INK); doc.text(lines, C.desc, y + 5);
+    doc.text(String(r.qty), C.qty, y + 5, { align: 'right' });
+    doc.text(money(r.rate), C.rate, y + 5, { align: 'right' });
+    font('bold', 9, INK); doc.text(money(r.amt), C.amt, y + 5, { align: 'right' });
+    y += h;
+  });
+  doc.setDrawColor(...LINE); doc.setLineWidth(0.3); doc.line(M, y, R, y);
+  y += 6;
+
+  // ---------- totals ----------
+  const tx0 = R - 100;
+  const tRow = (l, v, bold, color, key = l) => { room(6.5); font(bold ? 'bold' : 'normal', 9.5, color || INK); bi(key, tx0, y, undefined, l); doc.text(v, R - 3, y, { align: 'right' }); y += 6; };
+  const paidNow = paid(j);
+  tRow('Subtotal', money(src.sub));
+  if (src.travel) tRow('Travel cost', money(src.travel));
+  if (src.discount) tRow('Discount', '- ' + money(src.discount));
+  room(12); doc.setFillColor(...NAVY); doc.rect(tx0 - 3, y - 4.6, R - tx0 + 3, 9, 'F');
+  font('bold', 11, [255, 255, 255]); bi('TOTAL', tx0, y + 1.4); doc.text('LKR ' + money(src.total), R - 3, y + 1.4, { align: 'right' });
+  y += 11;
+  const adv = advOf(src.total, src);
+  if (type === 'quote') {
+    if (adv) {
+      tRow('Advance to confirm', 'LKR ' + money(adv), true, NAVY);
+      tRow('Balance on completion', 'LKR ' + money(r2(src.total - adv)));
+    }
+  } else {
+    tRow('Paid to date', 'LKR ' + money(paidNow));
+    tRow('BALANCE DUE', 'LKR ' + money(Math.max(0, src.total - paidNow)), true, src.total - paidNow > 0.004 ? [185, 28, 28] : [21, 128, 61]);
+  }
+  y += 4;
+
+  // ---------- notes & terms ----------
+  const para = (heading, lines) => {
+    room(12); label(heading, M, y); y += 5;
+    lines.forEach(t => { font('normal', 8.8, INK); const w = doc.splitTextToSize(t, W - 2 * M - 5); room(w.length * 4.2 + 1.5); doc.text('•', M, y); doc.text(w, M + 4, y); y += w.length * 4.2 + 1.5; });
+    y += 3;
+  };
+  if (src.notes && src.notes.trim()) para('Notes', src.notes.trim().split(/\n+/));
+  if (type === 'quote') {
+    para('Terms', [
+      'This quotation covers only the work described above, based on the information given to us before the site visit. The final amount may change if additional tasks are requested, or further issues are found on site. Any such extra work and its cost will be explained and agreed with you before it is carried out.',
+      `This quotation is valid for ${T.validityDays} days, until ${nice(src.validUntil)}.`,
+      ...(adv ? [`An advance of LKR ${money(adv)} is required to confirm the booking and purchase materials. The balance is payable on completion.`] : []),
+      'Bank details will be shared once you accept this quotation.',
+      `Completed work carries a ${T.warrantyMonths}-month workmanship warranty.`
+    ]);
+  } else {
+    para('Warranty & terms', [
+      `Workmanship warranty: ${T.warrantyMonths} months from completion, valid until ${nice(src.warrantyUntil)}. Covers our installation workmanship.`,
+      'Supplied products (pumps, heaters, fittings) carry their own manufacturer warranties.',
+      'The warranty does not cover misuse, accidental damage, or later alterations by others.',
+      src.total - paidNow > 0.004 ? 'Please settle the balance due on completion. Bank details are available on request.' : 'This invoice is fully paid. Thank you for choosing PAVOTA.'
+    ]);
+  }
+  footer();
+  return doc;
+
+  function finishReceipt() {
+    const tot = jobTotal(j);
+    const paidTo = paid(j, pay.id);
+    const bal = r2(tot - paidTo);
+    // amount box
+    doc.setFillColor(...ZEBRA); doc.setDrawColor(...CYAN); doc.setLineWidth(0.6);
+    doc.roundedRect(M, y, W - 2 * M, 26, 3, 3, 'FD');
+    label('Amount received', M + 7, y + 8);
+    font('bold', 22, NAVY); doc.text('LKR ' + money(pay.amount), M + 7, y + 19);
+    font('normal', 9, GRAY); doc.text(`Towards ${pay.against.startsWith('INV') ? 'invoice' : 'quotation'} ${pay.against}`, R - 7, y + 8, { align: 'right' });
+    if (src && src.title) { const tl = doc.splitTextToSize(src.title, 80); doc.text(tl, R - 7, y + 13, { align: 'right' }); }
+    y += 36;
+    const line = (l, v, bold, color) => { font(bold ? 'bold' : 'normal', 10, color || INK); doc.text(l, M, y); doc.text(v, R, y, { align: 'right' }); y += 4; doc.setDrawColor(...LINE); doc.setLineWidth(0.25); doc.line(M, y, R, y); y += 6; };
+    line(j.invoice ? 'Invoice total' : 'Quotation total', 'LKR ' + money(tot));
+    line('Received to date (including this payment)', 'LKR ' + money(paidTo));
+    line('Balance remaining', 'LKR ' + money(Math.max(0, bal)), true, bal > 0.004 ? [185, 28, 28] : [21, 128, 61]);
+    if (pay.void) stamp('VOID', [185, 28, 28]);
+    else if (bal <= 0.004) stamp('PAID IN FULL', [21, 128, 61]);
+    y += 6;
+    font('normal', 9.5, INK);
+    const thanks = bal > 0.004
+      ? (j.invoice ? 'Thank you for your payment.' : 'Thank you. Your advance has been received and your booking is confirmed.')
+      : 'Thank you for choosing PAVOTA Plumbing Solutions. It was a pleasure working with you.';
+    doc.text(doc.splitTextToSize(thanks, W - 2 * M), M, y); y += 12;
+    if (!pay.void && bal <= 0.004 && B.reviewUrl && window.qrcode) {
+      const s = 30;
+      doc.setDrawColor(...LINE); doc.setLineWidth(0.3); doc.roundedRect(M, y, W - 2 * M, s + 10, 3, 3, 'S');
+      drawQr(doc, B.reviewUrl, M + 5, y + 5, s);
+      font('bold', 12, NAVY); doc.text('Happy with our work?', M + s + 12, y + 14);
+      font('normal', 9.5, INK); doc.text(doc.splitTextToSize('Scan the code to leave a quick Google review. It helps more families in Colombo find a plumber they can trust.', 110), M + s + 12, y + 21);
+      y += s + 16;
+    }
+    footer();
+    return doc;
+  }
+  function stamp(txt, color) {
+    doc.setDrawColor(...color); doc.setTextColor(...color); doc.setLineWidth(0.8);
+    font('bold', 15, color); const w = doc.getTextWidth(txt) + 12;
+    doc.roundedRect(R - w, y - 1, w, 11, 2, 2, 'S'); doc.text(txt, R - w / 2, y + 6.5, { align: 'center' });
+    y += 14;
+  }
+  function footer() {
+    const pages = doc.getNumberOfPages();
+    for (let p = 1; p <= pages; p++) {
+      doc.setPage(p);
+      doc.setDrawColor(...LINE); doc.setLineWidth(0.3); doc.line(M, H - 20, R, H - 20);
+      font('bold', 8.5, NAVY); doc.text('Authorised by: ' + (B.signatory || B.name), M, H - 14.5);
+      font('normal', 7.5, GRAY); doc.text('Computer-generated document. Questions? Call or WhatsApp ' + B.phone + '.', M, H - 10);
+      doc.text('Page ' + p + ' of ' + pages, R, H - 14.5, { align: 'right' });
+    }
+  }
+}
+function fmtQty(q) { q = Number(q) || 0; return Number.isInteger(q) ? String(q) : String(r2(q)); }
+function drawQr(doc, text, x, y, size) {
+  const qr = window.qrcode(0, 'M'); qr.addData(text); qr.make();
+  const n = qr.getModuleCount(), c = size / n;
+  doc.setFillColor(...NAVY);
+  for (let r = 0; r < n; r++) for (let k = 0; k < n; k++) if (qr.isDark(r, k)) doc.rect(x + k * c, y + r * c, c + 0.02, c + 0.02, 'F');
+}
+
+/* ---------- share / view ---------- */
+function fileName(type, j, pay) {
+  const no = type === 'quote' ? j.quote.no : type === 'invoice' ? j.invoice.no : pay.no;
+  const kind = type === 'quote' ? 'Quotation' : type === 'invoice' ? 'Invoice' : 'Receipt';
+  return `PAVOTA-${kind}-${no}.pdf`;
+}
+function message(type, j, pay) {
+  const T = db.settings.terms, B = db.settings.business;
+  const first = (j.customer.name || '').trim().split(/\s+/)[0] || 'there';
+  if (type === 'quote') {
+    const q = j.quote;
+    return `Hello ${first}, thank you for contacting PAVOTA Plumbing Solutions.\n\nPlease find attached quotation ${q.no}${q.rev > 1 ? ' (Rev ' + q.rev + ')' : ''}${q.title ? ' for ' + q.title : ''}.\nTotal: LKR ${money(q.total)}\nValid until: ${nice(q.validUntil)}\n\n${advOf(q.total, q) ? `To confirm the booking, an advance of LKR ${money(advOf(q.total, q))} is required. ` : ''}Reply here to accept and we will share our bank details.`;
+  }
+  if (type === 'invoice') {
+    const i = j.invoice, bal = Math.max(0, i.total - paid(j));
+    return `Hello ${first}, thank you for choosing PAVOTA Plumbing Solutions.\n\nPlease find attached invoice ${i.no}.\nTotal: LKR ${money(i.total)}\nBalance due: LKR ${money(bal)}\n\nYour work is covered by a ${T.warrantyMonths}-month workmanship warranty (until ${nice(i.warrantyUntil)}).`;
+  }
+  const bal = r2(jobTotal(j) - paid(j, pay.id));
+  return `Hello ${first}, we have received your payment of LKR ${money(pay.amount)}. Thank you!\nReceipt ${pay.no} is attached.` +
+    (bal > 0.004 ? `\nBalance remaining: LKR ${money(bal)}` : `\n\nIf you were happy with our work, a quick Google review would mean a lot:\n${B.reviewUrl}`);
+}
+async function viewDoc(type, j, pay) {
+  const w = window.open('', '_blank');
+  try {
+    const doc = await buildPdf(type, j, pay);
+    const url = URL.createObjectURL(doc.output('blob'));
+    if (w) w.location.href = url; else location.href = url;
+  } catch (e) { if (w) w.close(); toast(e.message); }
+}
+async function shareDoc(type, j, pay) {
+  let doc;
+  try { doc = await buildPdf(type, j, pay); } catch (e) { return toast(e.message); }
+  const name = fileName(type, j, pay);
+  const blob = doc.output('blob');
+  const text = message(type, j, pay);
+  let file = null;
+  try { file = new File([blob], name, { type: 'application/pdf' }); } catch (e) {}
+  if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
+    try { await navigator.share({ files: [file], title: name, text }); return; }
+    catch (e) { if (e.name === 'AbortError') return; }
+  }
+  // Fallback (desktop / older phones): download the PDF, then open the customer's WhatsApp chat with the message ready.
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); a.remove();
+  const num = waNumber(j.customer.phone);
+  const m = document.createElement('div'); m.className = 'modal';
+  m.innerHTML = `<div class="sheet"><h2 style="margin-top:0">PDF downloaded</h2>
+    <p class="note">${esc(name)} is in your downloads. Open WhatsApp, then attach the PDF to the chat.</p>
+    <div class="btns">${num ? `<a class="btn wa grow" target="_blank" rel="noopener" href="https://wa.me/${num}?text=${encodeURIComponent(text)}">Open WhatsApp chat</a>` : '<span class="note">Add the customer phone to open their chat directly.</span>'}
+    <button class="btn alt" data-close>Done</button></div></div>`;
+  document.body.appendChild(m);
+  m.onclick = e => { if (e.target === m || e.target.dataset.close !== undefined) m.remove(); };
+}
+
+/* =========================================================
+   SETTINGS & BACKUP
+   ========================================================= */
+function renderSettings() {
+  const B = db.settings.business, T = db.settings.terms;
+  const f = (k, l, v, type) => `<label for="${k}">${l}</label><input id="${k}" data-s="${k}" type="${type || 'text'}" value="${esc(v)}">`;
+  app.innerHTML = `
+    <div class="row"><button class="btn ghost sm" id="back">← Jobs</button></div>
+    <h2>${bi('Backup')}</h2>
+    <div class="card">
+      <p class="note" style="margin-top:0">Your quotes, invoices and receipts are stored only on this phone. Export a backup every week and keep it in Google Drive or email it to yourself.
+      ${db.lastBackup ? '<br>Last backup: ' + nice(iso(new Date(db.lastBackup))) : '<br><b>No backup yet.</b>'}</p>
+      <div class="btns"><button class="btn" id="exp">Export backup</button><button class="btn alt" id="imp">Restore from backup</button></div>
+      <input type="file" id="impFile" accept="application/json,.json" hidden>
+    </div>
+    <h2>${bi('Document terms')}</h2>
+    <div class="card">
+      ${f('t.validityDays', 'Quotation valid for (days)', T.validityDays, 'number')}
+      ${f('t.warrantyMonths', 'Workmanship warranty (months)', T.warrantyMonths, 'number')}
+    </div>
+    <h2>${bi('Business details on documents')}</h2>
+    <div class="card">
+      ${f('b.phone', 'Phone', B.phone)}${f('b.email', 'Email', B.email)}${f('b.web', 'Website', B.web)}${f('b.address', 'Address line', B.address)}
+      ${f('b.signatory', 'Authorised by', B.signatory)}${f('b.reviewUrl', 'Google review link (QR on final receipts)', B.reviewUrl, 'url')}
+    </div>
+    <h2>${bi('Security')}</h2>
+    <div class="card">
+      <p class="note" style="margin-top:0">The app locks after 15 minutes idle. Changing the PIN does not affect your records.</p>
+      <div class="btns"><button class="btn alt" id="chPin">Change PIN</button></div>
+    </div>
+    <h2>${bi('Start fresh')}</h2>
+    <div class="card">
+      <p class="note" style="margin-top:0">Deletes every job and resets numbering to 001 (for example after testing). Your PIN and settings stay. Export a backup first if you might need the records.</p>
+      <div class="btns"><button class="btn danger" id="wipe">Erase all jobs & reset numbers</button></div>
+    </div>
+    <p class="note" style="text-align:center">PAVOTA Office · ${db.jobs.length} job(s) on this device</p>`;
+  $('#back').onclick = () => go('');
+  app.querySelectorAll('[data-s]').forEach(el => el.addEventListener('change', () => {
+    const [g, k] = el.dataset.s.split('.');
+    const target = g === 't' ? db.settings.terms : db.settings.business;
+    if (g === 't') { const v = Number(el.value); if (!(v > 0)) { toast('Enter a number above 0'); el.value = target[k]; return; } target[k] = v; }
+    else target[k] = el.value.trim();
+    save(); toast('Saved');
+  }));
+  $('#exp').onclick = exportBackup;
+  $('#imp').onclick = () => $('#impFile').click();
+  $('#impFile').onchange = async e => {
+    const file = e.target.files[0]; if (!file) return;
+    try {
+      const d = JSON.parse(await file.text());
+      if (!d || !Array.isArray(d.jobs)) throw new Error('bad');
+      if (!confirm(`Replace everything on this phone with the backup (${d.jobs.length} jobs)?`)) return;
+      const sec = db.security;
+      db = normalise(d); if (!db.security) db.security = sec; save(); toast('Backup restored'); renderSettings();
+    } catch (err) { toast('That file is not a PAVOTA Office backup'); }
+    e.target.value = '';
+  };
+  $('#wipe').onclick = () => {
+    if (!confirm('Erase ALL ' + db.jobs.length + ' job(s) and reset document numbers to 001?')) return;
+    if (prompt('Type ERASE to confirm') !== 'ERASE') return toast('Nothing was erased');
+    db.jobs = []; db.counters = {}; db.lastBackup = null; save(); toast('All jobs erased'); renderSettings();
+  };
+  $('#chPin').onclick = () => { if (confirm('Set a new PIN now?')) { db.security = null; save(); lockNow(); } };
+}
+function exportBackup() {
+  const data = JSON.stringify(db, null, 1);
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([data], { type: 'application/json' }));
+  a.download = 'pavota-office-backup-' + today() + '.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  db.lastBackup = Date.now(); save(); toast('Backup saved to downloads');
+  if (!location.hash) renderHome();
+}
+
+/* ---------- start ---------- */
+if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
+let unlocked = false; try { unlocked = sessionStorage.getItem('po_unlocked') === '1'; } catch (e) {}
+if (unlocked && db.security) { route(); resetIdle(); } else showLock();
+</script>
+</body>
+</html>

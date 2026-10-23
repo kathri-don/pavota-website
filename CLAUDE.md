@@ -10,8 +10,8 @@ Marketing site for PAVOTA Plumbing Solutions (Piliyandala / Colombo, Sri Lanka) 
 - Preview locally with `python3 -m http.server` from the repo root. Pages use root-absolute paths such as `/datadog-rum.js`, so opening files with `file://` breaks them.
 
 ## Layout
-- `index.html`: home page (services, projects, contact form, LocalBusiness JSON-LD).
-- `contact.html`: contact page.
+- `index.html`: home page. Sections in order: hero (`#home`), "We Serve" areas bar, `#services`, `#how`, `#projects`, stats strip, `#reviews`, `#faq`, `#contact`, footer. Nav tabs link to these ids.
+- `contact.html`: contact page. Same nav and footer as the home page, with links pointing to `index.html#...`.
 - `works/`: client work list (`index.html`) and detail pages `prj1.html` to `prj3.html`.
 - `projects/prjN/`: photos for those pages. Folder numbers don't match page numbers: `works/prj3.html` uses `projects/prj2/`.
 - `reviews/`: printable Google review QR card. `review-qr-card.html` redirects there. `review-request-whatsapp.txt` holds the WhatsApp message text.
@@ -20,12 +20,15 @@ Marketing site for PAVOTA Plumbing Solutions (Piliyandala / Colombo, Sri Lanka) 
 - `hero_bg.webp`, `logo.jpg` (logo, favicon and og:image), `robots.txt`, `sitemap.xml`, `google98b5d36892b8116f.html` (Search Console verification).
 
 ## Conventions
-- Styling uses Tailwind from the CDN (`cdn.tailwindcss.com`) with an inline `tailwind.config` per page. Brand colours: `pavota-navy` `#0d1b3e` and `pavota-cyan` `#00d4ff`. Font Awesome 6.4.0 for icons, Inter for text.
+- Styling uses Tailwind from the CDN (`cdn.tailwindcss.com`) with an inline `tailwind.config` per page. Brand colours (from the logo): `pavota-navy` `#0d1b3e`, `pavota-cyan` `#00d4ff`, royal blue `#2d2fa3`, and light blue `#e4effc` (nav bar) / `#e8f6fd` (section backgrounds). Font Awesome 6.4.0 for icons, Inter for text.
+- The full nav row shows from `lg`; below that the burger opens the full-screen mobile menu. Keep desktop and mobile menus in step on both pages.
+- Service cards use inline SVG illustrations, not job photos; job photos belong to the projects section and `works/`.
 - CSS and JS live inline in each page. Shared pieces such as the nav and footer are copied between pages, so a change to one usually has to go into the others too.
 - Each public page has its own `<title>`, meta description, canonical URL and Open Graph and Twitter tags, aimed at local search ("plumber in Colombo", Piliyandala, Dehiwala, Mount Lavinia). Keep them when you edit a page.
 - Images are `.webp` with `width`/`height` set. Use `loading="lazy"` below the fold.
 - Contact details are +94 70 111 1994 (`wa.me/94701111994`), pavotaplumbing@gmail.com and facebook.com/pavotaplumbing. They appear in many places, so change all of them together.
 - Copy is in English. Office documents have English and Sinhala titles (the `SI` list in `office/index.html`).
+- Tone: plain wording for Sri Lankan customers. The main call to action is "Call or WhatsApp". Don't promise a price before the job is seen; a written quotation is offered as "just ask". Late-night support is described as "we always try to help straight away... earliest available time, urgent jobs first", never as "we can't come at night".
 - When you add or change a public page, update `sitemap.xml` (`<loc>` and `<lastmod>`).
 
 ## Risky to change
@@ -38,4 +41,7 @@ Marketing site for PAVOTA Plumbing Solutions (Piliyandala / Colombo, Sri Lanka) 
   - Access is enforced by Google sign-in and Firestore security rules in the Firebase console (project `pavota-plumbing`), not by this repo. The Firebase config in the page is public by design.
   - Document numbers (PQ / INV / RCPT) come from a shared Firestore counter. Don't change the numbering format.
 - `datadog-rum.js`: the client token is public by design. Keep the hostname check and `allowedTrackingOrigins`. Office replays must stay fully masked because they show customer data.
-- JSON-LD in `index.html` (rating, phone, service area) is what Google shows. Keep it in line with the real Google Business profile.
+- JSON-LD is what Google shows. Keep it in line with the real Google Business profile:
+  - Rating and review count (`aggregateRating`) appear in both `index.html` and `contact.html`, and the 4.8 also appears in the stats strip and reviews card.
+  - The FAQ answers in the `FAQPage` JSON-LD must match the visible `#faq` text word for word.
+  - `areaServed` and the "We Serve" bar list the same areas.

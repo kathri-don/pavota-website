@@ -79,9 +79,9 @@
       },
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.6",
+        "ratingValue": "4.8",
         "bestRating": "5",
-        "ratingCount": "17"
+        "ratingCount": "55"
       },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -167,7 +167,18 @@
         { "@type": "City", "name": "Kotte" },
         { "@type": "City", "name": "Malabe" },
         { "@type": "City", "name": "Boralesgamuwa" },
-        { "@type": "City", "name": "Homagama" }
+        { "@type": "City", "name": "Homagama" },
+        { "@type": "City", "name": "Ratmalana" },
+        { "@type": "City", "name": "Panadura" },
+        { "@type": "City", "name": "Kesbewa" },
+        { "@type": "City", "name": "Kottawa" },
+        { "@type": "City", "name": "Pannipitiya" },
+        { "@type": "City", "name": "Athurugiriya" },
+        { "@type": "City", "name": "Kaduwela" },
+        { "@type": "City", "name": "Kolonnawa" },
+        { "@type": "City", "name": "Wellampitiya" },
+        { "@type": "City", "name": "Kelaniya" },
+        { "@type": "City", "name": "Wattala" }
       ],
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
@@ -189,7 +200,7 @@
           "name": "Where can I find a reliable plumber near me in Colombo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "PAVOTA Plumbing Solutions is a top-rated plumber serving Colombo, Piliyandala, Dehiwala, Mount Lavinia, Moratuwa, Nugegoda, Battaramulla, and surrounding areas. You can contact us anytime for urgent plumbing support; late-night requests are assessed and arranged for the earliest available visit, usually the next morning unless it is a critical emergency. Call +94 70 111 1994 or send a WhatsApp video of your issue for a quick quote."
+            "text": "PAVOTA Plumbing Solutions is a top-rated plumber serving Colombo, Piliyandala, Dehiwala, Mount Lavinia, Moratuwa, Nugegoda, Battaramulla, and surrounding areas. Contact us anytime by call or WhatsApp on +94 70 111 1994 and we'll do our best to help you right away."
           }
         },
         {
@@ -205,7 +216,7 @@
           "name": "Is 24-hour urgent plumber support available near me?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, you can contact PAVOTA Plumbing anytime for urgent plumbing issues in Colombo and surrounding areas. For burst pipes, severe leaks, or pump failures, call +94 70 111 1994 or WhatsApp us. We will take the call, assess the issue, and dispatch a plumber at our earliest available time. Late-night jobs are usually arranged for the next morning unless immediate attendance is essential."
+            "text": "Yes, you can contact PAVOTA Plumbing anytime for urgent plumbing issues in Colombo and surrounding areas. For burst pipes, severe leaks, or pump failures, call +94 70 111 1994 or WhatsApp us. We always try to help straight away, and if an immediate visit isn't possible, we'll arrange the earliest available time, with urgent jobs given priority."
           }
         },
         {
@@ -213,7 +224,7 @@
           "name": "What plumbing services do you offer in Piliyandala?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "In Piliyandala and the greater Colombo area, we offer a full range of plumbing services including: pressure pump installation, water tank repair, bathroom installations and fittings, hot water system setup (geyser/solar), leak detection and repair, drain clearing, washing machine plumbing, kitchen sink and tap upgrades, and routine plumbing maintenance."
+            "text": "In Piliyandala and the greater Colombo area, we offer a full range of plumbing services including: pressure pump installation, water tank repair, bathroom installations and fittings, hot water system setup (geyser/solar), leak detection and repair, drain clearing, washing machine plumbing, kitchen sink and tap upgrades, kitchen garbage disposal units, and all types of plumbing maintenance."
           }
         },
         {
@@ -221,7 +232,7 @@
           "name": "How much does plumbing work cost in Colombo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Plumbing costs in Colombo vary depending on the job. For an accurate quote, send us a 10-second WhatsApp video of your plumbing issue — we provide free video-based estimates with no callout fee just to look. This saves you time and ensures transparent pricing before we dispatch our expert."
+            "text": "Plumbing costs in Colombo vary depending on the job. Call or WhatsApp us and tell us about the problem. For simple jobs we can give you a price straight away; for others, we'll visit and check the job first. There's no callout fee just to look, and if you need a written quotation, just ask."
           }
         },
         {
@@ -398,7 +409,7 @@
 <body class="bg-gray-50 text-gray-800 font-sans">
 
     <!-- Navigation -->
-    <nav class="bg-white shadow-md fixed w-full z-50">
+    <nav class="bg-[#e4effc] shadow-md fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex-shrink-0 flex items-center">
@@ -411,12 +422,14 @@
                             Solutions</span>
                     </div>
                 </div>
-                <div class="hidden md:flex space-x-8 items-center">
+                <div class="hidden lg:flex space-x-6 items-center">
                     <a href="#home" class="text-gray-700 hover:text-pavota-cyan font-semibold transition">Home</a>
                     <a href="#services"
                         class="text-gray-700 hover:text-pavota-cyan font-semibold transition">Services</a>
                     <a href="#projects"
                         class="text-gray-700 hover:text-pavota-cyan font-semibold transition">Projects</a>
+                    <a href="#reviews" class="text-gray-700 hover:text-pavota-cyan font-semibold transition">Reviews</a>
+                    <a href="#faq" class="text-gray-700 hover:text-pavota-cyan font-semibold transition">FAQ</a>
                     <a href="#contact" class="text-gray-700 hover:text-pavota-cyan font-semibold transition">Contact</a>
                     <a href="https://www.facebook.com/pavotaplumbing" target="_blank" rel="noopener noreferrer"
                         aria-label="Visit PAVOTA on Facebook"
@@ -430,7 +443,7 @@
                     </a>
                 </div>
                 <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
+                <div class="lg:hidden flex items-center">
                     <button id="mobile-menu-btn"
                         class="text-pavota-navy hover:text-pavota-cyan focus:outline-none relative z-[60] w-10 h-10 flex items-center justify-center"
                         aria-controls="mobile-menu" aria-expanded="false">
@@ -444,32 +457,40 @@
     </nav>
 
     <!-- Mobile Full-Screen Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 z-[55] pointer-events-none md:hidden">
+    <div id="mobile-menu" class="fixed inset-0 z-[55] pointer-events-none lg:hidden">
         <!-- Dark backdrop -->
         <div id="mobile-menu-backdrop"
             class="absolute inset-0 bg-pavota-navy/95 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
         <!-- Menu content -->
         <div id="mobile-menu-content"
             class="absolute inset-0 flex flex-col items-center justify-center translate-x-full transition-transform duration-400 ease-out">
-            <nav class="flex flex-col items-center gap-6 w-full px-8">
+            <nav class="flex flex-col items-center gap-2 w-full px-8">
                 <a href="#home"
-                    class="mobile-nav-link text-white text-2xl font-bold uppercase tracking-wider hover:text-pavota-cyan transition-colors py-2 border-b border-white/10 w-full text-center">
+                    class="mobile-nav-link text-white text-xl font-bold uppercase tracking-wider hover:text-pavota-cyan transition-colors py-2 border-b border-white/10 w-full text-center">
                     <i class="fa-solid fa-house mr-3 text-pavota-cyan text-lg"></i>Home
                 </a>
                 <a href="#services"
-                    class="mobile-nav-link text-white text-2xl font-bold uppercase tracking-wider hover:text-pavota-cyan transition-colors py-2 border-b border-white/10 w-full text-center">
+                    class="mobile-nav-link text-white text-xl font-bold uppercase tracking-wider hover:text-pavota-cyan transition-colors py-2 border-b border-white/10 w-full text-center">
                     <i class="fa-solid fa-wrench mr-3 text-pavota-cyan text-lg"></i>Services
                 </a>
                 <a href="#projects"
-                    class="mobile-nav-link text-white text-2xl font-bold uppercase tracking-wider hover:text-pavota-cyan transition-colors py-2 border-b border-white/10 w-full text-center">
+                    class="mobile-nav-link text-white text-xl font-bold uppercase tracking-wider hover:text-pavota-cyan transition-colors py-2 border-b border-white/10 w-full text-center">
                     <i class="fa-solid fa-images mr-3 text-pavota-cyan text-lg"></i>Projects
                 </a>
+                <a href="#reviews"
+                    class="mobile-nav-link text-white text-xl font-bold uppercase tracking-wider hover:text-pavota-cyan transition-colors py-2 border-b border-white/10 w-full text-center">
+                    <i class="fa-solid fa-star mr-3 text-pavota-cyan text-lg"></i>Reviews
+                </a>
+                <a href="#faq"
+                    class="mobile-nav-link text-white text-xl font-bold uppercase tracking-wider hover:text-pavota-cyan transition-colors py-2 border-b border-white/10 w-full text-center">
+                    <i class="fa-solid fa-circle-question mr-3 text-pavota-cyan text-lg"></i>FAQ
+                </a>
                 <a href="#contact"
-                    class="mobile-nav-link text-white text-2xl font-bold uppercase tracking-wider hover:text-pavota-cyan transition-colors py-2 border-b border-white/10 w-full text-center">
+                    class="mobile-nav-link text-white text-xl font-bold uppercase tracking-wider hover:text-pavota-cyan transition-colors py-2 border-b border-white/10 w-full text-center">
                     <i class="fa-solid fa-envelope mr-3 text-pavota-cyan text-lg"></i>Contact
                 </a>
             </nav>
-            <div class="mt-10 flex flex-col items-center gap-4 w-full px-8">
+            <div class="mt-6 flex flex-col items-center gap-3 w-full px-8">
                 <a href="contact.html"
                     class="bg-pavota-cyan text-pavota-navy font-black uppercase tracking-widest py-4 px-10 rounded-full text-lg hover:bg-white transition w-full text-center shadow-lg">
                     Contact Us Now
@@ -479,8 +500,8 @@
                     <i class="fa-brands fa-whatsapp mr-2 text-xl"></i> WhatsApp Us
                 </a>
                 <a href="https://www.facebook.com/pavotaplumbing" target="_blank" rel="noopener noreferrer"
-                    class="text-white/70 hover:text-pavota-cyan transition text-base mt-2">
-                    <i class="fa-brands fa-facebook mr-2"></i> Visit Facebook Page
+                    class="bg-[#1877f2] text-white font-bold py-3 px-8 rounded-full text-base hover:bg-[#166fe0] transition w-full text-center shadow-lg flex items-center justify-center">
+                    <i class="fa-brands fa-facebook mr-2 text-xl"></i> Visit Facebook Page
                 </a>
             </div>
         </div>
@@ -519,471 +540,455 @@
             </div>
             <p
                 class="mt-3 md:mt-4 text-sm md:text-base text-gray-200 font-semibold max-w-2xl mx-auto px-4 md:px-0 leading-relaxed">
-                <i class="fa-solid fa-camera mr-1 text-pavota-cyan"></i> Tip: Send a 10-second WhatsApp video of your
-                plumbing issue for a fast, accurate quote before we dispatch our expert!
+                <i class="fa-solid fa-camera mr-1 text-pavota-cyan"></i> Tip: Send us a photo or short video of the problem on
+                WhatsApp. It helps us understand the job and get back to you sooner.
             </p>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-12 md:py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10 md:mb-16">
-                <h2 class="text-2xl md:text-4xl font-black text-pavota-navy uppercase">Our Services</h2>
-                <div class="w-24 h-1 bg-pavota-cyan mx-auto mt-4 rounded-full"></div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- High-End Installation -->
-                <div class="bg-pavota-light rounded-xl p-8 hover:shadow-xl transition border-l-4 border-pavota-navy">
-                    <div class="flex items-center mb-6">
-                        <div
-                            class="w-14 h-14 bg-pavota-navy text-pavota-cyan rounded-full flex items-center justify-center text-2xl mr-4">
-                            <i class="fa-solid fa-screwdriver-wrench"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-pavota-navy uppercase">Premium Installations</h3>
-                    </div>
-                    <ul class="space-y-3">
-                        <li class="flex items-start"><i
-                                class="fa-solid fa-check text-pavota-cyan mt-1 mr-3 bg-pavota-navy rounded-full p-1 text-xs"></i>
-                            <span class="text-gray-700 font-medium">Pressure Pumps & Water Tanks</span></li>
-                        <li class="flex items-start"><i
-                                class="fa-solid fa-check text-pavota-cyan mt-1 mr-3 bg-pavota-navy rounded-full p-1 text-xs"></i>
-                            <span class="text-gray-700 font-medium">Hot Water Systems (Geyser/Solar)</span></li>
-                        <li class="flex items-start"><i
-                                class="fa-solid fa-check text-pavota-cyan mt-1 mr-3 bg-pavota-navy rounded-full p-1 text-xs"></i>
-                            <span class="text-gray-700 font-medium">Full Bathroom Installations & Fittings</span></li>
-                    </ul>
-                </div>
-                <!-- Home Upgrades -->
-                <div class="bg-pavota-light rounded-xl p-8 hover:shadow-xl transition border-l-4 border-pavota-cyan">
-                    <div class="flex items-center mb-6">
-                        <div
-                            class="w-14 h-14 bg-pavota-cyan text-pavota-navy rounded-full flex items-center justify-center text-2xl mr-4">
-                            <i class="fa-solid fa-house-chimney-user"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-pavota-navy uppercase">Home Upgrades</h3>
-                    </div>
-                    <ul class="space-y-3">
-                        <li class="flex items-start"><i
-                                class="fa-solid fa-check text-white mt-1 mr-3 bg-pavota-cyan rounded-full p-1 text-xs"></i>
-                            <span class="text-gray-700 font-medium">Washing Machine Plumbing Setup</span></li>
-                        <li class="flex items-start"><i
-                                class="fa-solid fa-check text-white mt-1 mr-3 bg-pavota-cyan rounded-full p-1 text-xs"></i>
-                            <span class="text-gray-700 font-medium">Kitchen Sink & Tap Upgrades</span></li>
-                        <li class="flex items-start"><i
-                                class="fa-solid fa-check text-white mt-1 mr-3 bg-pavota-cyan rounded-full p-1 text-xs"></i>
-                            <span class="text-gray-700 font-medium">Water Pressure Boosting</span></li>
-                    </ul>
-                </div>
-                <!-- Fast Daily Repairs -->
-                <div class="bg-pavota-light rounded-xl p-8 hover:shadow-xl transition border-l-4 border-pavota-cyan">
-                    <div class="flex items-center mb-6">
-                        <div
-                            class="w-14 h-14 bg-pavota-cyan text-pavota-navy rounded-full flex items-center justify-center text-2xl mr-4">
-                            <i class="fa-solid fa-tools"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-pavota-navy uppercase">Fast Daily Repairs</h3>
-                    </div>
-                    <ul class="space-y-3">
-                        <li class="flex items-start"><i
-                                class="fa-solid fa-check text-white mt-1 mr-3 bg-pavota-cyan rounded-full p-1 text-xs"></i>
-                            <span class="text-gray-700 font-medium">Fast Leak Diagnostics & Repairs</span></li>
-                        <li class="flex items-start"><i
-                                class="fa-solid fa-check text-white mt-1 mr-3 bg-pavota-cyan rounded-full p-1 text-xs"></i>
-                            <span class="text-gray-700 font-medium">Stubborn Blockages Cleared</span></li>
-                        <li class="flex items-start"><i
-                                class="fa-solid fa-check text-white mt-1 mr-3 bg-pavota-cyan rounded-full p-1 text-xs"></i>
-                            <span class="text-gray-700 font-medium">Pump & Tank Failure Fixes</span></li>
-                    </ul>
-                </div>
-                <!-- Maintenance -->
-                <div class="bg-pavota-light rounded-xl p-8 hover:shadow-xl transition border-l-4 border-pavota-navy">
-                    <div class="flex items-center mb-6">
-                        <div
-                            class="w-14 h-14 bg-pavota-navy text-pavota-cyan rounded-full flex items-center justify-center text-2xl mr-4">
-                            <i class="fa-solid fa-clipboard-check"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-pavota-navy uppercase">Routine Maintenance</h3>
-                    </div>
-                    <ul class="space-y-3">
-                        <li class="flex items-start"><i
-                                class="fa-solid fa-check text-pavota-cyan mt-1 mr-3 bg-pavota-navy rounded-full p-1 text-xs"></i>
-                            <span class="text-gray-700 font-medium">Water Pressure Diagnostics</span></li>
-                        <li class="flex items-start"><i
-                                class="fa-solid fa-check text-pavota-cyan mt-1 mr-3 bg-pavota-navy rounded-full p-1 text-xs"></i>
-                            <span class="text-gray-700 font-medium">Plumbing System Health Checks</span></li>
-                        <li class="flex items-start"><i
-                                class="fa-solid fa-check text-pavota-cyan mt-1 mr-3 bg-pavota-navy rounded-full p-1 text-xs"></i>
-                            <span class="text-gray-700 font-medium">Tank Cleaning & Filter Changes</span></li>
-                    </ul>
+    <!-- ===== Sections below the hero ===== -->
+    <style>
+        :root { --navy: #0d1b3e; --cyan: #00d4ff; --royal: #2d2fa3; --light: #e8f6fd; }
+        .sec-title { font-weight: 900; color: var(--navy); line-height: 1.15; letter-spacing: -.01em; }
+        .sec-kicker { display: inline-flex; align-items: center; gap: .5rem; font-weight: 800; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--royal); }
+        .sec-kicker::before { content: ""; width: 26px; height: 3px; border-radius: 3px; background: var(--cyan); }
+        .wave-top, .wave-bottom { display: block; width: 100%; height: 60px; }
+        .wave-bottom { transform: scaleY(-1); }
+
+        /* Service cards */
+        .svc-card { background: #fff; border-radius: 1.25rem; overflow: hidden; box-shadow: 0 10px 30px -12px rgba(13, 27, 62, .25); transition: transform .3s, box-shadow .3s; display: flex; flex-direction: column; }
+        .svc-card:hover { transform: translateY(-6px); box-shadow: 0 22px 40px -14px rgba(13, 27, 62, .35); }
+        .svc-photo { position: relative; height: 190px; overflow: hidden; }
+        .svc-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+        .svc-card:hover .svc-photo img { transform: scale(1.07); }
+        .svc-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13, 27, 62, 0) 40%, rgba(13, 27, 62, .75)); }
+        .svc-photo h3 { position: absolute; left: 1.25rem; right: 1.25rem; bottom: .9rem; z-index: 1; color: #fff; font-weight: 800; font-size: 1.2rem; }
+        .svc-icon { position: absolute; top: 1rem; right: 1rem; z-index: 1; width: 3rem; height: 3rem; border-radius: 50%; background: var(--cyan); color: var(--navy); display: grid; place-items: center; font-size: 1.2rem; box-shadow: 0 6px 16px rgba(0, 0, 0, .25); }
+        .svc-list li { display: flex; gap: .65rem; align-items: flex-start; padding: .45rem 0; border-bottom: 1px dashed #dbe7f3; font-size: .95rem; color: #334155; }
+        .svc-list li:last-child { border-bottom: 0; }
+        .svc-list i { color: var(--royal); margin-top: .3rem; font-size: .8rem; }
+
+        /* Stats band */
+        .stats { background: var(--navy); position: relative; }
+        .stat-ico { width: 3.5rem; height: 3.5rem; border-radius: 1rem; display: grid; place-items: center; background: rgba(0, 212, 255, .12); color: var(--cyan); font-size: 1.4rem; flex: none; }
+
+        /* Work cards */
+        .work-card { position: relative; display: block; border-radius: 1.25rem; overflow: hidden; aspect-ratio: 4 / 5; box-shadow: 0 14px 34px -14px rgba(13, 27, 62, .45); }
+        .work-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+        .work-card:hover img { transform: scale(1.06); }
+        .work-card .cap { position: absolute; inset: auto 0 0 0; padding: 4.5rem 1.25rem 1.25rem; background: linear-gradient(180deg, transparent, rgba(13, 27, 62, .95)); color: #fff; }
+        .work-tag { display: inline-block; font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; background: var(--cyan); color: var(--navy); padding: .25rem .6rem; border-radius: 999px; }
+        .work-track { display: grid; grid-auto-flow: column; grid-auto-columns: 78%; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .5rem; }
+        .work-track > * { scroll-snap-align: start; }
+        @media (min-width: 768px) { .work-track { grid-auto-flow: row; grid-template-columns: repeat(3, 1fr); overflow: visible; gap: 1.5rem; } }
+
+
+        /* Reviews */
+        .score-card { background: var(--navy); color: #fff; border-radius: 1.25rem; padding: 2rem 1.75rem; position: relative; overflow: hidden; }
+        .score-card::after { content: ""; position: absolute; width: 220px; height: 220px; right: -70px; bottom: -90px; border-radius: 50%; border: 28px solid rgba(0, 212, 255, .15); }
+        .review-card { background: #fff; border-radius: 1.25rem; padding: 1.75rem 1.5rem; border-top: 5px solid var(--cyan); box-shadow: 0 10px 28px -14px rgba(13, 27, 62, .25); display: flex; flex-direction: column; }
+        .review-card:nth-child(odd) { border-top-color: var(--royal); }
+
+        /* FAQ */
+        .faq details { background: #fff; border-radius: 1rem; border: 1px solid #dbe7f3; margin-bottom: .75rem; overflow: hidden; }
+        .faq details[open] { border-color: var(--cyan); box-shadow: 0 10px 24px -14px rgba(13, 27, 62, .3); }
+        .faq summary { list-style: none; cursor: pointer; padding: 1.1rem 1.25rem; font-weight: 700; color: var(--navy); display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+        .faq summary::-webkit-details-marker { display: none; }
+        .faq summary .pm { flex: none; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--light); color: var(--royal); display: grid; place-items: center; transition: transform .25s, background .25s; }
+        .faq details[open] summary .pm { transform: rotate(45deg); background: var(--cyan); color: var(--navy); }
+        .faq details p { padding: 0 1.25rem 1.2rem; color: #475569; }
+
+        /* Contact */
+        .contact-left { background: linear-gradient(rgba(13, 27, 62, .9), rgba(13, 27, 62, .93)), url('projects/prj1/pressure_pump_1.webp') center / cover; }
+        .c-row { display: flex; align-items: center; gap: .9rem; padding: .9rem 1rem; border-radius: .9rem; background: rgba(255, 255, 255, .07); transition: background .2s; }
+        .c-row:hover { background: rgba(255, 255, 255, .14); }
+        .c-row .ci { width: 2.75rem; height: 2.75rem; border-radius: 50%; display: grid; place-items: center; color: #fff; flex: none; font-size: 1.1rem; }
+
+        .reveal-on .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+        .reveal-on .reveal.in { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+    </style>
+
+        <style>
+        /* Areas rolling bar */
+        .areas-bar { background: #fff; border-bottom: 1px solid #dbe7f3; overflow: hidden; padding: 14px 0; }
+        .areas-track { display: flex; width: max-content; animation: areas-slide 75s linear infinite; }
+        .areas-bar:hover .areas-track { animation-play-state: paused; }
+        .areas-track span { display: inline-flex; align-items: center; gap: 2.25rem; padding-right: 2.25rem; font-weight: 700; color: #475569; white-space: nowrap; }
+        .areas-track span::after { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); }
+        .areas-label { flex: none; display: inline-flex; align-items: center; gap: .5rem; background: var(--navy); color: var(--cyan); font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; padding: .45rem .9rem; border-radius: 999px; margin-left: 1rem; position: relative; z-index: 1; box-shadow: 12px 0 14px 4px #fff; }
+        @keyframes areas-slide { to { transform: translateX(-50%); } }
+        @media (prefers-reduced-motion: reduce) { .areas-track { animation: none; } }
+
+        /* How it works */
+        .how { background: var(--navy); position: relative; overflow: hidden; }
+        .how::before { content: ""; position: absolute; width: 640px; height: 640px; right: -220px; top: -260px; border-radius: 50%; background: radial-gradient(circle, rgba(0, 212, 255, .2), transparent 65%); }
+        .how::after { content: ""; position: absolute; width: 520px; height: 520px; left: -200px; bottom: -280px; border-radius: 50%; background: radial-gradient(circle, rgba(45, 47, 163, .55), transparent 65%); }
+        .how > div { position: relative; z-index: 1; }
+        .step { background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .1); border-radius: 1.25rem; padding: 1.9rem 1.6rem; }
+        .step .n { width: 2.5rem; height: 2.5rem; border-radius: 50%; background: var(--cyan); color: var(--navy); font-weight: 900; display: grid; place-items: center; margin-bottom: 1.2rem; }
+        @media (max-width: 639px) { .step { padding: 1.1rem 1.2rem; display: grid; grid-template-columns: auto 1fr; column-gap: .9rem; } .step .n { margin: 0; grid-row: span 2; } }
+    </style>
+
+    <!-- Areas we serve (rolling bar) -->
+    <div class="areas-bar" aria-label="Areas we serve">
+        <div class="flex items-center">
+            <span class="areas-label"><i class="fa-solid fa-location-dot"></i> We Serve</span>
+            <div class="overflow-hidden flex-1">
+                <div class="areas-track">
+                    <span>Piliyandala</span><span>Colombo</span><span>Dehiwala</span><span>Mount Lavinia</span><span>Ratmalana</span><span>Moratuwa</span><span>Panadura</span><span>Kesbewa</span><span>Boralesgamuwa</span><span>Maharagama</span><span>Kottawa</span><span>Pannipitiya</span><span>Homagama</span><span>Nugegoda</span><span>Kotte</span><span>Rajagiriya</span><span>Nawala</span><span>Battaramulla</span><span>Thalawathugoda</span><span>Malabe</span><span>Athurugiriya</span><span>Kaduwela</span><span>Kolonnawa</span><span>Wellampitiya</span><span>Kelaniya</span><span>Wattala</span>
+                    <span aria-hidden="true">Piliyandala</span><span aria-hidden="true">Colombo</span><span aria-hidden="true">Dehiwala</span><span aria-hidden="true">Mount Lavinia</span><span aria-hidden="true">Ratmalana</span><span aria-hidden="true">Moratuwa</span><span aria-hidden="true">Panadura</span><span aria-hidden="true">Kesbewa</span><span aria-hidden="true">Boralesgamuwa</span><span aria-hidden="true">Maharagama</span><span aria-hidden="true">Kottawa</span><span aria-hidden="true">Pannipitiya</span><span aria-hidden="true">Homagama</span><span aria-hidden="true">Nugegoda</span><span aria-hidden="true">Kotte</span><span aria-hidden="true">Rajagiriya</span><span aria-hidden="true">Nawala</span><span aria-hidden="true">Battaramulla</span><span aria-hidden="true">Thalawathugoda</span><span aria-hidden="true">Malabe</span><span aria-hidden="true">Athurugiriya</span><span aria-hidden="true">Kaduwela</span><span aria-hidden="true">Kolonnawa</span><span aria-hidden="true">Wellampitiya</span><span aria-hidden="true">Kelaniya</span><span aria-hidden="true">Wattala</span>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Project Showcase Section -->
-    <section id="projects" class="py-10 md:py-16 bg-white">
+    <!-- Services -->
+    <style>
+        .svc-art { aspect-ratio: 400 / 220; background: #e8f6fd; }
+        .svc-art svg { display: block; width: 100%; height: 100%; }
+        .svc-name { display: flex; align-items: center; gap: .65rem; font-weight: 800; font-size: 1.15rem; color: var(--navy); }
+        .svc-name i { width: 2.25rem; height: 2.25rem; border-radius: 50%; background: var(--cyan); color: var(--navy); display: grid; place-items: center; font-size: .9rem; flex: none; }
+    </style>
+    <section id="services" class="py-16 md:py-24" style="background: linear-gradient(180deg, #fff, var(--light));">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8 md:mb-12">
-                <h2 class="text-2xl md:text-3xl font-black text-pavota-navy uppercase">Recent Client Works</h2>
-                <p class="mt-3 md:mt-4 text-gray-600 text-sm md:text-base">Verified plumbing work completed for clients
-                    near Colombo, Piliyandala & surrounding areas.</p>
+            <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+                <span class="sec-kicker">We Provide</span>
+                <h2 class="sec-title text-3xl md:text-5xl mt-3">Our Services</h2>
+                <p class="text-gray-600 mt-4 md:text-lg">From a leaking pipe to a full bathroom, done neatly and properly across Colombo and the suburbs.</p>
             </div>
+            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
 
-            <div class="flex justify-end gap-2 mb-4">
-                <button id="works-prev"
-                    class="hidden md:inline-flex items-center justify-center w-10 h-10 rounded-full border border-gray-300 text-pavota-navy hover:bg-pavota-light transition"
-                    aria-label="Show previous client works">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </button>
-                <button id="works-next"
-                    class="hidden md:inline-flex items-center justify-center w-10 h-10 rounded-full border border-gray-300 text-pavota-navy hover:bg-pavota-light transition"
-                    aria-label="Show next client works">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </button>
-            </div>
-
-            <div id="works-track" class="works-track flex overflow-x-auto gap-5 pb-3 scrollbar-hide">
-                <!-- Duplicate one card block below when adding a new client work -->
-                <article
-                    class="work-snap flex-none w-[88%] sm:w-[74%] md:w-[48%] lg:w-[40%] bg-pavota-light rounded-2xl p-6 border border-cyan-100 shadow-sm">
-                    <figure class="rounded-xl shadow-lg overflow-hidden bg-white project-card mb-4">
-                        <img src="projects/prj1/water_tank1.webp"
-                            alt="Water tank and pressure system setup for client work 1"
-                            class="w-full h-64 object-cover" loading="lazy" width="2450" height="5304">
-                    </figure>
-                    <p class="text-xs font-bold tracking-widest uppercase text-pavota-navy">Client Work 1</p>
-                    <p class="text-sm font-semibold text-gray-600 mt-1"><span class="text-yellow-500">★★★★★</span> Google Review</p>
-                    <h3 class="text-xl font-black text-pavota-navy mt-1">Hot Water, Tank & Pipeline Upgrade</h3>
-                    <p class="text-gray-700 mt-2 text-sm">Clean pipeline routing, pressure pump setup, and stable output
-                        with no leaks.</p>
-                    <p class="text-gray-600 italic text-sm mt-3">"Strong pressure, no leaks, and very professional
-                        finishing."</p>
-                    <div class="mt-4 flex items-center justify-between">
-                        <span class="text-xs font-semibold text-gray-600"><i
-                                class="fa-solid fa-location-dot mr-1 text-pavota-navy"></i> Colombo Area</span>
-                        <a href="works/prj1.html"
-                            class="bg-pavota-navy text-pavota-cyan px-4 py-2 rounded-full text-sm font-bold hover:bg-white hover:text-pavota-navy border border-pavota-navy transition">View
-                            Details</a>
+                <article class="svc-card reveal">
+                    <div class="svc-art">
+                        <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Pressure pump connected to a blue water tank">
+                            <defs><linearGradient id="bgA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef9fe"/><stop offset="1" stop-color="#cdeefb"/></linearGradient></defs>
+                            <rect width="400" height="220" fill="url(#bgA)"/>
+                            <circle cx="70" cy="40" r="70" fill="#fff" opacity=".45"/>
+                            <rect y="182" width="400" height="38" fill="#b9e2f5"/>
+                            <!-- tank -->
+                            <rect x="250" y="40" width="100" height="142" rx="14" fill="#1f5fd6"/>
+                            <g stroke="#174bb0" stroke-width="4"><line x1="250" y1="72" x2="350" y2="72"/><line x1="250" y1="102" x2="350" y2="102"/><line x1="250" y1="132" x2="350" y2="132"/><line x1="250" y1="162" x2="350" y2="162"/></g>
+                            <ellipse cx="300" cy="42" rx="50" ry="10" fill="#2d74ea"/>
+                            <rect x="285" y="26" width="30" height="13" rx="4" fill="#174bb0"/>
+                            <rect x="262" y="55" width="10" height="112" rx="5" fill="#fff" opacity=".25"/>
+                            <!-- pipe tank -> pump, with valve -->
+                            <path d="M250 165 H192" stroke="#0d1b3e" stroke-width="10" stroke-linecap="round"/>
+                            <rect x="214" y="154" width="12" height="22" rx="3" fill="#00d4ff"/>
+                            <rect x="207" y="147" width="26" height="6" rx="3" fill="#0d1b3e"/>
+                            <!-- pump -->
+                            <rect x="58" y="172" width="142" height="10" rx="4" fill="#0d1b3e"/>
+                            <rect x="70" y="126" width="80" height="46" rx="10" fill="#2d2fa3"/>
+                            <g stroke="#23258a" stroke-width="3"><line x1="84" y1="132" x2="84" y2="166"/><line x1="96" y1="132" x2="96" y2="166"/><line x1="108" y1="132" x2="108" y2="166"/><line x1="120" y1="132" x2="120" y2="166"/><line x1="132" y1="132" x2="132" y2="166"/></g>
+                            <ellipse cx="70" cy="149" rx="8" ry="22" fill="#23258a"/>
+                            <circle cx="170" cy="150" r="24" fill="#00d4ff"/>
+                            <circle cx="170" cy="150" r="9" fill="#0d1b3e" opacity=".25"/>
+                            <!-- outlet with gauge and tap -->
+                            <path d="M170 126 V70 H122" stroke="#0d1b3e" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <circle cx="170" cy="96" r="13" fill="#fff" stroke="#0d1b3e" stroke-width="4"/>
+                            <line x1="170" y1="96" x2="177" y2="89" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+                            <rect x="108" y="66" width="16" height="18" rx="4" fill="#0d1b3e"/>
+                            <path d="M116 94 c4 6 7 10 7 13 a7 7 0 0 1 -14 0 c0 -3 3 -7 7 -13z" fill="#00d4ff"/>
+                        </svg>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="svc-name"><i class="fa-solid fa-gem"></i>Premium Installations</h3>
+                        <ul class="svc-list mt-3">
+                            <li><i class="fa-solid fa-check"></i>Pressure Pumps &amp; Water Tanks</li>
+                            <li><i class="fa-solid fa-check"></i>Hot Water Systems (Geyser/Solar)</li>
+                            <li><i class="fa-solid fa-check"></i>Full Bathroom Installations &amp; Fittings</li>
+                        </ul>
                     </div>
                 </article>
 
-                <article
-                    class="work-snap flex-none w-[88%] sm:w-[74%] md:w-[48%] lg:w-[40%] bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
-                    <figure class="rounded-xl shadow-lg overflow-hidden bg-white project-card mb-4">
-                        <img src="projects/prj1/water_pump_1.webp" alt="Pressure pump installation for client work 2"
-                            class="w-full h-64 object-cover" loading="lazy" width="1848" height="4000">
-                    </figure>
-                    <p class="text-xs font-bold tracking-widest uppercase text-pavota-navy">Client Work 2</p>
-                    <p class="text-sm font-semibold text-gray-600 mt-1"><span class="text-yellow-500">★★★★★</span> Google Review</p>
-                    <h3 class="text-xl font-black text-pavota-navy mt-1">Pressure Pump Installation</h3>
-                    <p class="text-gray-700 mt-2 text-sm">Dedicated pump setup for another client with neat layout and
-                        stable pressure output.</p>
-                    <div class="mt-4 flex items-center justify-between">
-                        <span class="text-xs font-semibold text-gray-600"><i
-                                class="fa-solid fa-location-dot mr-1 text-pavota-navy"></i> Colombo Area</span>
-                        <a href="works/prj2.html"
-                            class="bg-pavota-navy text-pavota-cyan px-4 py-2 rounded-full text-sm font-bold hover:bg-white hover:text-pavota-navy border border-pavota-navy transition">View
-                            Details</a>
+                <article class="svc-card reveal">
+                    <div class="svc-art">
+                        <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Kitchen sink with tap and a washing machine">
+                            <defs><linearGradient id="bgB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef9fe"/><stop offset="1" stop-color="#cdeefb"/></linearGradient></defs>
+                            <rect width="400" height="220" fill="url(#bgB)"/>
+                            <g stroke="#fff" stroke-width="2" opacity=".7"><line x1="0" y1="40" x2="250" y2="40"/><line x1="0" y1="80" x2="250" y2="80"/><line x1="50" y1="0" x2="50" y2="130"/><line x1="110" y1="0" x2="110" y2="130"/><line x1="170" y1="0" x2="170" y2="130"/><line x1="230" y1="0" x2="230" y2="130"/></g>
+                            <rect y="206" width="400" height="14" fill="#b9e2f5"/>
+                            <!-- counter and cabinet -->
+                            <rect x="30" y="146" width="210" height="60" rx="6" fill="#2d2fa3"/>
+                            <line x1="135" y1="150" x2="135" y2="202" stroke="#23258a" stroke-width="3"/>
+                            <circle cx="124" cy="176" r="4" fill="#00d4ff"/><circle cx="146" cy="176" r="4" fill="#00d4ff"/>
+                            <rect x="20" y="130" width="230" height="16" rx="4" fill="#0d1b3e"/>
+                            <rect x="68" y="122" width="112" height="10" rx="4" fill="#94a3b8"/>
+                            <!-- tap with running water -->
+                            <rect x="141" y="112" width="18" height="12" rx="3" fill="#0d1b3e"/>
+                            <path d="M150 114 V80 Q150 64 134 64 H120" stroke="#0d1b3e" stroke-width="8" stroke-linecap="round" fill="none"/>
+                            <rect x="156" y="90" width="18" height="7" rx="3.5" fill="#00d4ff"/>
+                            <rect x="114" y="70" width="6" height="52" rx="3" fill="#00d4ff" opacity=".85"/>
+                            <!-- washing machine -->
+                            <rect x="270" y="70" width="110" height="136" rx="12" fill="#fff" stroke="#cbd5e1" stroke-width="3"/>
+                            <path d="M270 96 V82 a12 12 0 0 1 12 -12 h86 a12 12 0 0 1 12 12 V96z" fill="#e2e8f0"/>
+                            <rect x="284" y="78" width="32" height="10" rx="3" fill="#00d4ff"/>
+                            <circle cx="360" cy="83" r="6" fill="#2d2fa3"/>
+                            <circle cx="325" cy="150" r="38" fill="#cbd5e1"/>
+                            <circle cx="325" cy="150" r="28" fill="#7dd3fc"/>
+                            <path d="M297 156 q14 -10 28 0 t28 0 v4 a28 28 0 0 1 -56 0z" fill="#2d74ea" opacity=".6"/>
+                            <path d="M309 130 a22 22 0 0 1 22 -6" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none" opacity=".8"/>
+                            <path d="M380 110 C396 110 396 60 386 36" stroke="#64748b" stroke-width="5" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="svc-name"><i class="fa-solid fa-house"></i>Home Upgrades</h3>
+                        <ul class="svc-list mt-3">
+                            <li><i class="fa-solid fa-check"></i>Washing Machine Plumbing Setup</li>
+                            <li><i class="fa-solid fa-check"></i>Kitchen Sink &amp; Tap Upgrades</li>
+                            <li><i class="fa-solid fa-check"></i>Water Pressure Boosting</li>
+                            <li><i class="fa-solid fa-check"></i>Kitchen Garbage Disposal Unit Setup</li>
+                        </ul>
                     </div>
                 </article>
 
-                <article
-                    class="work-snap flex-none w-[88%] sm:w-[74%] md:w-[48%] lg:w-[40%] bg-pavota-light rounded-2xl p-6 border border-cyan-100 shadow-sm">
-                    <figure class="rounded-xl shadow-lg overflow-hidden bg-white project-card mb-4">
-                        <img src="projects/prj2/garbage_disposal_1.webp"
-                            alt="Garbage disposal installation under kitchen sink for client work 3"
-                            class="w-full h-64 object-cover" loading="lazy" width="964" height="1600">
-                    </figure>
-                    <p class="text-xs font-bold tracking-widest uppercase text-pavota-navy">Client Work 3</p>
-                    <p class="text-sm font-semibold text-gray-600 mt-1"><span class="text-yellow-500">★★★★★</span> Google Review</p>
-                    <h3 class="text-xl font-black text-pavota-navy mt-1">Kitchen Garbage Disposal Installation</h3>
-                    <p class="text-gray-700 mt-2 text-sm">Food waste disposer fitted with under-sink drain plumbing
-                        reworked to connect everything properly.</p>
-                    <p class="text-gray-600 italic text-sm mt-3">"A fairly complicated installation... he did a
-                        fantastic job getting everything set up properly."</p>
-                    <div class="mt-4 flex items-center justify-between">
-                        <span class="text-xs font-semibold text-gray-600"><i
-                                class="fa-solid fa-location-dot mr-1 text-pavota-navy"></i> Colombo Area</span>
-                        <a href="works/prj3.html"
-                            class="bg-pavota-navy text-pavota-cyan px-4 py-2 rounded-full text-sm font-bold hover:bg-white hover:text-pavota-navy border border-pavota-navy transition">View
-                            Details</a>
+                <article class="svc-card reveal">
+                    <div class="svc-art">
+                        <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Leaking pipe joint with a wrench">
+                            <defs><linearGradient id="bgC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef9fe"/><stop offset="1" stop-color="#cdeefb"/></linearGradient></defs>
+                            <rect width="400" height="220" fill="url(#bgC)"/>
+                            <circle cx="340" cy="30" r="70" fill="#fff" opacity=".45"/>
+                            <rect y="196" width="400" height="24" fill="#b9e2f5"/>
+                            <!-- pipes -->
+                            <path d="M0 80 H360 V220" stroke="#475569" stroke-width="18" fill="none" stroke-linejoin="round"/>
+                            <path d="M0 80 H360 V220" stroke="#64748b" stroke-width="8" fill="none" stroke-linejoin="round" opacity=".6"/>
+                            <rect x="145" y="64" width="34" height="32" rx="5" fill="#0d1b3e"/>
+                            <rect x="346" y="66" width="28" height="28" rx="5" fill="#0d1b3e"/>
+                            <!-- leak -->
+                            <g stroke="#00d4ff" stroke-width="3" stroke-linecap="round"><line x1="140" y1="100" x2="130" y2="110"/><line x1="184" y1="100" x2="194" y2="110"/></g>
+                            <path d="M162 104 c4 6 7 10 7 13 a7 7 0 0 1 -14 0 c0 -3 3 -7 7 -13z" fill="#00d4ff"/>
+                            <path d="M156 132 c3 5 6 8 6 11 a6 6 0 0 1 -12 0 c0 -3 3 -6 6 -11z" fill="#00d4ff"/>
+                            <path d="M168 156 c3 5 6 8 6 11 a6 6 0 0 1 -12 0 c0 -3 3 -6 6 -11z" fill="#00d4ff"/>
+                            <ellipse cx="162" cy="198" rx="44" ry="7" fill="#00d4ff" opacity=".45"/>
+                            <!-- wrench -->
+                            <g transform="rotate(-30 280 150)">
+                                <rect x="236" y="141" width="130" height="18" rx="9" fill="#2d2fa3"/>
+                                <circle cx="234" cy="150" r="24" fill="#2d2fa3"/>
+                                <rect x="208" y="142" width="28" height="16" rx="2" fill="#dff3fc"/>
+                                <circle cx="350" cy="150" r="5" fill="#00d4ff"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="svc-name"><i class="fa-solid fa-bolt"></i>Fast Daily Repairs</h3>
+                        <ul class="svc-list mt-3">
+                            <li><i class="fa-solid fa-check"></i>Fast Leak Diagnostics &amp; Repairs</li>
+                            <li><i class="fa-solid fa-check"></i>Stubborn Blockages Cleared</li>
+                            <li><i class="fa-solid fa-check"></i>Pump &amp; Tank Failure Fixes</li>
+                        </ul>
                     </div>
                 </article>
-            </div>
 
-            <div class="text-center mt-8">
-                <a href="works/index.html"
-                    class="inline-flex items-center text-pavota-navy font-bold hover:text-pavota-cyan transition">
-                    Browse All Client Works <i class="fa-solid fa-arrow-right ml-2"></i>
-                </a>
+                <article class="svc-card reveal">
+                    <div class="svc-art">
+                        <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Water pressure gauge and a maintenance checklist">
+                            <defs><linearGradient id="bgD" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef9fe"/><stop offset="1" stop-color="#cdeefb"/></linearGradient></defs>
+                            <rect width="400" height="220" fill="url(#bgD)"/>
+                            <circle cx="60" cy="190" r="80" fill="#fff" opacity=".4"/>
+                            <!-- checklist -->
+                            <rect x="40" y="40" width="120" height="160" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="3"/>
+                            <rect x="75" y="30" width="50" height="18" rx="5" fill="#0d1b3e"/>
+                            <g>
+                                <circle cx="64" cy="82" r="9" fill="#00d4ff"/><path d="M59 82 l4 4 l7 -8" stroke="#0d1b3e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="64" cy="117" r="9" fill="#00d4ff"/><path d="M59 117 l4 4 l7 -8" stroke="#0d1b3e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="64" cy="152" r="9" fill="#e2e8f0"/>
+                            </g>
+                            <g stroke="#cbd5e1" stroke-width="7" stroke-linecap="round"><line x1="82" y1="82" x2="140" y2="82"/><line x1="82" y1="117" x2="132" y2="117"/><line x1="82" y1="152" x2="138" y2="152"/></g>
+                            <!-- gauge on a pipe -->
+                            <rect x="190" y="198" width="210" height="14" fill="#64748b"/>
+                            <rect x="280" y="176" width="20" height="26" fill="#64748b"/>
+                            <circle cx="290" cy="110" r="70" fill="#fff" stroke="#0d1b3e" stroke-width="10"/>
+                            <path d="M237 128 A56 56 0 0 1 330 70" stroke="#00d4ff" stroke-width="8" fill="none" stroke-linecap="round"/>
+                            <path d="M336 76 A56 56 0 0 1 343 128" stroke="#f43f5e" stroke-width="8" fill="none" stroke-linecap="round"/>
+                            <line x1="290" y1="110" x2="262" y2="74" stroke="#0d1b3e" stroke-width="5" stroke-linecap="round"/>
+                            <circle cx="290" cy="110" r="9" fill="#2d2fa3"/>
+                            <text x="290" y="152" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#64748b">bar</text>
+                        </svg>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="svc-name"><i class="fa-solid fa-screwdriver-wrench"></i>Routine Maintenance</h3>
+                        <ul class="svc-list mt-3">
+                            <li><i class="fa-solid fa-check"></i>All Types of Plumbing Maintenance</li>
+                            <li><i class="fa-solid fa-check"></i>Water Pressure Diagnostics</li>
+                            <li><i class="fa-solid fa-check"></i>Plumbing System Health Checks</li>
+                            <li><i class="fa-solid fa-check"></i>Tank Cleaning &amp; Filter Changes</li>
+                        </ul>
+                    </div>
+                </article>
+
             </div>
         </div>
     </section>
 
-    <!-- Feedback Section -->
-    <section class="py-10 md:py-16 bg-pavota-light">
+    <!-- How it works -->
+    <section id="how" class="how py-14 md:py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8 md:mb-12">
-                <h2 class="text-2xl md:text-3xl font-black text-pavota-navy uppercase">What Our Customers Say</h2>
-                <div class="w-24 h-1 bg-pavota-navy mx-auto mt-4 rounded-full"></div>
-                <p class="mt-4 text-gray-700 text-sm md:text-base">Real reviews from verified customers on Google</p>
-                <a href="https://g.page/r/CW5uG-cOHZZDEAE/review" target="_blank" rel="noopener noreferrer"
-                    class="inline-flex mt-3 items-center gap-2 text-pavota-navy font-semibold text-sm hover:text-pavota-cyan transition">
-                    <i class="fa-brands fa-google text-blue-500"></i> View our Google Reviews <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            <div class="grid gap-8 lg:grid-cols-3 lg:items-center">
+                <div class="reveal">
+                    <span class="sec-kicker" style="color: var(--cyan);">How It Works</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-white mt-3 leading-tight">Getting help is easy</h2>
+                    <p class="text-slate-300 mt-3">Call or WhatsApp us and tell us the problem. We'll advise you on the best way forward.</p>
+                    <div class="flex flex-wrap gap-3 mt-6">
+                        <a href="tel:+94701111994" class="inline-flex items-center gap-2 bg-pavota-cyan text-pavota-navy font-bold px-6 py-3 rounded-full hover:bg-white transition"><i class="fa-solid fa-phone"></i> Call Now</a>
+                        <a href="https://wa.me/94701111994" class="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-6 py-3 rounded-full hover:bg-green-600 transition"><i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp</a>
+                    </div>
+                </div>
+                <div class="lg:col-span-2 grid gap-4 sm:grid-cols-3">
+                    <div class="step reveal"><div class="n">1</div><h3 class="text-white text-lg font-bold mb-1">Call or WhatsApp</h3><p class="text-slate-300 text-sm">Tell us what's wrong. A photo or short video helps us understand it faster.</p></div>
+                    <div class="step reveal"><div class="n">2</div><h3 class="text-white text-lg font-bold mb-1">Get advice &amp; a price</h3><p class="text-slate-300 text-sm">For simple jobs we can give you a price straight away. For others, we'll visit and check the job first.</p></div>
+                    <div class="step reveal"><div class="n">3</div><h3 class="text-white text-lg font-bold mb-1">Fixed &amp; cleaned up</h3><p class="text-slate-300 text-sm">Neat, tested work, and we clean up the work area before we leave.</p></div>
+                </div>
+            </div>
+            <p class="mt-8 pt-6 border-t border-white/10 text-sm md:text-base text-slate-200 reveal flex items-start gap-3"><i class="fa-regular fa-file-lines text-pavota-cyan text-lg md:text-xl"></i><span>Need a written quotation for your job? Just ask and we'll send you one.</span></p>
+        </div>
+    </section>
+
+<!-- Recent Client Works -->
+    <section id="projects" class="py-14 md:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-end justify-between gap-4 mb-10 reveal">
+                <div>
+                    <span class="sec-kicker">Our Work</span>
+                    <h2 class="sec-title text-3xl md:text-5xl mt-3">Recent Client Works</h2>
+                </div>
+                <a href="works/index.html" class="inline-flex items-center gap-2 font-bold text-pavota-navy border-2 border-pavota-navy rounded-full px-5 py-2.5 hover:bg-pavota-navy hover:text-white transition">Browse All Client Works <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="work-track">
+                <a href="works/prj1.html" class="work-card reveal">
+                    <img src="projects/prj1/water_tank1.webp" alt="Water tank and pressure system setup" loading="lazy" width="738" height="1600">
+                    <div class="cap">
+                        <span class="work-tag">Client Work 1</span>
+                        <h3 class="text-xl font-black mt-2">Hot Water, Tank &amp; Pipeline Upgrade</h3>
+                        <p class="text-gray-300 text-sm mt-1">Clean pipeline routing, pressure pump setup, and stable output with no leaks.</p>
+                        <span class="inline-flex items-center gap-2 mt-3 text-pavota-cyan font-bold text-sm">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
                 </a>
-                <a href="https://g.page/r/CW5uG-cOHZZDEAE/review" target="_blank" rel="noopener noreferrer"
-                    class="inline-flex mt-4 items-center bg-pavota-navy text-pavota-cyan hover:bg-white hover:text-pavota-navy border-2 border-pavota-navy font-bold py-2.5 px-5 md:py-3 md:px-6 rounded-full transition text-sm md:text-base">
-                    <i class="fa-brands fa-google mr-2"></i> Leave a Google Review
+                <a href="works/prj2.html" class="work-card reveal">
+                    <img src="projects/prj1/water_pump_1.webp" alt="Pressure pump installation" loading="lazy" width="739" height="1600">
+                    <div class="cap">
+                        <span class="work-tag">Client Work 2</span>
+                        <h3 class="text-xl font-black mt-2">Pressure Pump Installation</h3>
+                        <p class="text-gray-300 text-sm mt-1">Pressure pump setup with clean installation and stable water pressure.</p>
+                        <span class="inline-flex items-center gap-2 mt-3 text-pavota-cyan font-bold text-sm">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="works/prj3.html" class="work-card reveal">
+                    <img src="projects/prj2/garbage_disposal_1.webp" alt="Garbage disposal installation under kitchen sink" loading="lazy" width="964" height="1600">
+                    <div class="cap">
+                        <span class="work-tag">Client Work 3</span>
+                        <h3 class="text-xl font-black mt-2">Kitchen Garbage Disposal Installation</h3>
+                        <p class="text-gray-300 text-sm mt-1">Food waste disposer fitted with under-sink drain plumbing reworked properly.</p>
+                        <span class="inline-flex items-center gap-2 mt-3 text-pavota-cyan font-bold text-sm">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
                 </a>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Review 1: Pubudu Dahanayake — Real Google Review -->
-                <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-pavota-cyan relative">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="text-yellow-400 text-lg flex">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i>
-                        </div>
-                        <span class="text-xs text-gray-400 flex items-center"><i
-                                class="fa-brands fa-google mr-1 text-blue-500"></i>Verified</span>
-                    </div>
-                    <p class="text-gray-600 mb-6 italic text-sm">"Excellent Plumbing Service. I'm very satisfied with
-                        the work done on my hot water system and pressure pump installation. He did a very clean and
-                        professional job. The piping was neatly arranged, all connections were properly sealed, and
-                        everything works perfectly without any leaks."</p>
-                    <div class="flex items-center">
-                        <div
-                            class="w-10 h-10 bg-pavota-navy text-white rounded-full flex items-center justify-center font-bold mr-3">
-                            P</div>
-                        <div>
-                            <p class="font-bold text-pavota-navy">Pubudu Dahanayake</p>
-                            <p class="text-xs text-gray-500">2 months ago</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Review 2: Kimuthu Kiringoda — Real Google Review -->
-                <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-pavota-navy relative">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="text-yellow-400 text-lg flex">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i>
-                        </div>
-                        <span class="text-xs text-gray-400 flex items-center"><i
-                                class="fa-brands fa-google mr-1 text-blue-500"></i>Verified</span>
-                    </div>
-                    <p class="text-gray-600 mb-6 italic text-sm">"I called Pavota Plumbing to get assistance on a
-                        leaking pipe. Many declined to come, as it is mere days after Sinhala New Year. But Pavota
-                        Plumbing quickly answered and a technician came within the next 2 hours. Pasindu did a perfect
-                        job. 10/10. Highly recommended."</p>
-                    <div class="flex items-center">
-                        <div
-                            class="w-10 h-10 bg-pavota-cyan text-pavota-navy rounded-full flex items-center justify-center font-bold mr-3">
-                            K</div>
-                        <div>
-                            <p class="font-bold text-pavota-navy">Kimuthu Kiringoda</p>
-                            <p class="text-xs text-gray-500">3 weeks ago</p>
-                        </div>
+            <p class="text-center mt-8 text-gray-600 reveal">See more of our jobs on
+                <a href="https://www.facebook.com/pavotaplumbing" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 font-bold text-[#1877f2] hover:underline"><i class="fa-brands fa-facebook"></i> Facebook</a></p>
+        </div>
+    </section>
+
+    <!-- Why PAVOTA -->
+    <section class="stats">
+        <svg class="wave-top" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1440 V20 C1200 60 960 0 720 25 S240 55 0 18 Z" fill="#fff"/></svg>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12">
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="flex items-center gap-4 reveal"><span class="stat-ico"><i class="fa-solid fa-star"></i></span><div><div class="text-white text-3xl font-black leading-none">4.8<span class="text-yellow-400 text-xl ml-1">★</span></div><div class="text-gray-300 text-sm mt-1">Google rating from our customers</div></div></div>
+            <div class="flex items-center gap-4 reveal"><span class="stat-ico"><i class="fa-solid fa-headset"></i></span><div><div class="text-white text-3xl font-black leading-none">24/7<span class="text-pavota-cyan">*</span></div><div class="text-gray-300 text-sm mt-1">Call &amp; WhatsApp support</div></div></div>
+            <div class="flex items-center gap-4 reveal"><span class="stat-ico"><i class="fa-solid fa-tag"></i></span><div><div class="text-white text-xl font-black leading-tight">Ask for a Price</div><div class="text-gray-300 text-sm mt-1">No callout fee just to look</div></div></div>
+            <div class="flex items-center gap-4 reveal"><span class="stat-ico"><i class="fa-solid fa-location-dot"></i></span><div><div class="text-white text-xl font-black leading-tight">Colombo &amp; Suburbs</div><div class="text-gray-300 text-sm mt-1">Based in Piliyandala</div></div></div>
+        </div>
+        <p class="mt-8 text-sm text-gray-300 max-w-4xl reveal"><span class="text-pavota-cyan font-bold">*</span> We're available on call and WhatsApp around the clock and always try to help you right away. If an immediate visit isn't possible, we'll arrange the earliest available time, with urgent jobs given priority.</p>
+        </div>
+        <svg class="wave-bottom" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1440 V20 C1200 60 960 0 720 25 S240 55 0 18 Z" fill="#e8f6fd"/></svg>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="py-16 md:py-24" style="background: var(--light);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+                <span class="sec-kicker">Reviews</span>
+                <h2 class="sec-title text-3xl md:text-5xl mt-3">What Our Customers Say</h2>
+                <p class="text-gray-600 mt-4 md:text-lg">Real reviews from verified customers on Google.</p>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-4">
+                <div class="score-card reveal">
+                    <div class="flex items-center gap-2 text-sm font-bold text-pavota-cyan"><i class="fa-brands fa-google"></i> Google Reviews</div>
+                    <div class="text-6xl font-black mt-4">4.8</div>
+                    <div class="text-yellow-400 text-xl tracking-widest mt-1">★★★★★</div>
+                    <p class="text-gray-300 text-sm mt-3">Rated by customers across Colombo.</p>
+                    <div class="flex flex-col gap-3 mt-6 relative z-10">
+                        <a href="https://g.page/r/CW5uG-cOHZZDEAE/review" target="_blank" rel="noopener noreferrer" class="text-center bg-pavota-cyan text-pavota-navy font-bold rounded-full py-3 hover:bg-white transition">Leave a Google Review</a>
+                        <a href="https://g.page/r/CW5uG-cOHZZDEAE/review" target="_blank" rel="noopener noreferrer" class="text-center border border-white/30 text-white font-semibold rounded-full py-3 hover:bg-white/10 transition">View our Google Reviews</a>
                     </div>
                 </div>
-                <!-- Review 3: Praveen Deeranga — Real Google Review -->
-                <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-pavota-cyan relative">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="text-yellow-400 text-lg flex">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i>
-                        </div>
-                        <span class="text-xs text-gray-400 flex items-center"><i
-                                class="fa-brands fa-google mr-1 text-blue-500"></i>Verified</span>
-                    </div>
-                    <p class="text-gray-600 mb-6 italic text-sm">"I had a very satisfying experience with Pavota
-                        Plumbing. He arrived exactly as scheduled. He removed my old commode set and installed the new
-                        one efficiently. The pricing was very reasonable for the quality of work. He even cleaned up the
-                        work area before leaving."</p>
-                    <div class="flex items-center">
-                        <div
-                            class="w-10 h-10 bg-pavota-navy text-white rounded-full flex items-center justify-center font-bold mr-3">
-                            P</div>
-                        <div>
-                            <p class="font-bold text-pavota-navy">Praveen Deeranga</p>
-                            <p class="text-xs text-gray-500">1 month ago</p>
-                        </div>
-                    </div>
+                <div class="lg:col-span-3 grid gap-6 md:grid-cols-3">
+                    <article class="review-card reveal">
+                        <div class="flex justify-between items-center"><span class="text-yellow-400 tracking-widest">★★★★★</span><span class="text-xs font-semibold text-gray-500"><i class="fa-brands fa-google text-blue-500 mr-1"></i>Verified</span></div>
+                        <p class="text-gray-700 mt-4 flex-1">"Excellent Plumbing Service. I'm very satisfied with the work done on my hot water system and pressure pump installation. He did a very clean and professional job. The piping was neatly arranged, all connections were properly sealed, and everything works perfectly without any leaks."</p>
+                        <div class="flex items-center gap-3 mt-5 pt-4 border-t border-gray-100"><span class="w-10 h-10 rounded-full bg-pavota-navy text-white font-bold grid place-items-center">P</span><div><div class="font-bold text-pavota-navy">Pubudu Dahanayake</div><div class="text-xs text-gray-500">2 months ago</div></div></div>
+                    </article>
+                    <article class="review-card reveal">
+                        <div class="flex justify-between items-center"><span class="text-yellow-400 tracking-widest">★★★★★</span><span class="text-xs font-semibold text-gray-500"><i class="fa-brands fa-google text-blue-500 mr-1"></i>Verified</span></div>
+                        <p class="text-gray-700 mt-4 flex-1">"I called Pavota Plumbing to get assistance on a leaking pipe. Many declined to come, as it is mere days after Sinhala New Year. But Pavota Plumbing quickly answered and a technician came within the next 2 hours. Pasindu did a perfect job. 10/10. Highly recommended."</p>
+                        <div class="flex items-center gap-3 mt-5 pt-4 border-t border-gray-100"><span class="w-10 h-10 rounded-full bg-pavota-cyan text-pavota-navy font-bold grid place-items-center">K</span><div><div class="font-bold text-pavota-navy">Kimuthu Kiringoda</div><div class="text-xs text-gray-500">3 weeks ago</div></div></div>
+                    </article>
+                    <article class="review-card reveal">
+                        <div class="flex justify-between items-center"><span class="text-yellow-400 tracking-widest">★★★★★</span><span class="text-xs font-semibold text-gray-500"><i class="fa-brands fa-google text-blue-500 mr-1"></i>Verified</span></div>
+                        <p class="text-gray-700 mt-4 flex-1">"I had a very satisfying experience with Pavota Plumbing. He arrived exactly as scheduled. He removed my old commode set and installed the new one efficiently. The pricing was very reasonable for the quality of work. He even cleaned up the work area before leaving."</p>
+                        <div class="flex items-center gap-3 mt-5 pt-4 border-t border-gray-100"><span class="w-10 h-10 rounded-full bg-pavota-navy text-white font-bold grid place-items-center">P</span><div><div class="font-bold text-pavota-navy">Praveen Deeranga</div><div class="text-xs text-gray-500">1 month ago</div></div></div>
+                    </article>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section (matches FAQ schema — required for rich results) -->
-    <section id="faq" class="py-10 md:py-16 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8 md:mb-12">
-                <h2 class="text-2xl md:text-3xl font-black text-pavota-navy uppercase">Frequently Asked Questions</h2>
-                <div class="w-24 h-1 bg-pavota-cyan mx-auto mt-4 rounded-full"></div>
-                <p class="mt-4 text-gray-600 text-sm md:text-base">Common questions about our plumbing services near you
-                    in Colombo</p>
+    <!-- FAQ -->
+    <section id="faq" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-10 lg:grid-cols-5">
+            <div class="lg:col-span-2 reveal">
+                <span class="sec-kicker">FAQ</span>
+                <h2 class="sec-title text-3xl md:text-5xl mt-3">Frequently Asked Questions</h2>
+                <p class="text-gray-600 mt-4 md:text-lg">Common questions about our plumbing services in Colombo.</p>
+                <div class="mt-8 rounded-2xl p-6 text-white" style="background: var(--royal);">
+                    <div class="font-black text-xl">Still have a question?</div>
+                    <p class="text-white/80 mt-1">Call or WhatsApp us, we're happy to help.</p>
+                    <div class="flex flex-wrap gap-3 mt-5">
+                        <a href="tel:+94701111994" class="inline-flex items-center gap-2 bg-white text-pavota-navy font-bold px-5 py-3 rounded-full hover:bg-pavota-cyan transition"><i class="fa-solid fa-phone"></i> +94 70 111 1994</a>
+                        <a href="https://wa.me/94701111994" class="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-5 py-3 rounded-full hover:bg-green-600 transition"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
             </div>
-            <div class="space-y-4">
-                <!-- FAQ 1: plumbers near me (91 impressions) -->
-                <details class="group bg-pavota-light rounded-xl border border-cyan-100 overflow-hidden">
-                    <summary
-                        class="flex items-center justify-between cursor-pointer p-5 md:p-6 font-bold text-pavota-navy text-base md:text-lg hover:bg-white transition">
-                        <span><i class="fa-solid fa-location-dot text-pavota-cyan mr-3"></i>Where can I find a reliable
-                            plumber near me in Colombo?</span>
-                        <i
-                            class="fa-solid fa-chevron-down text-pavota-cyan text-sm transition-transform group-open:rotate-180"></i>
-                    </summary>
-                    <div class="px-5 md:px-6 pb-5 md:pb-6 text-gray-700 leading-relaxed">
-                        <p>PAVOTA Plumbing Solutions is a top-rated plumber serving <strong>Colombo, Piliyandala,
-                                Dehiwala, Mount Lavinia, Moratuwa, Nugegoda, Battaramulla</strong>, and surrounding
-                            areas. You can contact us anytime for urgent plumbing support; late-night requests are
-                            assessed and arranged for the earliest available visit, usually the next morning unless it
-                            is a critical emergency. Call <a
-                                href="tel:+94701111994" class="text-pavota-cyan font-bold hover:underline">+94 70 111
-                                1994</a> or send a WhatsApp video of your issue for a quick quote.</p>
-                    </div>
-                </details>
-                <!-- FAQ 2: water tank repair near me (19 impressions) -->
-                <details class="group bg-pavota-light rounded-xl border border-cyan-100 overflow-hidden">
-                    <summary
-                        class="flex items-center justify-between cursor-pointer p-5 md:p-6 font-bold text-pavota-navy text-base md:text-lg hover:bg-white transition">
-                        <span><i class="fa-solid fa-water text-pavota-cyan mr-3"></i>Do you offer water tank repair near
-                            me?</span>
-                        <i
-                            class="fa-solid fa-chevron-down text-pavota-cyan text-sm transition-transform group-open:rotate-180"></i>
-                    </summary>
-                    <div class="px-5 md:px-6 pb-5 md:pb-6 text-gray-700 leading-relaxed">
-                        <p>Yes, we provide <strong>water tank repair, installation, and cleaning</strong> services
-                            across the Colombo district. Our services include tank leak repairs, pressure pump
-                            installation, pipeline connections, and full water system upgrades. We serve Piliyandala,
-                            Maharagama, Boralesgamuwa, Kotte, and all nearby areas.</p>
-                    </div>
-                </details>
-                <!-- FAQ 3: urgent plumber near me -->
-                <details class="group bg-pavota-light rounded-xl border border-cyan-100 overflow-hidden">
-                    <summary
-                        class="flex items-center justify-between cursor-pointer p-5 md:p-6 font-bold text-pavota-navy text-base md:text-lg hover:bg-white transition">
-                        <span><i class="fa-solid fa-bolt text-pavota-cyan mr-3"></i>Is 24-hour urgent plumber support
-                            available near me?</span>
-                        <i
-                            class="fa-solid fa-chevron-down text-pavota-cyan text-sm transition-transform group-open:rotate-180"></i>
-                    </summary>
-                    <div class="px-5 md:px-6 pb-5 md:pb-6 text-gray-700 leading-relaxed">
-                        <p>Yes, you can contact PAVOTA Plumbing anytime for <strong>urgent plumbing issues</strong> in
-                            Colombo and surrounding areas. For burst pipes, severe leaks, or pump failures, call us
-                            at <a href="tel:+94701111994" class="text-pavota-cyan font-bold hover:underline">+94 70 111
-                                1994</a> or WhatsApp us. We will take the call, assess the issue, and dispatch a plumber
-                            at our earliest available time. Late-night jobs are usually arranged for the next morning
-                            unless immediate attendance is essential.</p>
-                    </div>
-                </details>
-                <!-- FAQ 4: plumbing works in piliyandala -->
-                <details class="group bg-pavota-light rounded-xl border border-cyan-100 overflow-hidden">
-                    <summary
-                        class="flex items-center justify-between cursor-pointer p-5 md:p-6 font-bold text-pavota-navy text-base md:text-lg hover:bg-white transition">
-                        <span><i class="fa-solid fa-wrench text-pavota-cyan mr-3"></i>What plumbing services do you
-                            offer in Piliyandala?</span>
-                        <i
-                            class="fa-solid fa-chevron-down text-pavota-cyan text-sm transition-transform group-open:rotate-180"></i>
-                    </summary>
-                    <div class="px-5 md:px-6 pb-5 md:pb-6 text-gray-700 leading-relaxed">
-                        <p>In Piliyandala and the greater Colombo area, we offer a full range of plumbing services
-                            including: <strong>pressure pump installation, water tank repair, bathroom installations and
-                                fittings, hot water system setup</strong> (geyser/solar), leak detection and repair,
-                            drain clearing, washing machine plumbing, kitchen sink and tap upgrades, and routine
-                            plumbing maintenance.</p>
-                    </div>
-                </details>
-                <!-- FAQ 5: plumbing work cost -->
-                <details class="group bg-pavota-light rounded-xl border border-cyan-100 overflow-hidden">
-                    <summary
-                        class="flex items-center justify-between cursor-pointer p-5 md:p-6 font-bold text-pavota-navy text-base md:text-lg hover:bg-white transition">
-                        <span><i class="fa-solid fa-calculator text-pavota-cyan mr-3"></i>How much does plumbing work
-                            cost in Colombo?</span>
-                        <i
-                            class="fa-solid fa-chevron-down text-pavota-cyan text-sm transition-transform group-open:rotate-180"></i>
-                    </summary>
-                    <div class="px-5 md:px-6 pb-5 md:pb-6 text-gray-700 leading-relaxed">
-                        <p>Plumbing costs in Colombo vary depending on the job. For an accurate quote, <strong>send us a
-                                10-second WhatsApp video</strong> of your plumbing issue - we provide free video-based
-                            estimates with no callout fee just to look. This saves you time and ensures transparent
-                            pricing before we dispatch our expert.</p>
-                    </div>
-                </details>
-                <!-- FAQ 6: plumbing installation -->
-                <details class="group bg-pavota-light rounded-xl border border-cyan-100 overflow-hidden">
-                    <summary
-                        class="flex items-center justify-between cursor-pointer p-5 md:p-6 font-bold text-pavota-navy text-base md:text-lg hover:bg-white transition">
-                        <span><i class="fa-solid fa-screwdriver-wrench text-pavota-cyan mr-3"></i>Do you do plumbing
-                            installation services?</span>
-                        <i
-                            class="fa-solid fa-chevron-down text-pavota-cyan text-sm transition-transform group-open:rotate-180"></i>
-                    </summary>
-                    <div class="px-5 md:px-6 pb-5 md:pb-6 text-gray-700 leading-relaxed">
-                        <p>Yes, we handle all types of <strong>plumbing installations</strong> including complete
-                            bathroom plumbing, pressure pump and water tank setup, hot water systems (geyser and solar),
-                            washing machine connections, kitchen sinks and taps, and full pipeline installation for new
-                            builds and renovations in the Colombo area.</p>
-                    </div>
-                </details>
+            <div class="faq lg:col-span-3 reveal">
+                <details open><summary>Where can I find a reliable plumber near me in Colombo?<span class="pm"><i class="fa-solid fa-plus"></i></span></summary><p>PAVOTA Plumbing Solutions is a top-rated plumber serving Colombo, Piliyandala, Dehiwala, Mount Lavinia, Moratuwa, Nugegoda, Battaramulla, and surrounding areas. Contact us anytime by call or WhatsApp on +94 70 111 1994 and we&#x27;ll do our best to help you right away.</p></details>
+                <details><summary>Do you offer water tank repair near me?<span class="pm"><i class="fa-solid fa-plus"></i></span></summary><p>Yes, we provide water tank repair, installation, and cleaning services across the Colombo district. Our services include tank leak repairs, pressure pump installation, pipeline connections, and full water system upgrades. We serve Piliyandala, Maharagama, Boralesgamuwa, Kotte, and all nearby areas.</p></details>
+                <details><summary>Is 24-hour urgent plumber support available near me?<span class="pm"><i class="fa-solid fa-plus"></i></span></summary><p>Yes, you can contact PAVOTA Plumbing anytime for urgent plumbing issues in Colombo and surrounding areas. For burst pipes, severe leaks, or pump failures, call +94 70 111 1994 or WhatsApp us. We always try to help straight away, and if an immediate visit isn&#x27;t possible, we&#x27;ll arrange the earliest available time, with urgent jobs given priority.</p></details>
+                <details><summary>What plumbing services do you offer in Piliyandala?<span class="pm"><i class="fa-solid fa-plus"></i></span></summary><p>In Piliyandala and the greater Colombo area, we offer a full range of plumbing services including: pressure pump installation, water tank repair, bathroom installations and fittings, hot water system setup (geyser/solar), leak detection and repair, drain clearing, washing machine plumbing, kitchen sink and tap upgrades, kitchen garbage disposal units, and all types of plumbing maintenance.</p></details>
+                <details><summary>How much does plumbing work cost in Colombo?<span class="pm"><i class="fa-solid fa-plus"></i></span></summary><p>Plumbing costs in Colombo vary depending on the job. Call or WhatsApp us and tell us about the problem. For simple jobs we can give you a price straight away; for others, we&#x27;ll visit and check the job first. There&#x27;s no callout fee just to look, and if you need a written quotation, just ask.</p></details>
+                <details><summary>Do you do plumbing installation services?<span class="pm"><i class="fa-solid fa-plus"></i></span></summary><p>Yes, we handle all types of plumbing installations including complete bathroom plumbing, pressure pump and water tank setup, hot water systems (geyser and solar), washing machine connections, kitchen sinks and taps, and full pipeline installation for new builds and renovations in the Colombo area.</p></details>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section id="contact" class="py-10 md:py-16 bg-white">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-pavota-navy rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden">
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    <div class="p-6 md:p-10 text-white relative overflow-hidden">
-                        <div class="absolute -top-10 -left-10 w-40 h-40 bg-pavota-cyan/20 rounded-full"></div>
-                        <h2 class="text-xl md:text-3xl font-black uppercase mb-4 md:mb-6 relative z-10">Get a Fast Video
-                            Quote</h2>
-                        <p class="mb-3 md:mb-4 text-gray-300 relative z-10 text-sm md:text-base">For the fastest and
-                            most accurate quote, please send us a 10-second WhatsApp video showing your plumbing issue.
-                        </p>
-                        <p class="mb-8 text-pavota-cyan font-bold relative z-10">Save time - no callout fee to just
-                            look!</p>
-                        <div class="space-y-6 relative z-10">
-                            <div class="flex items-center">
-                                <div
-                                    class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fa-solid fa-phone text-pavota-cyan"></i></div><a href="tel:+94701111994"
-                                    class="text-lg font-bold tracking-wide hover:text-pavota-cyan transition">+94 70 111
-                                    1994</a>
-                            </div>
-                            <div class="flex items-center">
-                                <div
-                                    class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fa-brands fa-whatsapp text-pavota-cyan"></i></div><a
-                                    href="https://wa.me/94701111994"
-                                    class="text-lg font-bold tracking-wide hover:text-pavota-cyan transition">+94 70 111
-                                    1994</a>
-                            </div>
-                            <div class="flex items-center">
-                                <div
-                                    class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fa-solid fa-envelope text-pavota-cyan"></i></div><a
-                                    href="mailto:pavotaplumbing@gmail.com"
-                                    class="text-lg hover:text-pavota-cyan transition">pavotaplumbing@gmail.com</a>
-                            </div>
-                            <div class="flex items-center">
-                                <div
-                                    class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fa-brands fa-facebook-f text-pavota-cyan"></i>
-                                </div>
-                                <a href="https://www.facebook.com/pavotaplumbing" target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="text-lg hover:text-pavota-cyan transition border-b border-transparent hover:border-pavota-cyan">
-                                    PAVOTA Plumbing Solutions
-                                </a>
-                            </div>
-                        </div>
+    <!-- Contact -->
+    <section id="contact" class="pb-16 md:pb-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl reveal">
+                <div class="contact-left text-white p-8 md:p-12">
+                    <span class="sec-kicker" style="color: var(--cyan);">Contact Us</span>
+                    <h2 class="text-3xl md:text-4xl font-black mt-3">Need a Plumber? Talk to Us.</h2>
+                    <p class="text-gray-300 mt-3">Tell us the problem. A photo or short video on WhatsApp helps us understand the job and get back to you sooner.</p>
+                    <div class="grid gap-3 mt-8">
+                        <a class="c-row" href="tel:+94701111994"><span class="ci" style="background: var(--royal);"><i class="fa-solid fa-phone"></i></span><span><span class="block text-xs text-gray-400">Call us</span><span class="font-bold text-lg">+94 70 111 1994</span></span></a>
+                        <a class="c-row" href="https://wa.me/94701111994"><span class="ci bg-green-500"><i class="fa-brands fa-whatsapp"></i></span><span><span class="block text-xs text-gray-400">WhatsApp</span><span class="font-bold text-lg">+94 70 111 1994</span></span></a>
+                        <a class="c-row" href="https://www.facebook.com/pavotaplumbing" target="_blank" rel="noopener noreferrer"><span class="ci" style="background: #1877f2;"><i class="fa-brands fa-facebook-f"></i></span><span><span class="block text-xs text-gray-400">Facebook</span><span class="font-bold text-lg">PAVOTA Plumbing Solutions</span></span></a>
+                        <a class="c-row" href="mailto:pavotaplumbing@gmail.com"><span class="ci bg-slate-500"><i class="fa-solid fa-envelope"></i></span><span><span class="block text-xs text-gray-400">Email</span><span class="font-bold text-lg break-all">pavotaplumbing@gmail.com</span></span></a>
                     </div>
-                    <div class="p-6 md:p-10 bg-white">
+                </div>
+                <div class="bg-white p-8 md:p-12">
+                    <h3 class="text-2xl font-black text-pavota-navy">Send Us a Message</h3>
+                    <p class="text-gray-500 mt-1 mb-6">We'll get back to you as soon as we can.</p>
+
                         <form action="https://formspree.io/f/mykdyjbw" method="POST" class="space-y-4" data-formspree>
                             <div><label class="block text-gray-700 text-sm font-bold mb-2">Your Name <span
                                         class="text-red-500">*</span></label><input type="text" name="name" required
@@ -1016,36 +1021,58 @@
                                 data-formspree-submit>Send Message</button>
                             <div data-formspree-status aria-live="polite"></div>
                         </form>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-pavota-navy text-white py-10 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="flex justify-center items-center mb-6">
-                <img src="logo.jpg" alt="PAVOTA" class="h-12 w-auto object-contain" width="48" height="48">
+    <footer class="bg-pavota-navy text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-10 md:grid-cols-3">
+            <div>
+                <div class="flex items-center gap-3">
+                    <img src="logo.jpg" alt="PAVOTA" class="h-12 w-12 rounded-lg object-contain bg-white" width="48" height="48">
+                    <div><div class="text-white font-black text-xl leading-none">PAVOTA</div><div class="text-xs font-bold tracking-widest text-gray-400 mt-1">PLUMBING SOLUTIONS</div></div>
+                </div>
+                <p class="mt-4 text-sm text-gray-400">Plumbing repairs and installations in Piliyandala, Colombo and the suburbs.</p>
             </div>
-            <div class="flex justify-center space-x-6 mb-8">
-                <a href="https://www.facebook.com/pavotaplumbing" aria-label="Visit PAVOTA on Facebook"
-                    class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-pavota-cyan hover:text-pavota-navy transition">
-                    <i class="fa-brands fa-facebook-f"></i>
-                </a>
-                <a href="https://wa.me/94701111994" aria-label="Chat with PAVOTA on WhatsApp"
-                    class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-500 transition">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-                <a href="https://g.page/r/CW5uG-cOHZZDEAE/review" target="_blank" rel="noopener noreferrer"
-                    aria-label="Leave a Google review for PAVOTA"
-                    class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-pavota-cyan hover:text-pavota-navy transition">
-                    <i class="fa-brands fa-google"></i>
-                </a>
+            <div>
+                <div class="text-white font-bold mb-3">Quick Links</div>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#services" class="hover:text-pavota-cyan">Our Services</a></li>
+                    <li><a href="#projects" class="hover:text-pavota-cyan">Client Works</a></li>
+                    <li><a href="#reviews" class="hover:text-pavota-cyan">Customer Reviews</a></li>
+                    <li><a href="#faq" class="hover:text-pavota-cyan">FAQ</a></li>
+                    <li><a href="https://www.facebook.com/pavotaplumbing" target="_blank" rel="noopener noreferrer" class="hover:text-pavota-cyan">Facebook Page</a></li>
+                    <li><a href="contact.html" class="hover:text-pavota-cyan">Contact</a></li>
+                </ul>
             </div>
-            <p class="text-gray-400 text-sm">&copy; 2026 PAVOTA Plumbing Solutions. All rights reserved.</p>
+            <div>
+                <div class="text-white font-bold mb-3">Get in Touch</div>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="tel:+94701111994" class="hover:text-pavota-cyan"><i class="fa-solid fa-phone mr-2 text-pavota-cyan"></i>+94 70 111 1994</a></li>
+                    <li><a href="mailto:pavotaplumbing@gmail.com" class="hover:text-pavota-cyan"><i class="fa-solid fa-envelope mr-2 text-pavota-cyan"></i>pavotaplumbing@gmail.com</a></li>
+                </ul>
+                <div class="flex gap-3 mt-5">
+                    <a href="https://www.facebook.com/pavotaplumbing" target="_blank" rel="noopener noreferrer" aria-label="PAVOTA on Facebook" class="w-10 h-10 rounded-full grid place-items-center text-white" style="background: #1877f2;"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://wa.me/94701111994" aria-label="WhatsApp" class="w-10 h-10 rounded-full grid place-items-center text-white bg-green-500"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://g.page/r/CW5uG-cOHZZDEAE/review" target="_blank" rel="noopener noreferrer" aria-label="Google reviews" class="w-10 h-10 rounded-full grid place-items-center bg-white text-blue-500"><i class="fa-brands fa-google"></i></a>
+                </div>
+            </div>
         </div>
+        <div class="border-t border-white/10 py-5 text-center text-sm text-gray-500">&copy; 2026 PAVOTA Plumbing Solutions. All rights reserved.</div>
     </footer>
+
+    <script>
+        (function () {
+            if (!('IntersectionObserver' in window)) return;
+            document.documentElement.classList.add('reveal-on');
+            const io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+            }, { threshold: 0.12 });
+            document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 
     <!-- WhatsApp Confirmation Modal -->
     <div id="wa-modal" class="fixed inset-0 z-[200] hidden items-center justify-center" role="dialog" aria-modal="true"

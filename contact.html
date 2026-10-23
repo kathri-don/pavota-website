@@ -85,6 +85,15 @@
             }
         }
     </script>
+    <style>
+        :root { --navy: #0d1b3e; --cyan: #00d4ff; --royal: #2d2fa3; }
+        .sec-kicker { display: inline-flex; align-items: center; gap: .5rem; font-weight: 800; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--royal); }
+        .sec-kicker::before { content: ""; width: 26px; height: 3px; border-radius: 3px; background: var(--cyan); }
+        .contact-left { background: linear-gradient(rgba(13, 27, 62, .9), rgba(13, 27, 62, .93)), url('projects/prj1/pressure_pump_1.webp') center / cover; }
+        .c-row { display: flex; align-items: center; gap: .9rem; padding: .9rem 1rem; border-radius: .9rem; background: rgba(255, 255, 255, .07); transition: background .2s; }
+        .c-row:hover { background: rgba(255, 255, 255, .14); }
+        .c-row .ci { width: 2.75rem; height: 2.75rem; border-radius: 50%; display: grid; place-items: center; color: #fff; flex: none; font-size: 1.1rem; }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
 
@@ -177,41 +186,19 @@
             <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
                 <div class="grid grid-cols-1 md:grid-cols-2">
                     <!-- Contact Info Column -->
-                    <div class="p-10 bg-pavota-navy text-white relative overflow-hidden">
-                        <div class="absolute -top-10 -left-10 w-40 h-40 bg-pavota-cyan/20 rounded-full"></div>
-                        
-                        <h2 class="text-3xl font-black uppercase mb-6 relative z-10">Call or WhatsApp Us</h2>
-                        <p class="mb-4 text-gray-300 relative z-10">Tell us the problem. A photo or short video on WhatsApp helps us understand the job and get back to you sooner.</p>
-                        <p class="mb-8 text-pavota-cyan font-bold relative z-10">Save time - no callout fee to just look!</p>
-                        
-                        <div class="space-y-6 relative z-10">
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fa-solid fa-phone text-pavota-cyan"></i>
-                                </div>
-                                <a href="tel:+94701111994" class="text-lg font-bold tracking-wide hover:text-pavota-cyan transition">+94 70 111 1994</a>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fa-brands fa-whatsapp text-pavota-cyan"></i>
-                                </div>
-                                <a href="https://wa.me/94701111994" class="text-lg font-bold tracking-wide hover:text-pavota-cyan transition">+94 70 111 1994</a>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fa-brands fa-facebook-f text-pavota-cyan"></i>
-                                </div>
-                                <a href="https://www.facebook.com/pavotaplumbing" target="_blank" rel="noopener noreferrer" class="text-lg hover:text-pavota-cyan transition">PAVOTA Plumbing Solutions</a>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 bg-pavota-cyan/20 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fa-solid fa-envelope text-pavota-cyan"></i>
-                                </div>
-                                <a href="mailto:pavotaplumbing@gmail.com" class="text-lg hover:text-pavota-cyan transition">pavotaplumbing@gmail.com</a>
-                            </div>
+                    <div class="contact-left text-white p-8 md:p-12">
+                        <span class="sec-kicker" style="color: var(--cyan);">Contact Us</span>
+                        <h2 class="text-3xl md:text-4xl font-black mt-3">Call or WhatsApp Us</h2>
+                        <p class="text-gray-300 mt-3">Tell us the problem. A photo or short video on WhatsApp helps us understand the job and get back to you sooner.</p>
+                        <p class="mt-3 text-pavota-cyan font-bold">Save time - no callout fee to just look!</p>
+                        <div class="grid gap-3 mt-8">
+                            <a class="c-row" href="tel:+94701111994"><span class="ci" style="background: var(--royal);"><i class="fa-solid fa-phone"></i></span><span><span class="block text-xs text-gray-400">Call us</span><span class="font-bold text-lg">+94 70 111 1994</span></span></a>
+                            <a class="c-row" href="https://wa.me/94701111994"><span class="ci bg-green-500"><i class="fa-brands fa-whatsapp"></i></span><span><span class="block text-xs text-gray-400">WhatsApp</span><span class="font-bold text-lg">+94 70 111 1994</span></span></a>
+                            <a class="c-row" href="https://www.facebook.com/pavotaplumbing" target="_blank" rel="noopener noreferrer"><span class="ci" style="background: #1877f2;"><i class="fa-brands fa-facebook-f"></i></span><span><span class="block text-xs text-gray-400">Facebook</span><span class="font-bold text-lg">PAVOTA Plumbing Solutions</span></span></a>
+                            <a class="c-row" href="mailto:pavotaplumbing@gmail.com"><span class="ci bg-slate-500"><i class="fa-solid fa-envelope"></i></span><span><span class="block text-xs text-gray-400">Email</span><span class="font-bold text-base sm:text-lg break-all">pavotaplumbing@gmail.com</span></span></a>
                         </div>
                     </div>
-                    
+
                     <!-- Contact Form Column -->
                     <div class="p-10 bg-white">
                         <form action="https://formspree.io/f/mykdyjbw" method="POST" class="space-y-4" data-formspree>

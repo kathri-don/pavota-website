@@ -26,7 +26,7 @@ Marketing site for PAVOTA Plumbing Solutions (Piliyandala / Colombo, Sri Lanka) 
 - CSS and JS live inline in each page. Shared pieces such as the nav and footer are copied between pages, so a change to one usually has to go into the others too.
 - Each public page has its own `<title>`, meta description, canonical URL and Open Graph and Twitter tags, aimed at local search ("plumber in Colombo", Piliyandala, Dehiwala, Mount Lavinia). Keep them when you edit a page.
 - Images are `.webp` with `width`/`height` set. Use `loading="lazy"` below the fold.
-- Contact details are +94 70 111 1994 (`wa.me/94701111994`), pavotaplumbing@gmail.com and facebook.com/pavotaplumbing. They appear in many places, so change all of them together.
+- Contact details are +94 71 515 1994 (`wa.me/94715151994`), pavotaplumbing@gmail.com and facebook.com/pavotaplumbing. They appear in many places, so change all of them together.
 - Copy is in English. Office documents have English and Sinhala titles (the `SI` list in `office/index.html`).
 - Tone: plain wording for Sri Lankan customers. The main call to action is "Call or WhatsApp". Don't promise a price before the job is seen; a written quotation is offered as "just ask". Late-night support is described as "we always try to help straight away... earliest available time, urgent jobs first", never as "we can't come at night".
 - When you add or change a public page, update `sitemap.xml` (`<loc>` and `<lastmod>`).
